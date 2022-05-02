@@ -1,4 +1,21 @@
+/* subforum head */
+#subforum-info {
+    width: 70%;
+    margin: auto;
+    background-color: #342E36;
+    padding: 30px 40px;
+}
 
+#subforum-info > h2 {
+    color: #FFFFFF;
+    letter-spacing: 1px;
+}
+
+#subforum-info > p {
+    color: #E5E5E5;
+}
+
+/* threads */
 .box-container {
     border: 1px solid #E5E5E5;
     border-radius: 20px;
