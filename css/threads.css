@@ -1,0 +1,38 @@
+
+.box-container {
+    border: 1px solid #E5E5E5;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    padding: 15px 20px;
+}
+
+.thread {
+    width: 60%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.update-date {
+    font-size: 14px;
+}
+
+.content-preview {
+    margin-top: 12px;
+}
+
+.content-preview::after {
+    content: " ...";
+    color: grey;
+    letter-spacing: 2px;
+}
+
+.user-profile-link + i {
+    color: #3777FF;
+    vertical-align: middle;
+    margin-left: 6px;
+}
+
+.user-info {
+    position: relative;
+    float: right;
+}
