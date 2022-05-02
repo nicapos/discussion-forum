@@ -1,0 +1,110 @@
+nav {
+    position: fixed;
+    width: 60px;
+    height: 100%;
+    top: 0;
+    left: -0;
+    overflow-x: hidden;
+    color: #FAFAFA;
+    background-color: #342E36;
+    z-index: 1;
+    transition: 0.5s;
+}
+
+nav > button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background: none;
+}
+
+nav > button:nth-child(2) {
+    display: none;
+}
+
+nav > button > i {
+    color: #FAFAFA;
+}
+
+.nav-item {
+    display: block;
+    padding: 10px 15px;
+    margin-top: 10px;
+    color: #FAFAFA;
+    width: 200px;
+    overflow-x: hidden;
+}
+
+.nav-item:nth-child(3) {
+    margin-top: 70px;
+}
+
+.nav-item > span {
+    vertical-align: middle;
+    margin-right: 15px;
+    color: #FAFAFA;
+    font-size: 30px !important;
+}
+
+.nav-item:hover, .nav-subitem:hover {
+    background-color: rgba(162, 214, 65, 0.3); /* #A2D641 with 30% opacity */
+    color: #A2D641;
+}
+
+#nav-grp:hover {
+    background-color: rgba(162, 214, 65, 0.1); /* #A2D641 with 10% opacity */
+}
+
+.nav-subitem {
+    display: none;
+    padding: 5px 10px;
+    margin-left: 15px;
+    color: #FAFAFA;
+    width: 200px;
+    overflow-x: hidden;
+}
+
+.nav-subitem > span {
+    vertical-align: middle;
+    margin-right: 5px;
+    color: #FAFAFA;
+    font-size: 30px !important;
+}
+
+#profile-slot {
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    width: 200px;
+    overflow-x: hidden;
+}
+
+#username {
+    color: #FAFAFA;
+}
+
+#username:hover {
+    font-weight: 500;
+    color: #A2D641;
+}
+
+#profile-img {
+    width: 35px;
+    height: 35px;
+    border: 3px solid #A2D641;
+    border-radius: 100%;
+    vertical-align: middle;
+    margin-right: 6px;
+    transition: 0.5s;
+}
+
+/* change nav style of anchor of current page (active) */
+.nav-item.active > span {
+    color: #A2D641;
+}
+
+nav > a.active {
+    color: #A2D641;
+    font-weight: 500;
+}
