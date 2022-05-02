@@ -1,5 +1,6 @@
 /* subforum head */
-#subforum-info {
+#subforum-heading {
+    display: flex;
     width: 70%;
     margin: auto;
     background-color: #342E36;
@@ -13,6 +14,18 @@
 
 #subforum-info > p {
     color: #E5E5E5;
+}
+
+#subforum-heading > button {
+    height: 40px;
+    margin-left: 10px;
+}
+
+#action-buttons {
+    float: right;
+    margin-left: auto; 
+    margin-right: 0;
+    vertical-align: middle;
 }
 
 /* general container */
@@ -49,17 +62,24 @@
 }
 
 /* thread-specific / reply-specific */
-
 .thread {
     width: 60%;
     margin: auto;
     margin-top: 25px;
 }
 
+.thread:last-child {
+    margin-bottom: 25px;
+}
+
 .reply {
     width: 55%;
     margin: auto;
     margin-top: 25px;
+}
+
+.reply:last-child {
+    margin-bottom: 25px;
 }
 
 .reply-mark {

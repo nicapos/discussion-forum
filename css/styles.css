@@ -38,3 +38,28 @@ a {
     color: #3777FF;
     text-decoration: none;
 }
+
+/* buttons */
+button {
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+button.green {
+    background-color: #A2D729;
+    border: 2px solid #89B722;
+}
+
+button.green:hover {
+    background-color: #89B722;
+}
+
+button.light {
+    background-color: #E5E5E5;
+    border: 2px solid #CCC;
+}
+
+button.light:hover {
+    background-color: #CCC;
+}
