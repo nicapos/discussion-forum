@@ -8,6 +8,11 @@
     color: #342E37;
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 h1 {
     font-size: 32px;
     font-weight: 700;
