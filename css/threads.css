@@ -89,3 +89,34 @@
     color: #E5E5E5;
     font-size: 40px !important;
 }
+
+/* thread actions */
+
+.thread-actions {
+    display: flex;
+    float: right;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-top: 15px;
+    padding: 4px 10px;
+    opacity: 0.8;
+}
+
+.thread-actions > a {
+    padding: 3px 12px;
+    color: #342E36;
+}
+
+.thread-actions > a:hover {
+    text-decoration: underline;
+}
+
+.thread-actions > a > i {
+    vertical-align: middle;
+    margin-right: 5px;
+    color: #342E36;
+}
+
+.thread.box-container + .reply.box-container {
+    margin-top: 60px;
+}
