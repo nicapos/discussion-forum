@@ -5,6 +5,7 @@ nav {
     top: 0;
     left: -0;
     overflow-x: hidden;
+    color: #FAFAFA;
     background-color: #342E36;
     z-index: 1;
     transition: 0.5s;
@@ -61,11 +62,11 @@ nav > div {
     overflow-x: hidden;
 }
 
-nav > div > a {
+#username {
     color: #FAFAFA;
 }
 
-nav > div > a:hover {
+#username:hover {
     font-weight: 500;
     color: #A2D641;
 }
@@ -78,4 +79,14 @@ nav > div > a:hover {
     vertical-align: middle;
     margin-right: 6px;
     transition: 0.5s;
+}
+
+/* change nav style of anchor of current page (active) */
+nav > a.active > span {
+    color: #A2D641;
+}
+
+nav > a.active {
+    color: #A2D641;
+    font-weight: 500;
 }
