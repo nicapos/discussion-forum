@@ -5,16 +5,39 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="nav-styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script>
+        /* Set the width of the side navigation to 250px */
+        function openNav() {
+            document.getElementsByTagName("nav")[0].style.width = "200px";
+            document.getElementsByTagName("button")[0].style.display = "none";
+            document.getElementsByTagName("button")[1].style.display = "block";
+
+            /* change profile image size */
+            document.getElementById("profile-img").style.width = "50px";
+            document.getElementById("profile-img").style.height = "50px";
+        }
+
+        function closeNav() {
+            document.getElementsByTagName("nav")[0].style.width = "60px";
+            document.getElementsByTagName("button")[0].style.display = "block";
+            document.getElementsByTagName("button")[1].style.display = "none";
+
+            /* change profile image size */
+            document.getElementById("profile-img").style.width = "35px";
+            document.getElementById("profile-img").style.height = "35px";
+        }
+    </script>
 </head>
 
 <body>
-    <nav>
-        <button><i class="material-icons" style="font-size: 40px;">menu</i></button>
-        <a href="#"><span class="material-icons">home</span>Dashboard</a>
-        <a href="#"><span class="material-icons">question_answer</span>Subforums</a>
-        <a href="#"><span class="material-icons">settings</span>Settings</a>
+    <nav id="navbar">
+        <button onclick="openNav()"><i class="material-icons" style="font-size: 40px;">menu</i></button>
+        <button onclick="closeNav()"><i class="material-icons" style="font-size: 40px;">menu</i></button>
+        <a href="#"><span class="material-icons nav-icon">home</span>Dashboard</a>
+        <a href="#"><span class="material-icons nav-icon">question_answer</span>Subforums</a>
+        <a href="#"><span class="material-icons nav-icon">settings</span>Settings</a>
         <div id="profile-slot">
-            <img src="profile1.png" />
+            <img id="profile-img" src="profile1.png" />
             <a href="#">username123</a>
         </div>
     </nav>
