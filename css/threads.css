@@ -15,18 +15,12 @@
     color: #E5E5E5;
 }
 
-/* threads */
+/* general container */
 .box-container {
     border: 1px solid #E5E5E5;
     border-radius: 20px;
     background-color: #FFFFFF;
     padding: 15px 20px;
-}
-
-.thread {
-    width: 60%;
-    margin: auto;
-    margin-top: 25px;
 }
 
 .update-date {
@@ -52,6 +46,14 @@
 .user-info {
     position: relative;
     float: right;
+}
+
+/* thread-specific / reply-specific */
+
+.thread {
+    width: 60%;
+    margin: auto;
+    margin-top: 25px;
 }
 
 .reply {
