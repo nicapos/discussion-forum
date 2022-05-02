@@ -52,13 +52,24 @@ nav > button > i {
     color: #A2D641;
 }
 
+#nav-grp:hover {
+    background-color: rgba(162, 214, 65, 0.1); /* #A2D641 with 10% opacity */
+}
+
 .nav-subitem {
     display: none;
     padding: 5px 10px;
-    margin-left: 60px;
+    margin-left: 15px;
     color: #FAFAFA;
     width: 200px;
     overflow-x: hidden;
+}
+
+.nav-subitem > span {
+    vertical-align: middle;
+    margin-right: 5px;
+    color: #FAFAFA;
+    font-size: 30px !important;
 }
 
 #profile-slot {
