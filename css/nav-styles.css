@@ -14,7 +14,7 @@ nav {
 nav > button {
     position: absolute;
     top: 10px;
-    right: 10px;
+    right: 0;
     border: none;
     background: none;
 }
@@ -25,6 +25,7 @@ nav > button:nth-child(2) {
 
 nav > button > i {
     color: #FAFAFA;
+    font-size: 30px !important;
 }
 
 .nav-item {
