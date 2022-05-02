@@ -1,4 +1,3 @@
-/* Set the width of the side navigation to 250px */
 function openNav() {
     document.getElementsByTagName("nav")[0].style.width = "200px";
     document.getElementsByTagName("button")[0].style.display = "none";
