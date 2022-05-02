@@ -17,3 +17,14 @@ function closeNav() {
     document.getElementById("profile-img").style.width = "35px";
     document.getElementById("profile-img").style.height = "35px";
 }
+
+/* Makes subitems visible if bVisible = true */
+function toggleSubitems(bVisible) {
+    if (bVisible) {
+        document.getElementsByClassName("nav-subitem")[0].style.display = "block";
+        document.getElementsByClassName("nav-subitem")[1].style.display = "block";
+    } else {
+        document.getElementsByClassName("nav-subitem")[0].style.display = "none";
+        document.getElementsByClassName("nav-subitem")[1].style.display = "none";
+    }
+}

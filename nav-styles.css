@@ -53,7 +53,7 @@ nav > button > i {
 }
 
 .nav-subitem {
-    display: block;
+    display: none;
     padding: 5px 10px;
     margin-left: 60px;
     color: #FAFAFA;
@@ -61,7 +61,7 @@ nav > button > i {
     overflow-x: hidden;
 }
 
-nav > div {
+#profile-slot {
     position: absolute;
     bottom: 0;
     padding: 10px;
