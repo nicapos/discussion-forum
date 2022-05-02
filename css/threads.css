@@ -33,7 +33,7 @@
     font-size: 14px;
 }
 
-.content-preview {
+.content-preview, .content {
     margin-top: 12px;
 }
 
@@ -52,4 +52,18 @@
 .user-info {
     position: relative;
     float: right;
+}
+
+.reply {
+    width: 55%;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.reply-mark {
+    float: left;
+    margin-left: -42px;
+    margin-top: -14px;
+    color: #E5E5E5;
+    font-size: 40px !important;
 }
