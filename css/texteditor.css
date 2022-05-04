@@ -50,6 +50,15 @@
     font-size: 15px;
 }
 
+input[type=color] {
+    height: 25px;
+    width: 22px;
+    border-radius: 0;
+    border: 1px solid silver;
+    background-color: #E5E5E5;
+    margin-left: -5px;
+}
+
 #info-text {
     color: grey;
     font-size: 12px;

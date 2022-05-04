@@ -9,7 +9,8 @@ function createLink() {
 }
 
 function changeColor() {
-    var colorHex = prompt("Enter color (in hex form)");
+    //var colorHex = prompt("Enter color (in hex form)");
+    var colorHex = document.getElementById("color-picker").value;
     document.execCommand('styleWithCSS', false, true);
     document.execCommand("foreColor", false, colorHex);
 }
