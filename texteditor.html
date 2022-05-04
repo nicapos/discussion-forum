@@ -1,0 +1,57 @@
+<html>
+
+<head>
+    <title>Text Editor Demo</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/texteditor.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="js/texteditor.js"></script>
+    <style>
+        #text-editor {
+            width: 500px;
+            margin: auto; /* centers div */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="text-editor">
+        <h3>Action</h3> <!-- "Create Thread" or "Reply to Thread" -->
+        <div id="toolbar">
+            <div class="tool-group">
+                <button class="material-icons" onclick="document.execCommand('bold', false, '');">format_bold</button>
+                <button class="material-icons" onclick="document.execCommand('italic', false, '');">format_italic</button>
+                <button class="material-icons" onclick="document.execCommand('underline', false, '');">format_underlined</button>
+                <button class="material-icons" onclick="document.execCommand('strikeThrough', false, '');">strikethrough_s</button>
+            </div>
+
+            <div class="tool-group">
+                <button class="material-icons" onclick="createLink()">insert_link</button>
+                <button class="material-icons" onclick="changeColor()">format_color_text</button>
+                <input type="color" id="color-picker" value="#ff0000">
+            </div>
+
+            <div class="tool-group">
+                <button class="material-icons" onclick="document.execCommand('justifyLeft',false,'')">format_align_left</button>
+                <button class="material-icons" onclick="document.execCommand('justifyCenter',false,'')">format_align_center</button>
+                <button class="material-icons" onclick="document.execCommand('justifyRight',false,'')">format_align_right</button>
+                <button class="material-icons" onclick="document.execCommand('justifyFull',false,'')">format_align_justify</button>
+            </div>
+        </div>
+
+        <div id="editor" contenteditable>
+            <p>Insert content here.</p>
+        </div>
+
+        <p id="info-text">&nbsp;</p>
+
+        <div id="actions">
+            <button class="light">Cancel</button>&nbsp;
+            <button class="green">Post</button>
+        </div>
+       
+    </div>
+
+</body>
+
+</html>

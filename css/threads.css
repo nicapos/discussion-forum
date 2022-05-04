@@ -66,6 +66,7 @@
     width: 60%;
     margin: auto;
     margin-top: 25px;
+    margin-bottom: 60px;
 }
 
 .thread:last-child {
@@ -117,6 +118,13 @@
     color: #342E36;
 }
 
-.thread.box-container + .reply.box-container {
-    margin-top: 60px;
+.thread#text-editor {
+    display: block;
+}
+
+.reply#text-editor {
+    display: none;
+    margin-top: 100px;
+    width: 55%;
+    margin: auto;
 }
