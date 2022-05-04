@@ -1,0 +1,132 @@
+<html>
+
+<head>
+    <title>Thread Name | Subforum Name</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/threads.css">
+    <link rel="stylesheet" href="css/nav-styles.css">
+    <link rel="stylesheet" href="css/texteditor.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="js/nav.js"></script>
+    <script src="js/texteditor.js"></script>
+    <style>
+        body {
+            background-color: #F4F4F4;
+        }
+    </style>
+</head>
+
+<body>
+    <nav id="navbar">
+        <button onclick="openNav()"><i class="material-icons" style="font-size: 40px;">menu</i></button>
+        <button onclick="closeNav()"><i class="material-icons" style="font-size: 40px;">menu</i></button>
+
+        <a class="nav-item" href="#">
+            <span class="material-icons">home</span>
+            Dashboard
+        </a>
+        <div id="nav-grp" onmouseover="toggleSubitems(true)" onmouseleave="toggleSubitems(false)">
+        <a class="nav-item active">
+            <span class="material-icons">question_answer</span>
+            Subforums
+        </a>
+        <a class="nav-subitem" href="#">
+            <span class="material-icons">add</span>
+            Create subforum
+        </a>
+        <a class="nav-subitem" href="#">
+            <span class="material-icons">search</span>
+            Search subforum
+        </a>
+        </div>
+        <a class="nav-item" href="#">
+            <span class="material-icons">settings</span>
+            Settings
+        </a>
+        <div id="profile-slot">
+            <img id="profile-img" src="resources/profile1.png" />
+            <a id="username" href="#">username123</a>
+        </div>
+    </nav>
+
+    <div id="subforum-heading">
+        <div id="subforum-info">
+            <h2>Subforum Title</h2>
+            <p>Insert a brief description of the subforum here.</p>
+        </div>
+    </div>
+
+    <div class="thread box-container">
+        <span class="user-info"><a class="user-profile-link" href="#">username123</a><i class="material-icons">person</i></span>
+        <h3>Thread Title</h3>
+        <i class="update-date">January 01, 1990</i>
+        <p class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus neque, mattis sit amet pulvinar viverra, auctor eget magna. Cras massa ipsum, blandit non congue sed, luctus at felis. Vestibulum nunc leo, pharetra at pellentesque sit amet, rutrum quis tellus. Integer dignissim mattis risus sit amet interdum.</p>
+        <div class="thread-actions box-container">
+            <a href="#"><i class="material-icons">thumb_up</i>Like</a>
+            <a href="#"><i class="material-icons">thumb_down</i>Dislike</a>
+            <a href="#"><i class="material-icons">reply</i>Reply</a>
+            <a href="#"><i class="material-icons">share</i>Share</a>
+        </div>
+    </div>
+
+    <div id="text-editor">
+        <span class="material-icons reply-mark">subdirectory_arrow_right</span>
+        <h3>Reply to Thread</h3> <!-- "Create Thread" or "Reply to Thread" -->
+        <div id="toolbar">
+            <div class="tool-group">
+                <button class="material-icons" onclick="document.execCommand('bold', false, '');">format_bold</button>
+                <button class="material-icons" onclick="document.execCommand('italic', false, '');">format_italic</button>
+                <button class="material-icons" onclick="document.execCommand('underline', false, '');">format_underlined</button>
+                <button class="material-icons" onclick="document.execCommand('strikeThrough', false, '');">strikethrough_s</button>
+            </div>
+
+            <div class="tool-group">
+                <button class="material-icons" onclick="createLink()">insert_link</button>
+                <button class="material-icons" onclick="changeColor()">format_color_text</button>
+                <input type="color" id="color-picker" value="#ff0000">
+            </div>
+
+            <div class="tool-group">
+                <button class="material-icons" onclick="document.execCommand('justifyLeft',false,'')">format_align_left</button>
+                <button class="material-icons" onclick="document.execCommand('justifyCenter',false,'')">format_align_center</button>
+                <button class="material-icons" onclick="document.execCommand('justifyRight',false,'')">format_align_right</button>
+                <button class="material-icons" onclick="document.execCommand('justifyFull',false,'')">format_align_justify</button>
+            </div>
+        </div>
+
+        <div id="editor" contenteditable>
+            <p>&nbsp;</p>
+        </div>
+
+        <p id="info-text">&nbsp;</p>
+
+        <div id="actions">
+            <button class="light">Cancel</button>&nbsp;
+            <button class="green">Post</button>
+        </div>
+    </div>
+
+    <div class="reply box-container">
+        <span class="material-icons reply-mark">subdirectory_arrow_right</span>
+        <span class="user-info"><a class="user-profile-link" href="#">username123</a><i class="material-icons">person</i></span>
+        <i class="update-date">January 01, 1990</i>
+        <p class="content">Lorem ipsum dolor sit amet. Qui totam quos eum voluptatem inventore sit quod iure sit alias corrupti.</p>
+    </div>
+
+    <div class="reply box-container">
+        <span class="material-icons reply-mark">subdirectory_arrow_right</span>
+        <span class="user-info"><a class="user-profile-link" href="#">username123</a><i class="material-icons">person</i></span>
+        <i class="update-date">January 01, 1990</i>
+        <p class="content">Lorem ipsum dolor sit amet. Qui totam quos eum voluptatem inventore sit quod iure sit alias corrupti.</p>
+    </div>
+
+    <div class="reply box-container">
+        <span class="material-icons reply-mark">subdirectory_arrow_right</span>
+        <span class="user-info"><a class="user-profile-link" href="#">username123</a><i class="material-icons">person</i></span>
+        <i class="update-date">January 01, 1990</i>
+        <p class="content">Lorem ipsum dolor sit amet. Qui totam quos eum voluptatem inventore sit quod iure sit alias corrupti.</p>
+    </div>
+
+</body>
+
+</html>
