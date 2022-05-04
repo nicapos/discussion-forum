@@ -50,6 +50,14 @@
     font-size: 15px;
 }
 
+#info-text {
+    color: grey;
+    font-size: 12px;
+    font-style: italic;
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
 #editor {
     border: 1px solid #E5E5E5;
     background-color: #FFFFFF;
@@ -58,4 +66,8 @@
 
 #editor:hover {
     border: 1px solid grey;
+}
+
+#editor > a, #editor > p > a {
+    text-decoration: underline;
 }
