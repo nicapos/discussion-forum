@@ -1,11 +1,12 @@
 function createLink() {
-    var url = prompt("Enter URL");
+    var url = prompt("Enter URL").trim();
     if (url.includes("http://") || url.includes("https://")) {
         document.execCommand("createLink", false, url);
-    } else {
+        updateAnchors();
+    } else if (url != "" && url.indexOf('.') !== -1) {
         document.execCommand("createLink", false, "http://" + url);
+        updateAnchors();
     }
-    updateAnchors();
 }
 
 function changeColor() {
