@@ -118,7 +118,11 @@
     color: #342E36;
 }
 
-#text-editor {
+.thread#text-editor {
+    display: block;
+}
+
+.reply#text-editor {
     display: none;
     margin-top: 100px;
     width: 55%;
