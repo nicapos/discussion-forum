@@ -8,6 +8,12 @@ function createLink() {
     updateAnchors();
 }
 
+function changeColor() {
+    var colorHex = prompt("Enter color (in hex form)");
+    document.execCommand('styleWithCSS', false, true);
+    document.execCommand("foreColor", false, colorHex);
+}
+
 function setInfoText(msg) {
     var infoTxt = document.getElementById("info-text");
     infoTxt.textContent = msg;
