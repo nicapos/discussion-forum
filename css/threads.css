@@ -119,7 +119,7 @@
 }
 
 #text-editor {
-    display: block;
+    display: none;
     margin-top: 100px;
     width: 55%;
     margin: auto;
