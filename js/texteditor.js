@@ -1,6 +1,10 @@
 function createLink() {
     var url = prompt("Enter URL");
-    document.execCommand("createLink", false, url);
+    if (url.includes("http://") || url.includes("https://")) {
+        document.execCommand("createLink", false, url);
+    } else {
+        document.execCommand("createLink", false, "http://" + url);
+    }
     updateAnchors();
 }
 
