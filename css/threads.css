@@ -145,3 +145,27 @@
     bottom: 15px;
     right: 20px;
 }
+
+/* share actions */
+#thread-link {
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(240, 240, 240, 0.8);
+}
+
+#share-actions > p, #share-actions > #socials > p {
+    margin-left: 3px;
+}
+
+#share-actions > #socials > img {
+    width: 30px;
+}
+
+#socials {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    gap: 5px;
+}
