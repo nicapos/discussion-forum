@@ -147,19 +147,20 @@
 }
 
 /* share actions */
-#thread-link {
+#link {
     padding: 5px 10px;
     font-size: 14px;
     border-radius: 5px;
     color: rgba(0, 0, 0, 0.6);
     background-color: rgba(240, 240, 240, 0.8);
+    overflow-x: scroll;
 }
 
 #share-actions > p, #share-actions > #socials > p {
     margin-left: 3px;
 }
 
-#share-actions > #socials > img {
+#share-actions > #socials > a > img {
     width: 30px;
 }
 
