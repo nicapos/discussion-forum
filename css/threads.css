@@ -124,7 +124,24 @@
 
 .reply#text-editor {
     display: none;
+    position: relative;
     margin-top: 100px;
     width: 55%;
     margin: auto;
+
+    padding-bottom: 56px; /* add space for button */
+}
+
+/* text editor */
+#text-editor > #content {
+    width: auto;
+    border-radius: 0;
+    margin: 10px 0;
+}
+
+#text-editor > #actions {
+    display: flex;
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
 }
