@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Website Name</title>
     <link rel="stylesheet" href="css/login-signup-styles.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="js/login.js"></script>
 
 </head>
 <body>
@@ -34,14 +36,13 @@
             <div class="login-bg">
                 
             </div>
-            <form name="Register">
+            <form name="Register" id="Register" action="editprofile.html">
                 <h3>Login</h3>
                 <input type="text" placeholder="Username" id="username" required>
                 <input type="password" placeholder="Password" id="password" required>
-                <button type="submit">LOGIN</button>
-                <p>or</p>
-                <button href="sign-up.html" id="sign-up-button">SIGN UP</button>
+                <button type="button" id="login-btn">LOGIN</button>
             </form>
+            <button type="button" href="sign-up.html" id="sign-up-button">SIGN UP</button>
         </div>
     </div>
     
