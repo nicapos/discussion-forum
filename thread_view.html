@@ -7,18 +7,9 @@
     <link rel="stylesheet" href="css/nav-styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="js/nav.js"></script>
-    <script>
-        function showReplyBox() {
-            document.getElementById("text-editor").style.display = "block";
-        }
-        function hideReplyBox() {
-            document.getElementById("text-editor").style.display = "none";
-        }
-    </script>
     <style>
-        body {
-            background-color: #F4F4F4;
-        }
+        body { background-color: #F4F4F4; }
+        form { display: none; }
     </style>
 </head>
 
@@ -62,6 +53,7 @@
         </div>
     </div>
 
+    <!-- thread topic box -->
     <div class="thread box-container">
         <span class="user-info"><a class="user-profile-link" href="#">username123</a><i class="material-icons">person</i></span>
         <h3>Thread Title</h3>
@@ -70,14 +62,16 @@
         <div class="thread-actions box-container">
             <a href="#"><i class="material-icons">thumb_up</i>Like</a>
             <a href="#"><i class="material-icons">thumb_down</i>Dislike</a>
-            <a onclick="showReplyBox()"><i class="material-icons">reply</i>Reply</a>
-            <a href="#"><i class="material-icons">share</i>Share</a>
+            <a onclick="showReplyBox(true)"><i class="material-icons">reply</i>Reply</a>
+            <a onclick="showShareActions(true)"><i class="material-icons">share</i>Share</a>
         </div>
     </div>
 
+    <!-- share actions -->
     <div id="share-actions" class="reply box-container">
+        <button id="close-btn" class="material-icons" onclick="showShareActions(false)">close</button>
         <p>To share this thread, copy the following link:</p>
-        <div id="link" class="box-container">h</div>
+        <div id="link" class="box-container" contenteditable></div>
         <div id="socials">
             <p>or share to   &nbsp;</p>
             <a id="twitter-share" onclick="shareToTwitter()"><img src="resources/icons/twt.png" /></a>
@@ -85,7 +79,7 @@
         </div>
     </div>
 
-
+    <!-- write reply -->
     <div id="text-editor" class="reply box-container">
         <span class="material-icons reply-mark">subdirectory_arrow_right</span>
         <h3>Reply to Thread</h3>
@@ -93,11 +87,12 @@
         <div id="content" class="box-container" contenteditable></div>
 
         <div id="actions">
-            <button class="light" onclick="hideReplyBox()">Cancel</button>&nbsp;
+            <button class="light" onclick="showReplyBox(false)">Cancel</button>&nbsp;
             <button class="green">Post</button>
         </div>
     </div>
 
+    <!-- all replies here -->
     <div class="reply box-container">
         <span class="material-icons reply-mark">subdirectory_arrow_right</span>
         <span class="user-info"><a class="user-profile-link" href="#">username123</a><i class="material-icons">person</i></span>
@@ -120,7 +115,7 @@
     </div>
 
     <!-- scripts -->
-    <script src="js/share.js"></script>
+    <script src="js/threadactions.js"></script>
 </body>
 
 </html>

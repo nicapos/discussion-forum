@@ -1,4 +1,20 @@
+/* show/hide thread actions */
+function showReplyBox(bool) {
+    if (bool)
+        document.getElementById("text-editor").style.display = "block";
+    else
+        document.getElementById("text-editor").style.display = "none";
+}
 
+function showShareActions(bool) {
+    if (bool)
+        document.getElementById("share-actions").style.display = "block";
+    else
+        document.getElementById("share-actions").style.display = "none";
+}
+
+
+/* SHARE ACTIONS */
 const currentURL = window.location.href;
 const sampleURL = "http://google.com"
 
