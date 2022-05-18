@@ -24,7 +24,7 @@ nav > button:nth-child(2) {
     display: none;
 }
 
-nav > button > i {
+nav > button {
     color: #FAFAFA;
     font-size: 30px !important;
 }
