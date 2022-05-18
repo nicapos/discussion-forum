@@ -1,5 +1,6 @@
 
 const currentURL = window.location.href;
+const sampleURL = "http://google.com"
 
 /* add current url to share -> copy link */
 document.getElementById("link").innerHTML = currentURL;
@@ -22,14 +23,22 @@ twtForm.appendChild(twtMsg);
 twtForm.appendChild(twtURL);
 document.getElementById("twitter-share").insertAdjacentElement("beforebegin", twtForm);
 
-/*
-    OUTPUT:
-    <form id="twitter-share" action="https://twitter.com/intent/tweet">
-        <input type="hidden" name="text" value="Check out this thread from ForumName!" />
-        <input type="hidden" name="url" value="" />
-    </form>
-*/
-
 function shareToTwitter() {
     twtForm.submit();
+}
+
+/* add form with params for "share to facebook" */
+const fbForm = document.createElement("form");
+fbForm.action = "https://www.facebook.com/sharer.php";
+
+const fbURL = document.createElement("input");
+fbURL.type = "hidden";
+fbURL.name = "u";
+fbURL.value = sampleURL;
+
+fbForm.appendChild(fbURL);
+document.getElementById("fb-share").insertAdjacentElement("beforebegin", fbForm);
+
+function shareToFacebook() {
+    fbForm.submit();
 }
