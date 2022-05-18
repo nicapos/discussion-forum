@@ -1,30 +1,26 @@
-function openNav() {
-    document.getElementsByTagName("nav")[0].style.width = "200px";
-    document.getElementsByTagName("button")[0].style.display = "none";
-    document.getElementsByTagName("button")[1].style.display = "block";
+function toggleNav(bOpen) {
+    if (bOpen) {
+        document.getElementsByTagName("nav")[0].style.width = "200px";
+        document.getElementById("profile-img").style.width = "50px";
+        document.getElementById("profile-img").style.height = "50px";
 
-    /* change profile image size */
-    document.getElementById("profile-img").style.width = "50px";
-    document.getElementById("profile-img").style.height = "50px";
-}
+        document.querySelector("nav > button").setAttribute("onclick", "toggleNav(false)");
+    } else {
+        document.getElementsByTagName("nav")[0].style.width = "60px";
+        document.getElementById("profile-img").style.width = "35px";
+        document.getElementById("profile-img").style.height = "35px";
 
-function closeNav() {
-    document.getElementsByTagName("nav")[0].style.width = "60px";
-    document.getElementsByTagName("button")[0].style.display = "block";
-    document.getElementsByTagName("button")[1].style.display = "none";
-
-    /* change profile image size */
-    document.getElementById("profile-img").style.width = "35px";
-    document.getElementById("profile-img").style.height = "35px";
+        document.querySelector("nav > button").setAttribute("onclick", "toggleNav(true)");
+    }
 }
 
 /* Makes subitems visible if bVisible = true */
 function toggleSubitems(bVisible) {
-    if (bVisible) {
-        document.getElementsByClassName("nav-subitem")[0].style.display = "block";
-        document.getElementsByClassName("nav-subitem")[1].style.display = "block";
-    } else {
-        document.getElementsByClassName("nav-subitem")[0].style.display = "none";
-        document.getElementsByClassName("nav-subitem")[1].style.display = "none";
+    const subitems = document.querySelectorAll("#nav-grp > a:not(:first-child)");
+    for (let i = 0; i < subitems.length; i++) {
+        if (bVisible)
+            subitems[i].style.display = "block";
+        else
+            subitems[i].style.display = "none";
     }
 }

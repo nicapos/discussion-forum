@@ -9,6 +9,7 @@ nav {
     background-color: #342E36;
     z-index: 1;
     transition: 0.5s;
+    padding-top: 70px;
 }
 
 nav > button {
@@ -28,27 +29,14 @@ nav > button > i {
     font-size: 30px !important;
 }
 
-.nav-item {
-    display: block;
-    padding: 10px 15px;
-    margin-top: 10px;
-    color: #FAFAFA;
-    width: 200px;
-    overflow-x: hidden;
-}
-
-.nav-item:nth-child(3) {
-    margin-top: 70px;
-}
-
-.nav-item > span {
+nav > a > span, #nav-grp > a:first-child > span {
     vertical-align: middle;
     margin-right: 15px;
     color: #FAFAFA;
     font-size: 30px !important;
 }
 
-.nav-item:hover, .nav-subitem:hover {
+nav > a:hover, #nav-grp > a:hover {
     background-color: rgba(162, 214, 65, 0.3); /* #A2D641 with 30% opacity */
     color: #A2D641;
 }
@@ -57,7 +45,7 @@ nav > button > i {
     background-color: rgba(162, 214, 65, 0.1); /* #A2D641 with 10% opacity */
 }
 
-.nav-subitem {
+#nav-grp > a:not(:first-child) { /* nav sub-item */
     display: none;
     padding: 5px 10px;
     margin-left: 15px;
@@ -66,16 +54,25 @@ nav > button > i {
     overflow-x: hidden;
 }
 
-.nav-subitem > span {
+#nav-grp > a:not(:first-child) > span {
     vertical-align: middle;
     margin-right: 5px;
     color: #FAFAFA;
     font-size: 30px !important;
 }
 
+nav > a, #nav-grp > a:first-child { /* nav item */
+    display: block;
+    padding: 10px 15px;
+    margin-top: 10px;
+    color: #FAFAFA;
+    width: 200px;
+    overflow-x: hidden;
+}
+
 #profile-slot {
     position: absolute;
-    bottom: 0;
+    bottom: 70px;
     padding: 10px;
     width: 200px;
     overflow-x: hidden;
@@ -101,7 +98,7 @@ nav > button > i {
 }
 
 /* change nav style of anchor of current page (active) */
-.nav-item.active > span {
+nav > a.active > span {
     color: #A2D641;
 }
 
