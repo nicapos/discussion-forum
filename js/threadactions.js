@@ -50,11 +50,27 @@ fbForm.action = "https://www.facebook.com/sharer.php";
 const fbURL = document.createElement("input");
 fbURL.type = "hidden";
 fbURL.name = "u";
-fbURL.value = sampleURL;
+fbURL.value = currentURL;
 
 fbForm.appendChild(fbURL);
 document.getElementById("fb-share").insertAdjacentElement("beforebegin", fbForm);
 
 function shareToFacebook() {
     fbForm.submit();
+}
+
+/* for "share to email" */
+const mailForm = document.createElement("form");
+mailForm.action = "mailto:";
+
+const mailBody = document.createElement("input");
+mailBody.type = "hidden";
+mailBody.name = "body";
+mailBody.value = currentURL;
+
+mailForm.appendChild(mailBody);
+document.getElementById("mail-share").insertAdjacentElement("beforebegin", mailForm);
+
+function shareToEmail() {
+    mailForm.submit();
 }
