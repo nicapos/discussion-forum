@@ -21,13 +21,6 @@
     margin-left: 10px;
 }
 
-#action-buttons {
-    float: right;
-    margin-left: auto; 
-    margin-right: 0;
-    vertical-align: middle;
-}
-
 /* general container */
 .box-container {
     border: 1px solid #E5E5E5;
@@ -72,26 +65,17 @@
     opacity: 0.9;
 }
 
-/* thread-specific / reply-specific */
-.thread {
-    width: 60%;
-    margin: auto;
-    margin-top: 25px;
-    margin-bottom: 60px;
+/* reply-specific */
+#replies {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    padding-bottom: 25px;
 }
 
-.thread:last-child {
-    margin-bottom: 25px;
-}
-
-.reply {
+#replies > div, #share-actions {
     width: 55%;
     margin: auto;
-    margin-top: 25px;
-}
-
-.reply:last-child {
-    margin-bottom: 25px;
 }
 
 .reply-mark {
@@ -102,7 +86,13 @@
     font-size: 40px !important;
 }
 
-/* thread actions */
+/* thread-specific */
+.thread {
+    width: 60%;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 60px;
+}
 
 .thread-actions {
     display: flex;
@@ -129,20 +119,15 @@
     color: #342E36;
 }
 
-.thread#text-editor {
-    display: block;
-}
-
-.reply#text-editor {
+/* text editor */
+#text-editor {
+    display: none; /* hide on launch */
     position: relative;
-    margin-top: 100px;
     width: 55%;
-    margin: auto;
-
+    margin: 100px auto 25px auto;
     padding-bottom: 56px; /* add space for button */
 }
 
-/* text editor */
 #text-editor > #content {
     width: auto;
     border-radius: 0;
@@ -157,6 +142,23 @@
 }
 
 /* share actions */
+#share-actions {
+    display: none; /* hide on launch */
+    gap: 3px;
+    margin-bottom: 25px;
+}
+
+#share-actions > #socials > a > img {
+    width: 30px;
+}
+
+#socials {
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    gap: 5px;
+}
+
 #link {
     padding: 5px 10px;
     font-size: 14px;
@@ -174,24 +176,4 @@
     border: 0;
     color: rgba(0, 0, 0, 0.6);
     background-color: transparent;
-}
-
-#share-actions > p, #share-actions > #socials > p {
-    margin-left: 3px;
-}
-
-#share-actions > #socials > a > img {
-    width: 30px;
-}
-
-#socials {
-    display: flex;
-    align-items: center;
-    margin-top: 8px;
-    gap: 5px;
-}
-
-/* hide reply and share on launch */
-#share-actions, #text-editor {
-    display: none;
 }

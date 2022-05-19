@@ -1,9 +1,12 @@
 /* show/hide thread actions */
 function showReplyBox(bool) {
-    if (bool)
+    if (bool) {
         document.getElementById("text-editor").style.display = "block";
-    else
+        document.getElementById("replies").style.paddingTop = "25px";
+    } else {
         document.getElementById("text-editor").style.display = "none";
+        document.getElementById("replies").style.paddingTop = "0";
+    }
 }
 
 function showShareActions(bool) {
