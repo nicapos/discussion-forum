@@ -21,6 +21,13 @@
     margin-left: 10px;
 }
 
+#action-buttons {
+    float: right;
+    margin-left: auto; 
+    margin-right: 0;
+    vertical-align: middle;
+}
+
 /* general container */
 .box-container {
     border: 1px solid #E5E5E5;
@@ -66,7 +73,7 @@
 }
 
 /* reply-specific */
-#replies {
+#replies, #threads {
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -87,9 +94,12 @@
 }
 
 /* thread-specific */
-.thread {
+.thread, #threads > div, #threads > b {
     width: 60%;
     margin: auto;
+}
+
+.thread {
     margin-top: 25px;
     margin-bottom: 60px;
 }
@@ -117,6 +127,11 @@
     vertical-align: middle;
     margin-right: 5px;
     color: #342E36;
+}
+
+#threads > b {
+    margin-top: 20px;
+    margin-bottom: -10px;
 }
 
 /* text editor */
