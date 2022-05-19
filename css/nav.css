@@ -98,7 +98,7 @@ nav > a, #nav-grp > a:first-child { /* nav item */
 }
 
 /* change nav style of anchor of current page (active) */
-nav > a.active > span {
+nav > a.active > span, #nav-grp > a.active > span {
     color: #A2D641;
 }
 
