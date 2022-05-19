@@ -46,17 +46,6 @@
     letter-spacing: 2px;
 }
 
-.user-profile-link + i {
-    color: #3777FF;
-    vertical-align: middle;
-    margin-left: 6px;
-}
-
-.user-info {
-    position: relative;
-    float: right;
-}
-
 #author-info {
     display: flex;
     gap: 10px;
