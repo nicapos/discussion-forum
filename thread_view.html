@@ -17,11 +17,11 @@
     <nav>
         <button class="material-icons" onclick="toggleNav(true)">menu</button>
 
-        <a class="active" href="#"><span class="material-icons">home</span>
+        <a href="#"><span class="material-icons">home</span>
             Dashboard
         </a>
         <div id="nav-grp" onmouseover="toggleSubitems(true)" onmouseleave="toggleSubitems(false)">
-            <a><span class="material-icons">question_answer</span>
+            <a class="active"><span class="material-icons">question_answer</span>
                 Subforums
             </a>
             <a href="#"><span class="material-icons">add</span>
@@ -46,27 +46,35 @@
 
     <div id="subforum-heading">
         <div id="subforum-info">
-            <h2>Subforum Title</h2>
+            <a href="subforum_view.html">
+                <h2>Subforum Title</h2>
+            </a>
             <p>Insert a brief description of the subforum here.</p>
         </div>
     </div>
 
     <!-- thread topic box -->
     <div class="thread box-container">
-        <span class="user-info"><a class="user-profile-link" href="#">username123</a><i class="material-icons">person</i></span>
-        <h3>Thread Title</h3>
-        <i class="update-date">January 01, 1990</i>
+       <h2>Thread Title</h2>
+        <div id="author-info">
+            <img src="resources/profile1.png" />
+            <span>
+                <a href="#">username123</a>
+                <p>Last updated January 01, 1990</p>
+            </span>
+        </div>
+
         <p class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus neque, mattis sit amet pulvinar viverra, auctor eget magna. Cras massa ipsum, blandit non congue sed, luctus at felis. Vestibulum nunc leo, pharetra at pellentesque sit amet, rutrum quis tellus. Integer dignissim mattis risus sit amet interdum.</p>
         <div class="thread-actions box-container">
-            <a href="#"><i class="material-icons">thumb_up</i>Like</a>
-            <a href="#"><i class="material-icons">thumb_down</i>Dislike</a>
+            <a><i class="material-icons">thumb_up</i>Like</a>
+            <a><i class="material-icons">thumb_down</i>Dislike</a>
             <a onclick="showReplyBox(true)"><i class="material-icons">reply</i>Reply</a>
             <a onclick="showShareActions(true)"><i class="material-icons">share</i>Share</a>
         </div>
     </div>
 
     <!-- share actions -->
-    <div id="share-actions" class="reply box-container">
+    <div id="share-actions" class="box-container">
         <button id="close-btn" class="material-icons" onclick="showShareActions(false)">close</button>
         <p>To share this thread, copy the following link:</p>
         <div id="link" class="box-container" contenteditable></div>
@@ -79,7 +87,7 @@
     </div>
 
     <!-- write reply -->
-    <div id="text-editor" class="reply box-container">
+    <div id="text-editor" class="box-container">
         <span class="material-icons reply-mark">subdirectory_arrow_right</span>
         <h3>Reply to Thread</h3>
 
@@ -90,27 +98,45 @@
             <button class="green">Post</button>
         </div>
     </div>
-
+    
     <!-- all replies here -->
-    <div class="reply box-container">
-        <span class="material-icons reply-mark">subdirectory_arrow_right</span>
-        <span class="user-info"><a class="user-profile-link" href="#">username123</a><i class="material-icons">person</i></span>
-        <i class="update-date">January 01, 1990</i>
-        <p class="content">Lorem ipsum dolor sit amet. Qui totam quos eum voluptatem inventore sit quod iure sit alias corrupti.</p>
-    </div>
+    <div id="replies">
+        <div class="box-container">
+            <span class="material-icons reply-mark">subdirectory_arrow_right</span>
+            <div id="author-info">
+                <img src="resources/profile3.png" />
+                <span>
+                    <a href="#">username234</a>
+                    <p>Last updated January 01, 1990</p>
+                </span>
+            </div>
+            <p class="content">Lorem ipsum dolor sit amet. Qui totam quos eum voluptatem inventore sit quod iure sit alias corrupti.</p>
+        </div>
+        
+        <div class="box-container">
+            <span class="material-icons reply-mark">subdirectory_arrow_right</span>
+            <div id="author-info">
+                <img src="resources/profile4.png" />
+                <span>
+                    <a href="#">username345</a>
+                    <p>Last updated January 01, 1990</p>
+                </span>
+            </div>
+            <p class="content">Lorem ipsum dolor sit amet. Qui totam quos eum voluptatem inventore sit quod iure sit alias corrupti.</p>
+        </div>
+    
+        <div class="box-container">
+            <span class="material-icons reply-mark">subdirectory_arrow_right</span>
+            <div id="author-info">
+                <img src="resources/profile1.png" />
+                <span>
+                    <a href="#">username123</a>
+                    <p>Last updated January 01, 1990</p>
+                </span>
+            </div>
+            <p class="content">Lorem ipsum dolor sit amet. Qui totam quos eum voluptatem inventore sit quod iure sit alias corrupti.</p>
+        </div>
 
-    <div class="reply box-container">
-        <span class="material-icons reply-mark">subdirectory_arrow_right</span>
-        <span class="user-info"><a class="user-profile-link" href="#">username123</a><i class="material-icons">person</i></span>
-        <i class="update-date">January 01, 1990</i>
-        <p class="content">Lorem ipsum dolor sit amet. Qui totam quos eum voluptatem inventore sit quod iure sit alias corrupti.</p>
-    </div>
-
-    <div class="reply box-container">
-        <span class="material-icons reply-mark">subdirectory_arrow_right</span>
-        <span class="user-info"><a class="user-profile-link" href="#">username123</a><i class="material-icons">person</i></span>
-        <i class="update-date">January 01, 1990</i>
-        <p class="content">Lorem ipsum dolor sit amet. Qui totam quos eum voluptatem inventore sit quod iure sit alias corrupti.</p>
     </div>
 
     <!-- scripts -->

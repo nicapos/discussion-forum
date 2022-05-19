@@ -18,11 +18,11 @@
     <nav>
         <button class="material-icons" onclick="toggleNav(true)">menu</button>
 
-        <a class="active" href="#"><span class="material-icons">home</span>
+        <a href="#"><span class="material-icons">home</span>
             Dashboard
         </a>
         <div id="nav-grp" onmouseover="toggleSubitems(true)" onmouseleave="toggleSubitems(false)">
-            <a><span class="material-icons">question_answer</span>
+            <a class="active"><span class="material-icons">question_answer</span>
                 Subforums
             </a>
             <a href="#"><span class="material-icons">add</span>
@@ -52,45 +52,77 @@
         </div>
         <div id="action-buttons">
             <button class="green">Join</button>
-            <button class="light">Create Thread</button>
+            <button class="light" onclick="location.href='create_thread.html';">Create Thread</button>
         </div>
     </div>
 
-    <div class="thread box-container">
-        <span class="user-info"><a class="user-profile-link" href="#">username123</a><i class="material-icons">person</i></span>
-        <a href="#"> <!-- Insert link to thread -->
-            <h3>Thread Title</h3>
-            <i class="update-date">Last updated January 01, 1990</i>
+    <!-- all threads here -->
+    <div id="threads">
+
+        <b>Recent Threads</b>
+
+        <div class="box-container">
+            <a href="#"><h3>Thread Title</h3></a>
+            <div id="author-info">
+                <img src="resources/profile1.png" />
+                <span>
+                    <a href="#">username123</a>
+                    <p>Last updated January 01, 1990</p>
+                </span>
+            </div>
             <p class="content-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus neque, mattis sit amet pulvinar viverra, auctor eget magna. Cras massa ipsum, blandit non congue sed, luctus at felis. Vestibulum</p>
-        </a>
+        </div>
+
+        <div class="box-container">
+            <a href="#"><h3>Thread Title</h3></a>
+            <div id="author-info">
+                <img src="resources/profile2.png" />
+                <span>
+                    <a href="#">username012</a>
+                    <p>Last updated January 01, 1990</p>
+                </span>
+            </div>
+            <p class="content-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus neque, mattis sit amet pulvinar viverra, auctor eget magna. Cras massa ipsum, blandit non congue sed, luctus at felis. Vestibulum</p>
+        </div>
+
+        <div class="box-container">
+            <a href="#"><h3>Thread Title</h3></a>
+            <div id="author-info">
+                <img src="resources/profile3.png" />
+                <span>
+                    <a href="#">username234</a>
+                    <p>Last updated January 01, 1990</p>
+                </span>
+            </div>
+            <p class="content-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus neque, mattis sit amet pulvinar viverra, auctor eget magna. Cras massa ipsum, blandit non congue sed, luctus at felis. Vestibulum</p>
+        </div>
+
+        <div class="box-container">
+            <a href="#"><h3>Thread Title</h3></a>
+            <div id="author-info">
+                <img src="resources/profile4.png" />
+                <span>
+                    <a href="#">username345</a>
+                    <p>Last updated January 01, 1990</p>
+                </span>
+            </div>
+            <p class="content-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus neque, mattis sit amet pulvinar viverra, auctor eget magna. Cras massa ipsum, blandit non congue sed, luctus at felis. Vestibulum</p>
+        </div>
+
+        <div class="box-container">
+            <a href="#"><h3>Thread Title</h3></a>
+            <div id="author-info">
+                <img src="resources/profile5.png" />
+                <span>
+                    <a href="#">username456</a>
+                    <p>Last updated January 01, 1990</p>
+                </span>
+            </div>
+            <p class="content-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus neque, mattis sit amet pulvinar viverra, auctor eget magna. Cras massa ipsum, blandit non congue sed, luctus at felis. Vestibulum</p>
+        </div>
+
     </div>
 
-    <div class="thread box-container">
-        <span class="user-info"><a class="user-profile-link" href="#">username123</a><i class="material-icons">person</i></span>
-        <a href="#"> <!-- Insert link to thread -->
-            <h3>Thread Title</h3>
-            <i class="update-date">Last updated January 01, 1990</i>
-            <p class="content-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus neque, mattis sit amet pulvinar viverra, auctor eget magna. Cras massa ipsum, blandit non congue sed, luctus at felis. Vestibulum</p>
-        </a>
-    </div>
-
-    <div class="thread box-container">
-        <span class="user-info"><a class="user-profile-link" href="#">username123</a><i class="material-icons">person</i></span>
-        <a href="#"> <!-- Insert link to thread -->
-            <h3>Thread Title</h3>
-            <i class="update-date">Last updated January 01, 1990</i>
-            <p class="content-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus neque, mattis sit amet pulvinar viverra, auctor eget magna. Cras massa ipsum, blandit non congue sed, luctus at felis. Vestibulum</p>
-        </a>
-    </div>
-
-    <div class="thread box-container">
-        <span class="user-info"><a class="user-profile-link" href="#">username123</a><i class="material-icons">person</i></span>
-        <a href="#"> <!-- Insert link to thread -->
-            <h3>Thread Title</h3>
-            <i class="update-date">Last updated January 01, 1990</i>
-            <p class="content-preview">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus neque, mattis sit amet pulvinar viverra, auctor eget magna. Cras massa ipsum, blandit non congue sed, luctus at felis. Vestibulum</p>
-        </a>
-    </div>
 
 </body>
 
