@@ -1,0 +1,105 @@
+<html>
+
+<head>
+    <title>Freedom Wall | disquissip</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/threads.css">
+    <link rel="stylesheet" href="../../css/nav.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="../../js/nav.js"></script>
+    <style>
+        body {
+            background-color: #F4F4F4;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <button class="material-icons" onclick="toggleNav(true)">menu</button>
+
+        <a href="../../home.html"><span class="material-icons">home</span>
+            Dashboard
+        </a>
+        <div id="nav-grp" onmouseover="toggleSubitems(true)" onmouseleave="toggleSubitems(false)">
+            <a class="active"><span class="material-icons">question_answer</span>
+                Subforums
+            </a>
+            <a href="../../create_subforum.html"><span class="material-icons">add</span>
+                Create subforum
+            </a>
+            <a href="../../search.html"><span class="material-icons">search</span>
+                Search subforum
+            </a>
+        </div>
+        <a href="../../editaccount.html"><span class="material-icons">settings</span>
+            Settings
+        </a>
+        <a href="../../logout.html"><span class="material-icons">logout</span>
+            Log out
+        </a>
+
+        <div id="profile-slot">
+            <img id="profile-img" src="../../resources/profile1.png" />
+            <a id="username" href="../../profilepage.html">username123</a>
+        </div>
+    </nav>
+    
+    <div id="subforum-heading">
+        <div id="subforum-info">
+            <h2>Freedom Wall</h2>
+            <p>What's on your mind?</p>
+        </div>
+        <div id="action-buttons">
+            <button class="green">Join</button>
+            <button class="light" onclick="location.href='create_thread.html';">Create Thread</button>
+        </div>
+    </div>
+
+    <!-- all threads here -->
+    <div id="threads">
+
+        <b>Recent Threads</b>
+
+        <div class="box-container">
+            <a href="03.html"><h3>Women in the CCS faculty</h3></a>
+            <div id="author-info">
+                <img src="../../resources/profile2.png" />
+                <span>
+                    <a href = "../../profilepage2.html">alpha123</a>
+                    <p>Last updated May 19, 2022</p>
+                </span>
+            </div>
+            <p class="content-preview">It's nice to see women in the CCS faculty. Especially with the common idea that STEM is a male-dominated</p>
+        </div>
+
+        <div class="box-container">
+            <a href="02.html"><h3>Frustrated CCS Student</h3></a>
+            <div id="author-info">
+                <img src="../../resources/profile5.png" />
+                <span>
+                    <a href = "../../profilepage5.html">echo123</a>
+                    <p>Last updated May 19, 2022</p>
+                </span>
+            </div>
+            <p class="content-preview">Bat ganon programming courses sa ccs? nakaka-blanko, nakakaiyak.</p>
+        </div>
+
+        <div class="box-container">
+            <a href="01.html"><h3>Good Things Happen after 2:00 AM</h3></a>
+            <div id="author-info">
+                <img src="../../resources/profile4.jpg" />
+                <span>
+                    <a href = "../../profilepage4.html">delta123</a>
+                    <p>Last updated May 11, 2022</p>
+                </span>
+            </div>
+            <p class="content-preview">I’m a solid fan of how i met your mother, however, there was this one rough night when everything went </p>
+        </div>
+
+    </div>
+
+
+</body>
+
+</html>
