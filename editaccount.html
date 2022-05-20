@@ -1,0 +1,75 @@
+<html>
+
+<head>
+    <title>Change Account Details</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/nav.css">
+	<link rel="stylesheet" href="css/editprofile-styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="js/nav.js"></script>
+    <style>
+        body {
+            background-color: #342E36;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <button class="material-icons" onclick="toggleNav(true)">menu</button>
+
+        <a href="home.html"><span class="material-icons">home</span>
+            Dashboard
+        </a>
+        <div id="nav-grp" onmouseover="toggleSubitems(true)" onmouseleave="toggleSubitems(false)">
+            <a><span class="material-icons">question_answer</span>
+                Subforums
+            </a>
+            <a href="create_subforum.html"><span class="material-icons">add</span>
+                Create subforum
+            </a>
+            <a href="search.html"><span class="material-icons">search</span>
+                Search subforum
+            </a>
+        </div>
+        <a class="active" href="editaccount.html"><span class="material-icons">settings</span>
+            Settings
+        </a>
+        <a href="logout.html"><span class="material-icons">logout</span>
+            Log out
+        </a>
+
+        <div id="profile-slot">
+            <img id="profile-img" src="resources/profile1.png" />
+            <a id="username" href="profilepage.html">charlie123</a>
+        </div>
+    </nav>
+
+	<div class="profile-frame">
+		<div class="wrapper">
+			<img id="profile-picture" src="resources/profile1.png" />
+			<h2> Ines Sarkisyan </h2>
+			<h3> inesyarn@gmail.com </h3>
+			<button onclick="location.href = 'profilepage.html';" type="submit" id="reg-button">VIEW PROFILE</button>
+			<button onclick="location.href = 'deleteaccount.html';" type="submit" id="reg-button">DELETE ACCOUNT</button>
+		</div>
+	</div>
+	
+	<div class="edit-container">
+		<form name="Edit Profile">
+			<h1> CHANGE ACCOUNT DETAILS </h1>
+			<label for="username"><h2>USERNAME</h2></label>
+			<input type="text" placeholder=" Username" name="username" id="username" required>
+			<label for="password"><h2>PASSWORD</h2></label>
+			<input type="password" placeholder=" Password" name="password" id="password" required>
+			<label for="confirmpw"><h2>CONFIRM PASSWORD</h2></label>
+			<input type="password" placeholder=" Confirm Password" name="confirmpw" id="confirmpw" required>
+			<label for="email"><h2>CONFIRM EMAIL ADDRESS</h2></label>
+			<input type="text" placeholder=" Confirm Email Address" name="email" id="email" required>
+			<button type="submit" id="reg-button">CONFIRM EDIT</button>
+		</form>
+	</div>
+		
+</body>
+
+</html>
