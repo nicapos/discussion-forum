@@ -1,0 +1,101 @@
+<html>
+
+<head>
+    <title>Search Forums</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/threads.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="js/nav.js"></script>
+    <style>
+        body {
+            background-color: #F4F4F4;
+        }
+        #subforum-heading {
+            width: 90%;
+            padding: 20px 28px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <button class="material-icons" onclick="toggleNav(true)">menu</button>
+
+        <a href="#"><span class="material-icons">home</span>
+            Dashboard
+        </a>
+        <div id="nav-grp" onmouseover="toggleSubitems(true)" onmouseleave="toggleSubitems(false)">
+            <a class="active"><span class="material-icons">question_answer</span>
+                Subforums
+            </a>
+            <a href="#"><span class="material-icons">add</span>
+                Create subforum
+            </a>
+            <a class="active"><span class="material-icons">search</span>
+                Search subforum
+            </a>
+        </div>
+        <a href="editaccount.html"><span class="material-icons">settings</span>
+            Settings
+        </a>
+        <a href="logout.html"><span class="material-icons">logout</span>
+            Log out
+        </a>
+
+        <div id="profile-slot">
+            <img id="profile-img" src="resources/profile1.png" />
+            <a id="username" href="profilepage.html">username123</a>
+        </div>
+    </nav>
+
+    <div id="subforum-search" class="box-container">
+        <h1>Find Subforum</h1>
+        <div>
+            <input type="text" name="subforum" placeholder="Keywords" />
+            <button class="green">Search</button>
+        </div>
+    </div>
+
+    <div id="subforums">
+        <b>Recently Active</b>
+
+        <div id="subforum-heading">
+            <div id="subforum-info">
+                <h3>Subforum Title</h3>
+                <p>Insert a brief description of the subforum here.</p>
+            </div>
+            <div id="action-buttons">
+                <button class="green">Join</button>
+                <button class="light">View</button>
+            </div>
+        </div>
+
+        <div id="subforum-heading">
+            <div id="subforum-info">
+                <h3>Subforum Title</h3>
+                <p>Insert a brief description of the subforum here.</p>
+            </div>
+            <div id="action-buttons">
+                <button class="green">Join</button>
+                <button class="light">View</button>
+            </div>
+        </div>
+
+        <div id="subforum-heading">
+            <div id="subforum-info">
+                <h3>Subforum Title</h3>
+                <p>Insert a brief description of the subforum here.</p>
+            </div>
+            <div id="action-buttons">
+                <button class="green">Join</button>
+                <button class="light">View</button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

@@ -7,7 +7,7 @@
     padding: 30px 40px;
 }
 
-#subforum-info > h2, #subforum-info > a > h2 {
+#subforum-info h2, #subforum-info h3 {
     color: #FFFFFF;
     letter-spacing: 1px;
 }
@@ -129,7 +129,7 @@
     color: #342E36;
 }
 
-#threads > b {
+#subforums > b {
     margin-top: 20px;
     margin-bottom: -10px;
 }
@@ -260,4 +260,35 @@
 
 #from-subforum > a {
     font-weight: 600;
+}
+
+/* for search display */
+#subforum-search {
+    width: 50%;
+    margin: 50px auto 10px auto;
+    background-color: white;
+    padding: 30px 40px !important;
+}
+#subforum-search > div {
+    display: flex;
+    width: 100%;
+    gap: 10px;
+}
+#subforum-search input {
+    width: 100%;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid silver;
+}
+#subforums {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 10px;
+    width: 57%;
+    margin: auto;
+}
+#subforums > b {
+    display: block;
+    margin-bottom: 0;
 }
