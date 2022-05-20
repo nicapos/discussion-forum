@@ -1,0 +1,123 @@
+<html>
+
+<head>
+    <title>Women in CCS Faculty | Freedom Wall</title>
+    <link rel="stylesheet" href="../../css/styles.css">
+    <link rel="stylesheet" href="../../css/threads.css">
+    <link rel="stylesheet" href="../../css/nav.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="../../js/nav.js"></script>
+    <style>
+        body { background-color: #F4F4F4; }
+        form { display: none; }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <button class="material-icons" onclick="toggleNav(true)">menu</button>
+
+        <a href="../../home.html"><span class="material-icons">home</span>
+            Dashboard
+        </a>
+        <div id="nav-grp" onmouseover="toggleSubitems(true)" onmouseleave="toggleSubitems(false)">
+            <a class="active"><span class="material-icons">question_answer</span>
+                Subforums
+            </a>
+            <a href="../../create_subforum.html"><span class="material-icons">add</span>
+                Create subforum
+            </a>
+            <a href="../../search.html"><span class="material-icons">search</span>
+                Search subforum
+            </a>
+        </div>
+        <a href="../../editaccount.html"><span class="material-icons">settings</span>
+            Settings
+        </a>
+        <a href="../../logout.html"><span class="material-icons">logout</span>
+            Log out
+        </a>
+
+        <div id="profile-slot">
+            <img id="profile-img" src="../../resources/profile1.png" />
+            <a id="username" href="../../profilepage.html">username123</a>
+        </div>
+    </nav>
+
+    <div id="subforum-heading">
+        <div id="subforum-info">
+            <a href="index.html">
+                <h2>Freedom Wall</h2>
+            </a>
+            <p>What's on your mind?</p>
+        </div>
+    </div>
+
+    <!-- thread topic box -->
+    <div class="thread box-container">
+       <h2>Women in CCS Faculty</h2>
+            <div id="author-info">
+                <img src="../../resources/profile2.png" />
+                <span>
+                    <a href="../../profilepage2.html">alpha123</a>
+                    <p>May 18, 2022</p>
+                </span>
+            </div>
+
+        <p class="content">It's nice to see women in the CCS faculty. Especially with the common idea that STEM is a male-dominated field. 
+            I love love love the representation ❤ 
+            - CCS 121</p>
+        <div class="thread-actions box-container">
+            <a><i class="material-icons">thumb_up</i>Like</a>
+            <a><i class="material-icons">thumb_down</i>Dislike</a>
+            <a onclick="showReplyBox(true)"><i class="material-icons">reply</i>Reply</a>
+            <a onclick="showShareActions(true)"><i class="material-icons">share</i>Share</a>
+        </div>
+    </div>
+
+    <!-- share actions -->
+    <div id="share-actions" class="box-container">
+        <button id="close-btn" class="material-icons" onclick="showShareActions(false)">close</button>
+        <p>To share this thread, copy the following link:</p>
+        <div id="link" class="box-container" contenteditable></div>
+        <div id="socials">
+            <p>or share to   &nbsp;</p>
+            <a id="twitter-share" onclick="shareToTwitter()"><img src="resources/icons/twt.png" /></a>
+            <a id="fb-share" onclick="shareToFacebook()"><img src="resources/icons/fb.png" /></a>
+            <a id="mail-share" onclick="shareToEmail()"><img src="resources/icons/mail.png" /></a>
+        </div>
+    </div>
+
+    <!-- write reply -->
+    <div id="text-editor" class="box-container">
+        <span class="material-icons reply-mark">subdirectory_arrow_right</span>
+        <h3>Reply to Thread</h3>
+
+        <div id="content" class="box-container" contenteditable></div>
+
+        <div id="actions">
+            <button class="light" onclick="showReplyBox(false)">Cancel</button>&nbsp;
+            <button class="green">Post</button>
+        </div>
+    </div>
+    
+    <!-- all replies here -->
+    <div id="replies">
+        <div class="box-container">
+            <span class="material-icons reply-mark">subdirectory_arrow_right</span>
+            <div id="author-info">
+                <img src="../../resources/profile3.png" />
+                <span>
+                    <a href="../../profilepage3.html">beta123</a>
+                    <p>May 19, 2022</p>
+                </span>
+            </div>
+            <p class="content">I agree! Girl power xoxo</p>
+        </div>
+    </div>
+
+    <!-- scripts -->
+    <script src="../../js/threadactions.js"></script>
+</body>
+
+</html>
