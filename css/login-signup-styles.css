@@ -80,6 +80,7 @@ nav h2{
     background:#F4F4F4;
 }
 
+
 .signup-container{
     display: flex;
     flex-direction: column;
@@ -125,7 +126,7 @@ form button, .login-container button{
     transition: 300ms;
 }
 
-form button:hover, .login-container button:hover{
+form button:hover, .login-container a:hover{
     transform: translateY(-8px);
     opacity: 0.8;
 }
@@ -139,6 +140,7 @@ form button:hover, .login-container button:hover{
     height: 40px;
 }
 .login-container{
+
     display: flex;
     align-items: center;
     width: 390px;
@@ -158,5 +160,18 @@ form button:hover, .login-container button:hover{
 }
 
 #sign-up-button{
+    font-size: 12px;
+    font-weight: 900;
+    color: #342E36;
+    text-decoration: none;
+    text-align: center;
+    padding: 8px;
+
+    border-radius: 5px;
+    width: 215px;
+    height: 32px;
     background-color: #F4F4F4;
+
+    display: inline-block;
+    transition: 300ms;
 }
