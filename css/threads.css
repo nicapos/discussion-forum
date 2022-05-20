@@ -192,3 +192,72 @@
     color: rgba(0, 0, 0, 0.6);
     background-color: transparent;
 }
+
+/* for dashboard display */
+#full-container {
+    display: flex;
+    width: 100%;
+    padding-left: 60px;
+    gap: 0;
+    align-content: middle;
+    align-items: middle;
+}
+
+#joined-subforums {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    min-height: fit-content;
+    margin: 0 auto;
+    padding: 0;
+    padding-bottom: 30px;
+}
+
+#joined-subforums > b {
+    padding: 15px 20px;
+}
+
+#joined-subforums > a {
+    display: block;
+    padding: 10px 15px;
+    border: 1px solid #E5E5E5;
+    border-left: 5px solid #A2D641;
+    border-right: 0;
+    background-color: rgba(229, 229, 229, 0.3);
+    color: black;
+}
+
+#joined-subforums > a:hover {
+    border-left: 5px solid #342E36;
+    background-color: rgba(162, 214, 65, 0.9); /* #A2D641 w/ 90% opacity*/
+}
+
+#right-col {
+    position: fixed;
+    top: 30px;
+    right: 50px;
+}
+
+#from-subforum {
+    display: block;
+    margin-bottom: 8px;
+}
+
+#from-subforum, #from-subforum > * {
+    color: black;
+    opacity: 0.75;
+    font-size: 14px;
+    font-style: italic;
+}
+
+#from-subforum > i {
+    font-size: 15px !important;
+    vertical-align: middle;
+    margin-right: 4px;
+    margin-bottom: 4px;
+    color: black;
+}
+
+#from-subforum > a {
+    font-weight: 600;
+}
