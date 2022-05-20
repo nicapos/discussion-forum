@@ -6,6 +6,7 @@ $(document).ready(function(){
             $("#Register").submit();
         else{
             $("input").css({"border-color":"red"});
+            $("#error").text("Username or Password is incorrect.");
         }
     })
 });
