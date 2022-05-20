@@ -1,0 +1,76 @@
+<html>
+
+<head>
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/nav.css">
+	<link rel="stylesheet" href="css/editprofile-styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="js/nav.js"></script>
+    <style>
+        body {
+            background-color: #342E36;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <button class="material-icons" onclick="toggleNav(true)">menu</button>
+
+        <a href="home.html"><span class="material-icons">home</span>
+            Dashboard
+        </a>
+        <div id="nav-grp" onmouseover="toggleSubitems(true)" onmouseleave="toggleSubitems(false)">
+            <a><span class="material-icons">question_answer</span>
+                Subforums
+            </a>
+            <a href="create_subforum.html"><span class="material-icons">add</span>
+                Create subforum
+            </a>
+            <a href="search.html"><span class="material-icons">search</span>
+                Search subforum
+            </a>
+        </div>
+        <a class="active" href="editaccount.html"><span class="material-icons">settings</span>
+            Settings
+        </a>
+        <a href="logout.html"><span class="material-icons">logout</span>
+            Log out
+        </a>
+
+        <div id="profile-slot">
+            <img id="profile-img" src="resources/profile1.png" />
+            <a id="username" href="profilepage.html">charlie123</a>
+        </div>
+    </nav>
+
+	<div class="profile-frame">
+		<div class="wrapper">
+			<img id="profile-picture" src="resources/profile1.png" />
+			<h2> Ines Sarkisyan </h2>
+			<h3> inesyarn@mail.com </h3>
+			<button type="submit" id="reg-button">VIEW PROFILE</button>
+			<button type="submit" id="reg-button">CHANGE ACC DETAILS</button>
+			<button type="submit" id="reg-button">DELETE ACCOUNT</button>
+		</div>
+	</div>
+	
+	<div class="edit-container">
+		<form name="Edit Profile">
+			<h1> EDIT PROFILE </h1>
+			<label for="name"><h2>Display Name</h2></label>
+			<input type="text" placeholder=" Enter your display name" name="name" id="name" required>
+			<label for="bio"><h2>Short Bio</h2></label>
+			<input type="text" placeholder=" Enter your bio" name="bio" id="bio">
+			<label for="interests"><h2>Interests</h2></label>
+			<input type="text" placeholder=" Enter your interests" name="interests" id="interests">
+			<label for="password"><h2>Confirm Password</h2></label>
+			<input type="password" placeholder=" Confirm Password" name="password" id="password" required>
+			<button type="submit" id="reg-button">CONFIRM EDIT</button>
+		</form>
+	</div>
+		
+</body>
+
+</html>
