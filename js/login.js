@@ -2,7 +2,7 @@ $(document).ready(function(){
     $("#login-btn").click(function(){
         var username = $("#username").val();
         var password = $("#password").val();
-        if(username == "fdoble" && password == "hello123")
+        if(username == "username123" && password == "hello123")
             $("#Register").submit();
         else{
             $("input").css({"border-color":"red"});
