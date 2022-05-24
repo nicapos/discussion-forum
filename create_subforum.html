@@ -1,11 +1,12 @@
 <html>
 
 <head>
-    <title>Thread Name | Subforum Name</title>
+    <title>Create Subforum | discussiq</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/threads.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="js/jquery-3.6.0.js" type="text/javascript"></script>
     <script src="js/nav.js"></script>
     <style>
         body {
@@ -42,12 +43,12 @@
 
 <body>
     <nav>
-        <button class="material-icons" onclick="toggleNav(true)">menu</button>
+        <button class="material-icons">menu</button>
 
         <a href="home.html"><span class="material-icons">home</span>
             Dashboard
         </a>
-        <div id="nav-grp" onmouseover="toggleSubitems(true)" onmouseleave="toggleSubitems(false)">
+        <div id="nav-grp">
             <a class="active"><span class="material-icons">question_answer</span>
                 Subforums
             </a>
@@ -67,7 +68,7 @@
 
         <div id="profile-slot">
             <img id="profile-img" src="resources/profile1.png" />
-            <a id="username" href="profilepage.html">username123</a>
+            <a id="username" href="user/profile.html">username123</a>
         </div>
     </nav>
 
