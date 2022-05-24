@@ -1,79 +1,84 @@
-/* show/hide thread actions */
-function showReplyBox(bool) {
-    if (bool) {
-        document.getElementById("text-editor").style.display = "block";
-        document.getElementById("replies").style.paddingTop = "25px";
-    } else {
-        document.getElementById("text-editor").style.display = "none";
-        document.getElementById("replies").style.paddingTop = "0";
+$(document).ready(function() {
+
+    /* toggle hidden elements */
+    var bShowReply = false;
+    var bShowShares = false;
+
+    function toggleReplyBox() {
+        bShowReply = !bShowReply;
+        $("#text-editor").css("display", bShowReply ? "block" : "none");
+        $("#replies").css("paddingTop", bShowReply ? "25px" : "0");
     }
-}
 
-function showShareActions(bool) {
-    if (bool)
-        document.getElementById("share-actions").style.display = "block";
-    else
-        document.getElementById("share-actions").style.display = "none";
-}
+    function toggleShareActions() {
+        bShowShares = !bShowShares;
+        $("#share-actions").css("display", bShowShares ? "block" : "none");
+    }
 
+    $("#actions > button:first-child").click(toggleReplyBox);
+    $(".thread-actions > a:nth-child(3)").click(toggleReplyBox);
 
-/* SHARE ACTIONS */
-const currentURL = window.location.href;
-const sampleURL = "http://google.com"
+    $("#close-btn").click(toggleShareActions);
+    $(".thread-actions > a:nth-child(4)").click(toggleShareActions);
 
-/* add current url to share -> copy link */
-document.getElementById("link").innerHTML = currentURL;
+    /* for share actions */
+    const currentURL = window.location.href;
 
-/* add form with params for "share to twitter" */
-const twtForm = document.createElement("form");
-twtForm.action = "https://twitter.com/intent/tweet";
+    $("#link").html(currentURL); // add current url to Share > Copy Link
 
-const twtMsg = document.createElement("input");
-twtMsg.type = "hidden";
-twtMsg.name = "text";
-twtMsg.value = "Check out this thread from <Forum Name>!"; // temporary msg, pls change if u know an alternative HAHAHA
+    // for Twitter
+    const twtForm = $("<form></form>").attr("action", "https://twitter.com/intent/tweet");
 
-const twtURL = document.createElement("input");
-twtURL.type = "hidden";
-twtURL.name = "url";
-twtURL.value = currentURL;
+    twtForm.append( /* tweet content */
+        $("<input>").attr({
+            "type": "hidden",
+            "name": "text",
+            "value": "Check out this thread from discussiq!"
+        })
+    );
 
-twtForm.appendChild(twtMsg);
-twtForm.appendChild(twtURL);
-document.getElementById("twitter-share").insertAdjacentElement("beforebegin", twtForm);
+    twtForm.append( /* tweet share URL */
+        $("<input>").attr({
+            "type": "hidden",
+            "name": "text",
+            "value": currentURL
+        })
+    );
 
-function shareToTwitter() {
-    twtForm.submit();
-}
+    twtForm.insertBefore("#twitter-share");
+    $("#twitter-share").click(function() {
+        twtForm.submit()
+    });
 
-/* add form with params for "share to facebook" */
-const fbForm = document.createElement("form");
-fbForm.action = "https://www.facebook.com/sharer.php";
+    // for Facebook
+    const fbForm = $("<form></form>").attr("action", "https://www.facebook.com/sharer.php");
 
-const fbURL = document.createElement("input");
-fbURL.type = "hidden";
-fbURL.name = "u";
-fbURL.value = currentURL;
+    fbForm.append( /* fb share URL */
+        $("<input>").attr({
+            "type": "hidden",
+            "name": "u",
+            "value": currentURL
+        })
+    );
 
-fbForm.appendChild(fbURL);
-document.getElementById("fb-share").insertAdjacentElement("beforebegin", fbForm);
+    fbForm.insertBefore("#fb-share");
+    $("#fb-share").click(function() {
+        fbForm.submit()
+    });
 
-function shareToFacebook() {
-    fbForm.submit();
-}
+    // for Email
+    const mailForm = $("<form></form>").attr("action", "mailto:");
 
-/* for "share to email" */
-const mailForm = document.createElement("form");
-mailForm.action = "mailto:";
+    mailForm.append(
+        $("<input>").attr({
+            "type": "hidden",
+            "name": "body",
+            "value": currentURL
+        })
+    );
 
-const mailBody = document.createElement("input");
-mailBody.type = "hidden";
-mailBody.name = "body";
-mailBody.value = currentURL;
-
-mailForm.appendChild(mailBody);
-document.getElementById("mail-share").insertAdjacentElement("beforebegin", mailForm);
-
-function shareToEmail() {
-    mailForm.submit();
-}
+    fbForm.insertBefore("#mail-share");
+    $("#mail-share").click(function() {
+        fbForm.submit()
+    });
+})

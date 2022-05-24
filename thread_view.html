@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="css/threads.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="js/jquery-3.6.0.js" type="text/javascript"></script>
+    <script src="js/threadactions.js"></script>
     <script src="js/nav.js"></script>
     <style>
         body { background-color: #F4F4F4; }
@@ -15,13 +17,13 @@
 
 <body>
     <nav>
-        <button class="material-icons" onclick="toggleNav(true)">menu</button>
+        <button class="material-icons">menu</button>
 
-        <a href="home.html"><span class="material-icons">home</span>
+        <a class="active" href="home.html"><span class="material-icons">home</span>
             Dashboard
         </a>
-        <div id="nav-grp" onmouseover="toggleSubitems(true)" onmouseleave="toggleSubitems(false)">
-            <a class="active"><span class="material-icons">question_answer</span>
+        <div id="nav-grp">
+            <a><span class="material-icons">question_answer</span>
                 Subforums
             </a>
             <a href="create_subforum.html"><span class="material-icons">add</span>
@@ -68,21 +70,21 @@
         <div class="thread-actions box-container">
             <a><i class="material-icons">thumb_up</i>Like</a>
             <a><i class="material-icons">thumb_down</i>Dislike</a>
-            <a onclick="showReplyBox(true)"><i class="material-icons">reply</i>Reply</a>
-            <a onclick="showShareActions(true)"><i class="material-icons">share</i>Share</a>
+            <a><i class="material-icons">reply</i>Reply</a>
+            <a><i class="material-icons">share</i>Share</a>
         </div>
     </div>
 
     <!-- share actions -->
     <div id="share-actions" class="box-container">
-        <button id="close-btn" class="material-icons" onclick="showShareActions(false)">close</button>
+        <button id="close-btn" class="material-icons">close</button>
         <p>To share this thread, copy the following link:</p>
         <div id="link" class="box-container" contenteditable></div>
         <div id="socials">
             <p>or share to   &nbsp;</p>
-            <a id="twitter-share" onclick="shareToTwitter()"><img src="resources/icons/twt.png" /></a>
-            <a id="fb-share" onclick="shareToFacebook()"><img src="resources/icons/fb.png" /></a>
-            <a id="mail-share" onclick="shareToEmail()"><img src="resources/icons/mail.png" /></a>
+            <a id="twitter-share"><img src="resources/icons/twt.png" /></a>
+            <a id="fb-share"><img src="resources/icons/fb.png" /></a>
+            <a id="mail-share"><img src="resources/icons/mail.png" /></a>
         </div>
     </div>
 
@@ -94,7 +96,7 @@
         <div id="content" class="box-container" contenteditable></div>
 
         <div id="actions">
-            <button class="light" onclick="showReplyBox(false)">Cancel</button>&nbsp;
+            <button class="light">Cancel</button>&nbsp;
             <button class="green">Post</button>
         </div>
     </div>
@@ -138,9 +140,6 @@
         </div>
 
     </div>
-
-    <!-- scripts -->
-    <script src="js/threadactions.js"></script>
 </body>
 
 </html>
