@@ -1,0 +1,26 @@
+{
+  "name": "ccapdev-discussion-forum",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nicapos/CCAPDEV-Discussion-Forum.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nicapos/CCAPDEV-Discussion-Forum/issues"
+  },
+  "homepage": "https://github.com/nicapos/CCAPDEV-Discussion-Forum#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "hbs": "^4.2.0"
+  }
+}
