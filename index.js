@@ -3,7 +3,7 @@ const express = require('express');
 const hbs = require('hbs');
 const bodyParser = require('body-parser');
 const routes = require('./routes/routes.js');
-// const db = require(`./models/db.js`); TODO
+const db = require(`./models/db.js`);
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -18,7 +18,7 @@ hostname = process.env.HOSTNAME;
 app.use(express.static('public'));
 app.use('/', routes);
 
-//db.connect(); TODO
+db.connect();
 
 app.listen(port, hostname, function () {
     console.log('Server is running at:');
