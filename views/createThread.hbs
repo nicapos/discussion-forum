@@ -2,11 +2,11 @@
 
 <head>
     <title>Copypastas</title>
-    <link rel="stylesheet" href="/public/css/styles.css">
-    <link rel="stylesheet" href="/public/css/threads.css">
-    <link rel="stylesheet" href="/public/css/nav.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/threads.css">
+    <link rel="stylesheet" href="/css/nav.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <script src="/public/js/nav.js"></script>
+    <script src="/js/nav.js"></script>
     <style>
         body {
             background-color: #F4F4F4;
@@ -24,35 +24,7 @@
 </head>
 
 <body>
-    <nav>
-        <button class="material-icons" onclick="toggleNav(true)">menu</button>
-
-        <a href="../../home.html"><span class="material-icons">home</span>
-            Dashboard
-        </a>
-        <div id="nav-grp" onmouseover="toggleSubitems(true)" onmouseleave="toggleSubitems(false)">
-            <a class="active"><span class="material-icons">question_answer</span>
-                Subforums
-            </a>
-            <a href="../../create_subforum.html"><span class="material-icons">add</span>
-                Create subforum
-            </a>
-            <a href="../../search.html"><span class="material-icons">search</span>
-                Search subforum
-            </a>
-        </div>
-        <a href="../../editaccount.html"><span class="material-icons">settings</span>
-            Settings
-        </a>
-        <a href="../../logout.html"><span class="material-icons">logout</span>
-            Log out
-        </a>
-
-        <div id="profile-slot">
-            <img id="profile-img" src="/public/resources/profile1.png" />
-            <a id="username" href="../../user/charlie123.html">charlie123</a>
-        </div>
-    </nav>
+    {{> navbar }}
 
     <div id="subforum-heading">
         <div id="subforum-info">
