@@ -1,6 +1,5 @@
 const express = require('express');
-// const controller = require(`../controllers/controller.js`); TODO: Replace with controller
-
+const controller = require(`../controllers/controller.js`);
 const app = express();
 
 app.get('/', function (req, res) {
@@ -9,9 +8,11 @@ app.get('/', function (req, res) {
 app.get('/login', function (req, res) {
     res.render('login');
 });
-app.get('/register', function (req, res) {
+app.get(`/register`, function(req, res){
     res.render('signup');
 });
+app.get('/addUser', controller.addUser);
+app.get('/checkUsername', controller.checkUsername);
 app.get('/logout', function (req, res) {
     res.render('logout');
 });
