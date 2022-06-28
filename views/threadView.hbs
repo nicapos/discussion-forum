@@ -1,7 +1,7 @@
 <html>
 
-<head>
-    <title>how to use the operator | Copypastas</title>
+<head> 
+    <title>{{ thread.threadTitle }} | {{ subforum.title }}</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/threads.css">
     <link rel="stylesheet" href="/css/nav.css">
@@ -19,32 +19,15 @@
 
     <div id="subforum-heading">
         <div id="subforum-info">
-            <a href="index.html">
-                <h2>Copypastas</h2>
+            <a href="/subf/{{ subforum.subforumName }}">
+                <h2>{{ subforum.title }}</h2>
             </a>
-            <p>Share your favorite copypastas.</p>
+            <p>{{ subforum.description }}</p>
         </div>
     </div>
 
     <!-- thread topic box -->
-    <div class="thread box-container">
-       <h2>how to use the operator</h2>
-        <div id="author-info">
-            <img src="/resources/profile1.png" />
-            <span>
-                <a href="../../user/charlie123.html">charlie123</a>
-                <p>May 17, 2022</p>
-            </span>
-        </div>
-
-        <p class="content">I'm not sure why folks say it's simple to op. It's obvious that timing the click to shoot with the op while holding an angle is difficult. There's a good probability you'll miss it. It takes a lot of devotion and patience to hold an angle for an extended period of time, all fort the sake of shooting your opponent. Furthermore, when compared to other guns, shooting while zoomed in is considerably more difficult, owing to the fact that you are only staring at one section of the screen.</p>
-        <div class="thread-actions box-container">
-            <a><i class="material-icons">thumb_up</i>Like</a>
-            <a><i class="material-icons">thumb_down</i>Dislike</a>
-            <a id="reply-btn"><i class="material-icons">reply</i>Reply</a>
-            <a id="share-btn"><i class="material-icons">share</i>Share</a>
-        </div>
-    </div>
+    {{>thread  thread}}
 
     <!-- share actions -->
     <div id="share-actions" class="box-container">
@@ -74,17 +57,9 @@
     
     <!-- all replies here -->
     <div id="replies">
-        <div class="box-container">
-            <span class="material-icons reply-mark">subdirectory_arrow_right</span>
-            <div id="author-info">
-                <img src="/resources/profile2.png" />
-                <span>
-                    <a href="/user/alpha123">alpha123</a>
-                    <p>May 17, 2022</p>
-                </span>
-            </div>
-            <p class="content">Wow. This is very informative. Thank you.</p>
-        </div>
+        {{#each replies}}
+            {{>reply}}
+        {{/each}}
     </div>
 
     <!-- scripts -->
@@ -92,7 +67,7 @@
     
     <!-- Set active item on navbar -->
     <script>
-        $('nav > #subforums').addClass('active');
+        $('nav #subforums').addClass('active');
     </script>	
 </body>
 

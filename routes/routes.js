@@ -43,11 +43,7 @@ app.get('/subf/:subfName/new', function (req, res) {
     res.render('createThread');
     console.log(req.params.subfName);
 });
-app.get('/subf/:subfName/:threadId', function (req, res) {
-    res.render('threadView');
-    console.log(req.params.subfName);
-    console.log(req.params.threadId);
-});
+app.get('/subf/:subfId/:threadId', forumController.getThread);
 
 app.get('/home', function (req, res) {
     res.render('home');
