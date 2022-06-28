@@ -1,5 +1,6 @@
 const db = require('../models/db.js');
-const Post = require('../models/PostModel.js');
+const Thread = require('../models/ThreadModel.js');
+const Subforum = require('../models/SubforumModel.js');
 const User = require('../models/UserModel.js');
 
 const controller = {
@@ -11,7 +12,7 @@ const controller = {
     checkUsername: function(req, res){
         db.findOne(User, req.query, null, function(result){
             res.send(result);
-        })
+        }) 
     }
     
 }
