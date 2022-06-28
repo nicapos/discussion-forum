@@ -41,14 +41,14 @@
         <div class="thread-actions box-container">
             <a><i class="material-icons">thumb_up</i>Like</a>
             <a><i class="material-icons">thumb_down</i>Dislike</a>
-            <a onclick="showReplyBox(true)"><i class="material-icons">reply</i>Reply</a>
-            <a onclick="showShareActions(true)"><i class="material-icons">share</i>Share</a>
+            <a id="reply-btn"><i class="material-icons">reply</i>Reply</a>
+            <a id="share-btn"><i class="material-icons">share</i>Share</a>
         </div>
     </div>
 
     <!-- share actions -->
     <div id="share-actions" class="box-container">
-        <button id="close-btn" class="material-icons" onclick="showShareActions(false)">close</button>
+        <button id="close-btn" class="material-icons">close</button>
         <p>To share this thread, copy the following link:</p>
         <div id="link" class="box-container" contenteditable></div>
         <div id="socials">
@@ -67,7 +67,7 @@
         <div id="content" class="box-container" contenteditable></div>
 
         <div id="actions">
-            <button class="light" onclick="showReplyBox(false)">Cancel</button>&nbsp;
+            <button class="light">Cancel</button>&nbsp;
             <button class="green">Post</button>
         </div>
     </div>
