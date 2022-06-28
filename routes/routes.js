@@ -14,7 +14,6 @@ app.post('/register', userController.registerAccount);
 
 app.get('/logout', controller.getLogout);
 
-app.get('/addUser', userController.addUser);
 app.get('/checkUsername', userController.checkUsername);
 
 app.get('/user/:username', function (req, res) {
