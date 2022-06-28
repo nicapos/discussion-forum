@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
-const PostModel = require('./PostModel.js');
+const ThreadModel = require('./ThreadModel.js');
 const UserModel = require('./UserModel.js');
+const SubfromModel = require('./SubforumModel.js');
 
 const url = 'mongodb+srv://annika:annika123@cluster0.eba2z8c.mongodb.net/?retryWrites=true&w=majority';
 
