@@ -1,22 +1,18 @@
 const express = require('express');
+
 const controller = require(`../controllers/controller.js`);
+const userController = require(`../controllers/userController.js`);
+const forumController = require(`../controllers/forumController.js`);
+
 const app = express();
 
-app.get('/', function (req, res) {
-    res.render('index');
-});
-app.get('/login', function (req, res) {
-    res.render('login');
-});
-app.get(`/register`, function(req, res){
-    res.render('signup');
-});
-app.get('/addUser', controller.addUser);
-app.get('/checkUsername', controller.checkUsername);
-app.get('/logout', function (req, res) {
-    res.render('logout');
-});
+app.get('/', controller.getIndex);
+app.get('/login', controller.getLogin);
+app.get('/register', controller.getSignup);
+app.get('/logout', controller.getLogout);
 
+app.get('/addUser', userController.addUser);
+app.get('/checkUsername', userController.checkUsername);
 
 app.get('/user/:username', function (req, res) {
     res.render('profile');

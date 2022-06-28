@@ -1,19 +1,18 @@
 const db = require('../models/db.js');
-const Thread = require('../models/ThreadModel.js');
-const Subforum = require('../models/SubforumModel.js');
-const User = require('../models/UserModel.js');
 
 const controller = {
-    addUser: function(req, res){
-        db.insertOne(User, req.query, function(result){
-        })
+    getIndex: function (req, res) {
+        res.render('index');
     },
-
-    checkUsername: function(req, res){
-        db.findOne(User, req.query, null, function(result){
-            res.send(result);
-        }) 
+    getLogin: function (req, res) {
+        res.render('login');
+    },
+    getSignup: function(req, res){
+        res.render('signup');
+    },
+    getLogout: function (req, res) {
+        res.render('logout');
     }
-    
-}
+};
+
 module.exports = controller;
