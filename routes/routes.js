@@ -8,7 +8,10 @@ const app = express();
 
 app.get('/', controller.getIndex);
 app.get('/login', controller.getLogin);
+
 app.get('/register', controller.getSignup);
+app.post('/register', userController.registerAccount);
+
 app.get('/logout', controller.getLogout);
 
 app.get('/addUser', userController.addUser);
