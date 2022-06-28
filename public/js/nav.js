@@ -1,26 +1,23 @@
-function toggleNav(bOpen) {
-    if (bOpen) {
-        document.getElementsByTagName("nav")[0].style.width = "200px";
-        document.getElementById("profile-img").style.width = "50px";
-        document.getElementById("profile-img").style.height = "50px";
+$(document).ready(function() {
 
-        document.querySelector("nav > button").setAttribute("onclick", "toggleNav(false)");
-    } else {
-        document.getElementsByTagName("nav")[0].style.width = "60px";
-        document.getElementById("profile-img").style.width = "35px";
-        document.getElementById("profile-img").style.height = "35px";
+    var bOpenNav = false;
+    var bShowSubitems = false;
 
-        document.querySelector("nav > button").setAttribute("onclick", "toggleNav(true)");
+    function toggleNav() {
+        bOpenNav = !bOpenNav;
+        $("nav").css("width", bOpenNav ? "200px" : "60px");
+        $("#profile-img").css({
+            "width": bOpenNav ? "50px" : "35px",
+            "height": bOpenNav ? "50px" : "35px"
+        });
     }
-}
 
-/* Makes subitems visible if bVisible = true */
-function toggleSubitems(bVisible) {
-    const subitems = document.querySelectorAll("#nav-grp > a:not(:first-child)");
-    for (let i = 0; i < subitems.length; i++) {
-        if (bVisible)
-            subitems[i].style.display = "block";
-        else
-            subitems[i].style.display = "none";
-    }
-}
+    function toggleSubitems() {
+        bShowSubitems = !bShowSubitems;
+        $('#createSubf').css("display", (bShowSubitems ? "block" : "none"));
+        $('#searchSubf').css("display", (bShowSubitems ? "block" : "none"));
+    } 
+
+    $("nav > button").click(toggleNav);
+    $("#nav-grp").click(toggleSubitems);
+})

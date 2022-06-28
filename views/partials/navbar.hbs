@@ -1,24 +1,24 @@
 <nav>
-        <button class="material-icons" onclick="toggleNav(true)">menu</button>
+        <button class="material-icons">menu</button>
 
-        <a href="/home"><span class="material-icons">home</span>
+        <a id="home" href="/home"><span class="material-icons">home</span>
             Dashboard
         </a>
-        <div id="nav-grp" onmouseover="toggleSubitems(true)" onmouseleave="toggleSubitems(false)">
-            <a><span class="material-icons">question_answer</span>
+        <div id="nav-grp">
+            <a id="subforums"><span class="material-icons">question_answer</span>
                 Subforums
             </a>
-            <a href="/subf/new"><span class="material-icons">add</span>
+            <a id="createSubf" href="/subf/new"><span class="material-icons">add</span>
                 Create subforum
             </a>
-            <a href="/search"><span class="material-icons">search</span>
+            <a id="searchSubf" href="/search"><span class="material-icons">search</span>
                 Search subforum
             </a>
         </div>
-        <a href="/settings"><span class="material-icons">settings</span>
+        <a id="settings" href="/settings"><span class="material-icons">settings</span>
             Settings
         </a>
-        <a href="/logout"><span class="material-icons">logout</span>
+        <a id="logout" href="/logout"><span class="material-icons">logout</span>
             Log out
         </a>
 
