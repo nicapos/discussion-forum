@@ -9,6 +9,8 @@ const homeController = {
             console.log(result);
             res.render('home',{recents: result});
         })
+
+        //TODO render joined subforums
     }
 }
 module.exports = homeController;
