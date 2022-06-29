@@ -1,0 +1,18 @@
+<div class="thread box-container">
+    <h2>{{ threadTitle }}</h2>
+    <div id="author-info">
+        <img src="/resources/profile1.png" /><!-- TODO: Add URL to profile pic -->
+        <span>
+            <a href="/user/{{ postedBy }}">{{ postedBy }}</a>
+            <p>{{ datePosted }}</p>
+        </span>
+    </div>
+
+    <p class="content">{{ body }}</p>
+    <div class="thread-actions box-container">
+        <a><i class="material-icons">thumb_up</i>Like</a>
+        <a><i class="material-icons">thumb_down</i>Dislike</a>
+        <a id="reply-btn"><i class="material-icons">reply</i>Reply</a>
+        <a id="share-btn"><i class="material-icons">share</i>Share</a>
+    </div>
+</div>
