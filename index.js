@@ -10,7 +10,6 @@ const db = require(`./models/db.js`);
 const { options } = require('./routes/routes.js');
 
 
-
 const app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -22,10 +21,10 @@ port = process.env.PORT;
 hostname = process.env.HOSTNAME;
 
 app.use(session({
-    'secret': 'ccapdev-session',
+    'secret': 'ccapdev-discussiq',
     'resave': false,
     'saveUninitialized': false,
-    store: MongoStore.create({ mongoUrl: 'mongodb://localhost/test-app' })
+    store: MongoStore.create({ mongoUrl: process.env.DB_URL })
 }));
 
 app.use(express.static('public'));
