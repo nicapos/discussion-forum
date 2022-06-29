@@ -52,7 +52,7 @@ app.use(function (req, res) {
         details.flag = false;
 
     // render `../views/error.hbs`
-    res.send('opsss');
+    res.render('error');
 });
 
 db.connect();
