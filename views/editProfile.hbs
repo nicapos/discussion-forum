@@ -4,52 +4,30 @@
     <title>Edit Profile</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/nav.css">
-	<link rel="stylesheet" href="/css/profilepage-styles.css">
+	<link rel="stylesheet" href="/css/editprofile-styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="/js/editProfile.js"></script>
     <script src="/js/nav.js"></script>
     <style>
         body {
-            background-color: #F4F4F4;
+            background-color: #342E36;
         }
-		#edit-account { 
-			width: auto; 
-		}
     </style>
 </head>
 
 <body>
-    {{> navbar user=username}}
+    {{> navbar user=user}}
 
-	<div id="display-body">
-	<div class="profile-box center">
-		<div class="col">
-			<img id="profile-picture" src="/resources/profile2.png" />
-			<input type="text" id="edit-name" name="name" value="{{name}}" placeholder="Display Name" />
-			<h2>{{username}}</h2>
-
-			<br />
-
-			<button id="view-profile" class="green">View Profile</button>
-			<button id="edit-account" class="light">Change Account Details</button>
-		</div>
-		<div class="col">
-			<h3>About Me</h3>
-			<input type="text" id="edit-about" name="aboutMe" value="{{aboutMe}}" />
-			<h3>My Interests</h3>
-			<input type="text" id="edit-interests" name="myInterests" value="{{myInterests}}" />
-
-			<div class="btn-container">
-				<button id="change_profile" class="disabled">Save</button>
-				<button id="cancel" class="light">Cancel</button>
-			</div>
+	<div class="profile-frame">
+		<div class="wrapper">
+			<img id="profile-picture" src="/resources/profile1.png" />
+			<h2> {{name}} </h2>
+			<h3> {{email}} </h3>
+			<!--TODO set location of buttons -->
+			<button onclick="location.href = '/user/{{username}}';" type="submit" id="reg-button">VIEW PROFILE</button>
+			<button onclick="location.href = '/settings'" type="submit" id="reg-button">CHANGE ACC DETAILS</button>
 		</div>
 	</div>
-	</div>
-<<<<<<< Updated upstream
-
-=======
 	
 	<div class="edit-container">
 		<form name="Edit Profile" method="POST">
@@ -63,7 +41,6 @@
 			<button type="submit" id="reg-button">CONFIRM EDIT</button>
 		</form>
 	</div>	
->>>>>>> Stashed changes
 </body>
 
 </html>
