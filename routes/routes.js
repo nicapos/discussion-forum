@@ -5,6 +5,7 @@ const userController = require(`../controllers/userController.js`);
 const forumController = require(`../controllers/forumController.js`);
 const homeController = require('../controllers/homeController.js');
 const profileController = require('../controllers/profileController.js');
+const settingsController = require('../controllers/settingsController.js');
 
 const app = express();
 
@@ -23,10 +24,8 @@ app.get('/user/:username', profileController.getProfile);
 app.get('/user/:username/edit', profileController.getEditProfile);
 app.post('/user/:username/edit', profileController.postEditProfile);
 
-app.get('/settings', function (req, res) {
-    var user = req.session.username;
-    res.render('editAccount', {user: user});
-});
+app.get('/settings', settingsController.getSettings);
+
 app.get('/delete', function (req, res) {
     res.render('deleteAccount');
 });
