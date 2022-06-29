@@ -2,6 +2,7 @@ const db = require('../models/db.js');
 const Thread = require('../models/ThreadModel.js');
 const Reply = require('../models/ReplyModel.js');
 const Subforum = require('../models/SubforumModel.js');
+const User = require('../models/UserModel.js');
 
 const forumController = {
 
@@ -27,6 +28,9 @@ const forumController = {
         db.insertOne(Subforum, query, function(flag) {
             if (flag)
                 res.redirect('/subf/' + name); // Redirect to newly created subforum
+        });
+
+        db.updateOne(User, {username: req.session.username},{$push:{"subforums": name}}, function(result){
         });
     },
 
