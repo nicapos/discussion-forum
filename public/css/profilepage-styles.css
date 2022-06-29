@@ -47,6 +47,7 @@
 	margin-bottom: 20px;
 	border: 8px solid #FFFFFF;
 	border-radius: 50%;
+	z-index: 0;
 }
 
 .profile-box * {
@@ -90,7 +91,7 @@ i {
 	opacity: 0.9;
 }
 
-#view-profile, #delete-account {
+#view-profile, #delete-account, #edit-account {
 	display: block;
 	width: 60%;
 	margin: auto;
@@ -108,9 +109,28 @@ button[id^=change] {
 	float: right;
 }
 
+#cancel {
+	display: block;
+	float: right;
+	margin-right: 10px;
+}
+
 p[id^=msg] {
 	min-height: 20px;
 	margin: 0;
 	margin-top: -10px;
 	color: red;
+}
+
+input[id^=edit] {
+	margin-top: 7px;
+	margin-bottom: 20px;
+}
+
+#edit-name {
+	margin-left: -8px;
+	margin-bottom: 10px;
+	font-size: 32px;
+    font-weight: 600;
+	padding: 0 8px;
 }

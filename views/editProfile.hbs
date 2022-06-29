@@ -4,45 +4,50 @@
     <title>Edit Profile</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/nav.css">
-	<link rel="stylesheet" href="/css/editprofile-styles.css">
+	<link rel="stylesheet" href="/css/profilepage-styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/js/editProfile.js"></script>
     <script src="/js/nav.js"></script>
     <style>
         body {
-            background-color: #342E36;
+            background-color: #F4F4F4;
         }
+		#edit-account { 
+			width: auto; 
+		}
     </style>
 </head>
 
 <body>
     {{> navbar user=user}}
 
-	<div class="profile-frame">
-		<div class="wrapper">
-			<img id="profile-picture" src="/resources/profile1.png" />
-			<h2> {{name}} </h2>
-			<h3> {{email}} </h3>
-			<!--TODO set location of buttons -->
-			<button onclick="location.href = '/user/{{username}}';" type="submit" id="reg-button">VIEW PROFILE</button>
-			<button onclick="location.href = '/settings'" type="submit" id="reg-button">CHANGE ACC DETAILS</button>
+	<div id="display-body">
+	<div class="profile-box center">
+		<div class="col">
+			<img id="profile-picture" src="/resources/profile2.png" />
+			<input type="text" id="edit-name" name="name" value="{{name}}" placeholder="Display Name" />
+			<h2>{{username}}</h2>
+
+			<br />
+
+			<button id="view-profile" class="green">View Profile</button>
+			<button id="edit-account" class="light">Change Account Details</button>
+		</div>
+		<div class="col">
+			<h3>About Me</h3>
+			<input type="text" id="edit-about" name="aboutMe" value="{{aboutMe}}" />
+			<h3>My Interests</h3>
+			<input type="text" id="edit-interests" name="myInterests" value="{{myInterests}}" />
+
+			<div class="btn-container">
+				<button id="change_profile" class="disabled">Save</button>
+				<button id="cancel" class="light">Cancel</button>
+			</div>
 		</div>
 	</div>
-	
-	<div class="edit-container">
-		<form name="Edit Profile" method="POST">
-			<h1> EDIT PROFILE </h1>
-			<label for="name"><h2>Display Name</h2></label>
-			<input type="text" placeholder=" Enter your display name" name="name" id="name" required>
-			<label for="bio"><h2>Short Bio</h2></label>
-			<input type="text" placeholder=" Enter your bio" name="bio" id="bio">
-			<label for="interests"><h2>Interests</h2></label>
-			<input type="text" placeholder=" Enter your interests" name="interests" id="interests">
-			<label for="password"><h2>Confirm Password</h2></label>
-			<input type="password" placeholder=" Confirm Password" name="password" id="password" required>
-			<button type="submit" id="reg-button">CONFIRM EDIT</button>
-		</form>
-	</div>	
+	</div>
+
 </body>
 
 </html>
