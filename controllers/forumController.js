@@ -7,7 +7,8 @@ const User = require('../models/UserModel.js');
 const forumController = {
 
     getAddSubforum: function (req, res) {
-        res.render('createSubforum');
+        var user = req.session.username; 
+        res.render('createSubforum', {user: user});
     },
 
     postAddSubforum: function(req, res) {
@@ -37,7 +38,8 @@ const forumController = {
     getSubforum: function(req, res) {
         // TODO: Read Subforum
         // To get the subforum name: req.params.subfName
-        res.render('subforumView');
+        var user = req.session.username; 
+        res.render('subforumView', {user: user});
     },
 
     postUpdateSubforum: function(req, res) {
@@ -51,13 +53,19 @@ const forumController = {
     getCreateThread: function (req, res) {
         // TODO: Render page to create a new thread
         // To get the subforum name: req.params.subfName
-        res.render('createThread');
+        var user = req.session.username; 
+        res.render('createThread', {user: user});
     },
 
 
     getThread: function(req, res) {
         /* TODO: Replace sample data below with real ones from db */
-        data = {
+        var user = req.session.username; 
+        var subfName = req.params.subfName;
+        var threadId = req.params.threadId;
+
+        var data = {
+            user: user,
             thread: {
                 threadID: 1,
                 subforumID: "copypastas",
@@ -78,9 +86,6 @@ const forumController = {
             ]
         };
 
-        var subfName = req.params.subfName;
-        var threadId = req.params.threadId;
-        
         db.findOne(Subforum, {subforumName: subfName}, "subforumName title description", function (result) {
             data.subforum = JSON.parse(JSON.stringify(result));
             res.render('threadView', data);
