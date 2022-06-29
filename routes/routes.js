@@ -4,6 +4,8 @@ const controller = require(`../controllers/controller.js`);
 const userController = require(`../controllers/userController.js`);
 const forumController = require(`../controllers/forumController.js`);
 const homeController = require('../controllers/homeController.js');
+const profileController = require('../controllers/profileController.js');
+
 const app = express();
 
 app.get('/', controller.getIndex);
@@ -17,16 +19,10 @@ app.get('/logout', userController.logoutAccount);
 
 app.get('/checkUsername', userController.checkUsername);
 
-app.get('/user/:username', function (req, res) {
-    var user = req.session.username; 
-    res.render('profile', {user: user});
-    // To access username in URL: req.params.username
-});
-app.get('/user/:username/edit', function (req, res) {
-    var user = req.session.username;
-    res.render('editProfile', {user: user});
-    // To access username in URL: req.params.username
-});
+app.get('/user/:username', profileController.getProfile);
+app.get('/user/:username/edit', profileController.getEditProfile);
+app.post('/user/:username/edit', profileController.postEditProfile);
+
 app.get('/settings', function (req, res) {
     var user = req.session.username;
     res.render('editAccount', {user: user});

@@ -21,15 +21,15 @@
 	<div class="profile-frame">
 		<div class="wrapper">
 			<img id="profile-picture" src="/resources/profile1.png" />
-			<h2> Ines Sarkisyan </h2>
-			<h3> inesyarn@mail.com </h3>
+			<h2> {{name}} </h2>
+			<h3> {{email}} </h3>
 			<button onclick="location.href = 'user/charlie123.html';" type="submit" id="reg-button">VIEW PROFILE</button>
 			<button onclick="location.href = 'editaccount.html';" type="submit" id="reg-button">CHANGE ACC DETAILS</button>
 		</div>
 	</div>
 	
 	<div class="edit-container">
-		<form name="Edit Profile">
+		<form name="Edit Profile" method="POST">
 			<h1> EDIT PROFILE </h1>
 			<label for="name"><h2>Display Name</h2></label>
 			<input type="text" placeholder=" Enter your display name" name="name" id="name" required>
