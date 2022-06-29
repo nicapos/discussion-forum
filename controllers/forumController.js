@@ -27,12 +27,17 @@ const forumController = {
         // TODO: Add subf creator as member
 
         db.insertOne(Subforum, query, function(flag) {
+            db.updateOne(Subforum, {subforumName: name},{$push:{"members": req.session.username}}, function(result){
+            });
+    
+            db.updateOne(User, {username: req.session.username},{$push:{"subforums": name}}, function(result){
+            });
+            
             if (flag)
                 res.redirect('/subf/' + name); // Redirect to newly created subforum
         });
 
-        db.updateOne(User, {username: req.session.username},{$push:{"subforums": name}}, function(result){
-        });
+        
     },
 
     getSubforum: function(req, res) {
