@@ -35,13 +35,24 @@ $(document).ready(function(){
             $('#change_username').removeClass('disabled');
             $('#change_username').addClass('green');
         }
+        var newUsername = $('#new_username').val();
+        let query = {username: newUsername};
+        $.get('/checkUsername', query, function(result){
+            if(result.username == newUsername)
+            {
+                $('#msg1').text('New username is taken');
+                $('#change_username').addClass('disabled');
+                $('#change_username').removeClass('green');
+            }
+            else
+            {
+                $('#msg1').text('');
+                $('#change_username').removeClass('disabled');
+                $('#change_username').addClass('green');
+            }
+        })
     });
 
-    $('#change_username').click(function () {
-        if (!this.hasClass('disabled')) {
-            // TODO: Change username
-        }
-    });
 
     /* Change Password */
     $('#confirm_password').keyup(function () {
@@ -56,9 +67,4 @@ $(document).ready(function(){
         }
     });
 
-    $('#change_password').click(function () {
-        if (!this.hasClass('disabled')) {
-            // TODO: Change password
-        }
-    });
 });

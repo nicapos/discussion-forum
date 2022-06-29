@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    {{> navbar user=username}}
+    {{> navbar user=user}}
 
 	<div id="display-body">
 	<div class="profile-box center">
@@ -35,13 +35,16 @@
 			<button id="delete-account" class="light">Delete Account</button>
 		</div>
 		<div class="col">
-			<h3>Email Address</h3>
-			<p id="email">{{email}} <i>(permanent)</i></p>
-		
-			<a id="editUsername" href="/changeUsername">Change Username</a>
-			
-			<a id="editPassword" href="/changePassword">Change Password</a>
-			
+			<h3>Change Username</h3>
+			<form name="changeUsername" id="changeUsername" method="POST">
+				<label for="new_username">New Username</label>
+				<input type="text" id="new_username" name="newUsername" />
+				<p id="msg1"></p>
+
+				<div class="btn-container">
+					<button type="submit" id="change_username" class="disabled">Save</button>
+				</div>
+			</form>
 		</div>
 	</div>
 	</div>

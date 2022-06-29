@@ -25,7 +25,10 @@ app.get('/user/:username/edit', profileController.getEditProfile);
 app.post('/user/:username/edit', profileController.postEditProfile);
 
 app.get('/settings', settingsController.getSettings);
-
+app.get('/changeUsername', settingsController.getChangeUsername);
+app.post('/changeUsername', settingsController.postChangeUsername);
+app.get('/changePassword', settingsController.getChangePassword);
+app.post('/changePassword', settingsController.postChangePassword);
 app.get('/delete', function (req, res) {
     res.render('deleteAccount');
 });
