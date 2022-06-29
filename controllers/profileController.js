@@ -3,7 +3,7 @@ const User = require('../models/UserModel.js');
 
 const profileController = {
     getProfile: function(req, res){
-        var username = req.session.username;
+        var username = req.params.username;
         
         db.findOne(User, {username: username}, {name: 1, username: 1, aboutMe: 1, myInterests: 1}, function(result){
             let query = result;
@@ -15,7 +15,7 @@ const profileController = {
     getEditProfile: function(req, res){
         var username = req.session.username;
         db.findOne(User, {username: username}, {name: 1, email: 1}, function(result){
-            res.render('editProfile', result);
+            res.render('editProfile', {name: result.name, email: result.email, username: username});
         })
     },
 
