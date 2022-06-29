@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    
     const username = $('nav > #profile-slot > #username').text();
 
     /* Buttons Setup */
@@ -12,6 +13,11 @@ $(document).ready(function(){
             location.href = '/delete';
     });
 
+    /* Fill 'name' with 'username' if 'name' is blank */
+    if ( !$('.col > h1').text() ) {
+        $('.col > h1').text(username);
+    }
+    
     /* Form Setup */
     $('#new_username').attr('placeholder', username);
 
