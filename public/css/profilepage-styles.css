@@ -122,7 +122,6 @@ p[id^=msg] {
 	color: red;
 }
 
-<<<<<<< Updated upstream
 input[id^=edit] {
 	margin-top: 7px;
 	margin-bottom: 20px;
@@ -137,12 +136,11 @@ input[id^=edit] {
 	border-radius: 0;
 	border-bottom: 1px solid silver;
 	padding: 0 8px;
-=======
+}
 #editUsername, #editPassword{
 	width: 100%;
 	padding: 8px;
 	border: 1px solid silver;
 	border-radius: 5px;
 	margin-bottom: 10px;
->>>>>>> Stashed changes
 }
