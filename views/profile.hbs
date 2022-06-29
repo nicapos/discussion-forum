@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="/css/profilepage-styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="/js/profile.js"></script>
     <script src="/js/nav.js"></script>
     <style>
         body {
@@ -26,20 +27,14 @@
 			<h2>{{username}}</h2>
 		</div>
 		<div class="col">
-			<label for="bio"><h3>About Me</h3></label>
-			<p> {{aboutMe}} </p>
-			<label for="interests"><h3>My Interests</h3></label>
-			<p>{{myInterests}}</p>
+			<h3>About Me</h3>
+			<p id="about-me">{{aboutMe}}</p>
+			<h3>My Interests</h3>
+			<p id="my-interests">{{myInterests}}</p>
 		</div>
 		<button id="edit-btn">Edit</button>
 	</div>
 	</div>
-
-	<script>
-		$('#edit-btn').click(function () {
-			location.href = location.href + '/edit';
-		});
-	</script>
 </body>
 
 </html>
