@@ -41,7 +41,7 @@ a {
 
 /* buttons */
 button {
-    font-weight: 800;
+    font-weight: 600;
     padding: 8px 16px;
     border-radius: 5px;
 }
@@ -62,4 +62,10 @@ button.light {
 
 button.light:hover {
     background-color: #CCC;
+}
+
+button.disabled {
+    background-color: #E5E5E5;
+    border: 2px solid #E5E5E5;
+    color: #CCC;
 }
