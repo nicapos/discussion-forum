@@ -18,18 +18,28 @@
 <body>
     {{> navbar user=user}}
 
-	<div class="text-frame center">
-		<div class="wrapper">
+	<div id="display-body">
+	<div class="profile-box center">
+		<div class="col">
 			<img id="profile-picture" src="/resources/profile2.png" />
-			<h1> Berny Fonseca </h1>
-			<h2> @alpha123 </h2>
-			<label for="bio"><h3> About Me</h3></label>
+			<h1>Berny Fonseca</h1>
+			<h2>alpha123</h2>
+		</div>
+		<div class="col">
+			<label for="bio"><h3>About Me</h3></label>
 			<p> Kinukulayan ang isipan Pabalik sa nakaraan 'Wag mo ng balikan Patuloy ka lang masasaktan Hindi nagkulang kakaisip Sa isang magandang larawan Paulit-ulit na binabanggit Ang pangalang nakasanayan </p>
-			<label for="interests"><h3> My Interests</h3></label>
+			<label for="interests"><h3>My Interests</h3></label>
 			<p> Medieval History, Western Movies (MCU), Tiktok </p>
 		</div>
+		<button id="edit-btn">Edit</button>
 	</div>
-		
+	</div>
+
+	<script>
+		$('#edit-btn').click(function () {
+			location.href = location.href + '/edit';
+		});
+	</script>
 </body>
 
 </html>
