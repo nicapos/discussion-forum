@@ -132,5 +132,8 @@ input[id^=edit] {
 	margin-bottom: 10px;
 	font-size: 32px;
     font-weight: 600;
+	border: 0;
+	border-radius: 0;
+	border-bottom: 1px solid silver;
 	padding: 0 8px;
 }
