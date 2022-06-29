@@ -1,0 +1,8 @@
+var mongoose = require('mongoose');
+
+var DislikesSchema = new mongoose.Schema({
+  username: String,
+  threadID: Number
+});
+
+module.exports = mongoose.model("Dislikes", DislikesSchema);
