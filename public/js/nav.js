@@ -4,6 +4,9 @@ $(document).ready(function() {
     var bShowSubitems = false;
 
     function toggleNav() {
+        if (bShowSubitems)
+            toggleSubitems();
+
         bOpenNav = !bOpenNav;
         $("nav").css("width", bOpenNav ? "200px" : "60px");
         $("#profile-img").css({
@@ -13,6 +16,9 @@ $(document).ready(function() {
     }
 
     function toggleSubitems() {
+        if (!bOpenNav)
+            toggleNav();
+
         bShowSubitems = !bShowSubitems;
         $('#createSubf').css("display", (bShowSubitems ? "block" : "none"));
         $('#searchSubf').css("display", (bShowSubitems ? "block" : "none"));
