@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var SubforumSchema = new mongoose.Schema({
     // TODO create a Schema for Posts
     subforumID: Number,
-    name: String,
+    subfname: String,
     threads: [Number],
     members: [String] //usernames
 });

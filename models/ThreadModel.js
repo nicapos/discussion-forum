@@ -5,7 +5,7 @@ var ThreadSchema = new mongoose.Schema({
     threadID: Number,
     subforumID: Number,
     threadTitle: String,
-    postedBy: String,
+    username: String,
     datePosted: Date,
     body: String,
     likes: Number
