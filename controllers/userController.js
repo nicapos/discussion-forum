@@ -19,6 +19,16 @@ const userController = {
         });
     },
 
+    getLogin: function(req, res){
+        if(req.session.username){
+            res.redirect('/home');
+        }
+        else
+        {
+            res.render('login');
+        }
+    },
+
     loginAccount: function(req,res){
         var username = req.body.username;
         var password = req.body.password;
@@ -48,6 +58,14 @@ const userController = {
                 res.render('login', {error: "Username not found"});
             }
         })
+    },
+
+    logoutAccount: function(req, res)
+    {
+        req.session.destroy(function(err){
+            if(err) throw err;
+            res.render('logout');
+        });
     }
 
 };

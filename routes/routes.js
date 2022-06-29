@@ -8,7 +8,7 @@ const homeController = require('../controllers/homeController.js');
 const app = express();
 
 app.get('/', controller.getIndex);
-app.get('/login', controller.getLogin);
+app.get('/login', userController.getLogin);
 app.post('/login', userController.loginAccount);
 
 app.get('/success', successController.getSuccess);
@@ -16,7 +16,7 @@ app.get('/success', successController.getSuccess);
 app.get('/register', controller.getSignup);
 app.post('/register', userController.registerAccount);
 
-app.get('/logout', controller.getLogout);
+app.get('/logout', userController.logoutAccount);
 
 app.get('/checkUsername', userController.checkUsername);
 
