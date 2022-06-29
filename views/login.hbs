@@ -36,15 +36,15 @@
             <div class="wrapper">
                 <div class="login-bg">
                 </div>
-                <form name="Login" id="login-form" >
+                <form name="Login" id="login-form" method="POST">
                     <h3>Login</h3>
-                    <input type="text" placeholder="Username" id="username" required>
-                    <input type="password" placeholder="Password" id="password" required>
+                    <input name="username" type="text" placeholder="Username" id="username" required>
+                    <input name="password" type="password" placeholder="Password" id="password" required>
                     <p id="error"> </p>
-                    <button type="button" id="login-btn">LOGIN</button>
+                    <button type="submit" id="login-btn">LOGIN</button>
                     <a href="/register" id="sign-up-button">SIGN UP</a>
                 </form>
-                <p id="login-error"></p>
+                <p>{{error}}</p>
             </div>
 
         </div>

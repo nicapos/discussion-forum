@@ -3,11 +3,15 @@ const express = require('express');
 const controller = require(`../controllers/controller.js`);
 const userController = require(`../controllers/userController.js`);
 const forumController = require(`../controllers/forumController.js`);
-
+const successController = require('../controllers/successController.js');
+const homeController = require('../controllers/homeController.js');
 const app = express();
 
 app.get('/', controller.getIndex);
 app.get('/login', controller.getLogin);
+app.post('/login', userController.loginAccount);
+
+app.get('/success', successController.getSuccess);
 
 app.get('/register', controller.getSignup);
 app.post('/register', userController.registerAccount);
@@ -45,9 +49,7 @@ app.get('/subf/:subfName/new', function (req, res) {
 });
 app.get('/subf/:subfId/:threadId', forumController.getThread);
 
-app.get('/home', function (req, res) {
-    res.render('home');
-});
+app.get('/home', homeController.getHome);
 app.get('/search', function (req, res) {
     res.render('search');
 });

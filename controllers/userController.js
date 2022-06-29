@@ -1,5 +1,6 @@
 const db = require('../models/db.js');
 const User = require('../models/UserModel.js');
+const bcrypt = require('bcrypt');
 
 const userController = {
     checkUsername: function(req, res){
@@ -9,10 +10,44 @@ const userController = {
     },
 
     registerAccount: function(req, res){
-        let query = {username: req.body.username, email: req.body.email, password: req.body.password}
-        db.insertOne(User, query,function(result){
+        bcrypt.hash(req.body.password, 10, function(err, hash){
+            console.log(hash);
+            let query = {username: req.body.username, email: req.body.email, password: hash};
+            db.insertOne(User, query,function(result){
+                res.redirect('/login');
+            })
+        });
+    },
+
+    loginAccount: function(req,res){
+        var username = req.body.username;
+        var password = req.body.password;
+        console.log(username);
+        db.findOne(User, {username: username}, null, function(result){
+            console.log(result);
+            if(result){
+                bcrypt.compare(password, result.password, function(err, equal){
+                    if(equal){
+                        req.session.username = result.username;
+                        res.redirect('/success');
+                    }
+
+                    else{
+                        var details = {
+                            flag: false,
+                            error: 'Username or Password is incorrect'
+                        };
+                        res.render('login',{error: "Username or password is incorrect"});
+                    }
+                })
+            }
+            else{
+                var details = {
+                    flag: false,
+                };
+                res.render('login', {error: "Username not found"});
+            }
         })
-        res.redirect('/login');
     }
 
 };
