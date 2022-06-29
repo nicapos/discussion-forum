@@ -32,7 +32,9 @@
 			<h3>My Interests</h3>
 			<p id="my-interests">{{user.myInterests}}</p>
 		</div>
+		{{#if isOwnProfile}}
 		<button id="edit-btn">Edit</button>
+		{{/if}}
 	</div>
 	</div>
 </body>

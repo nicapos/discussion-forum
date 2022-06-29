@@ -8,7 +8,10 @@ const profileController = {
         
         db.findOne(User, {username: username}, {name: 1, username: 1, aboutMe: 1, myInterests: 1}, function(result){
             let query = result;
-            res.render('profile', {user: query, sessionUser: sessionUser});
+            if (query)
+                res.render('profile', {user: query, sessionUser: sessionUser, isOwnProfile: sessionUser==query.username});
+            else
+                res.render('error');
         })
     },
 
