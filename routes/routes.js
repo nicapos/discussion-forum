@@ -40,6 +40,7 @@ app.get('/subf/new', forumController.getAddSubforum);
 app.post('/new/subf', forumController.postAddSubforum);
 
 app.get('/subf/:subfName', forumController.getSubforum);
+app.get('/subf/:subfName/join', ); // TODO: Join subforum
 app.get('/subf/:subfName/new', forumController.getCreateThread);
 app.post('/new/thread', ); // TODO: Create new thread
 

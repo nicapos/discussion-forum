@@ -41,10 +41,19 @@ const forumController = {
     },
 
     getSubforum: function(req, res) {
-        // TODO: Read Subforum
-        // To get the subforum name: req.params.subfName
         var user = req.session.username; 
-        res.render('subforumView', {user: user});
+        var subfName = req.params.subfName;
+
+        db.findOne(Subforum, {subforumName: subfName}, "subforumName title description", function (result) {
+            let subforum = JSON.parse(JSON.stringify(result));
+
+            // TODO: Get threads info
+
+            if (!subforum)
+                ; // TODO: Send to error 404 page
+            else
+                res.render('subforumView', {user: user, subforum: subforum});
+        });
     },
 
     postUpdateSubforum: function(req, res) {
