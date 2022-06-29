@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Copypastas | disquissip</title>
+    <title>{{ subforum.title }} | disquissip</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/threads.css">
     <link rel="stylesheet" href="/css/nav.css">
@@ -23,8 +23,8 @@
     
     <div id="subforum-heading">
         <div id="subforum-info">
-            <h2>Copypastas</h2>
-            <p>Share your favorite copypastas here.</p>
+            <h2>{{ subforum.title }}</h2>
+            <p>{{ subforum.description }}</p>
         </div>
         <div id="action-buttons">
             <button class="green">Join</button>
@@ -77,7 +77,10 @@
 
     <!-- Set active item on navbar -->
     <script>
-        $('#action-buttons .light').click( function() {
+        $('#action-buttons .green').click( function() { // onclick "Join"
+            location.href = location.href + '/join';
+        });
+        $('#action-buttons .light').click( function() { // onclick "Create Thread"
             location.href = location.href + '/new';
         });
         $('nav > #subforums').addClass('active');
