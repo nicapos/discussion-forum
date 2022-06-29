@@ -27,13 +27,19 @@ $(document).ready(function(){
             $('#msg1').text('New username must not be the same as the current username.');
             $('#change_username').addClass('disabled');
             $('#change_username').removeClass('green');
+            $('#change_username').attr ("disabled", true);
+
         } else if ( !$('#new_username').val() ) {
             $('#change_username').addClass('disabled');
             $('#change_username').removeClass('green');
+            $('#change-username').attr ("disabled", true);
+
         } else {
             $('#msg1').text('');
             $('#change_username').removeClass('disabled');
             $('#change_username').addClass('green');
+            $('#change_username').attr ("disabled", false);
+
         }
         var newUsername = $('#new_username').val();
         let query = {username: newUsername};
@@ -43,12 +49,15 @@ $(document).ready(function(){
                 $('#msg1').text('New username is taken');
                 $('#change_username').addClass('disabled');
                 $('#change_username').removeClass('green');
+                $('#change_username').attr ("disabled", true);
+
             }
             else
             {
                 $('#msg1').text('');
                 $('#change_username').removeClass('disabled');
                 $('#change_username').addClass('green');
+                $('#change_username').attr ("disabled", false);
             }
         })
     });

@@ -21,8 +21,6 @@ const profileController = {
 
     postEditProfile: function(req, res){
         var username = req.session.username;
-        //TODO add name in User schema
-        //TODO validate confirm password
         var aboutMe = req.body.bio;
         var myInterests = req.body.interests;
         var name = req.body.name;
