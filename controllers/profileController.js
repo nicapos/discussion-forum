@@ -3,12 +3,12 @@ const User = require('../models/UserModel.js');
 
 const profileController = {
     getProfile: function(req, res){
+        var sessionUser = req.session.username;
         var username = req.params.username;
         
         db.findOne(User, {username: username}, {name: 1, username: 1, aboutMe: 1, myInterests: 1}, function(result){
             let query = result;
-            console.log(query);
-            res.render('profile', query);
+            res.render('profile', {user: query, sessionUser: sessionUser});
         })
     },
 
