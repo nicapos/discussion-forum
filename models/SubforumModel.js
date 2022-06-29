@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 var SubforumSchema = new mongoose.Schema({
     // TODO create a Schema for Posts
-    subforumID: Number,
-    subfname: String,
+    subforumName: Number,   // ex. freedom-wall
+    title: String,          // ex. Freedom Wall
     threads: [Number],
     members: [String] //usernames
 });
