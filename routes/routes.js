@@ -3,15 +3,12 @@ const express = require('express');
 const controller = require(`../controllers/controller.js`);
 const userController = require(`../controllers/userController.js`);
 const forumController = require(`../controllers/forumController.js`);
-const successController = require('../controllers/successController.js');
 const homeController = require('../controllers/homeController.js');
 const app = express();
 
 app.get('/', controller.getIndex);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.loginAccount);
-
-app.get('/success', successController.getSuccess);
 
 app.get('/register', controller.getSignup);
 app.post('/register', userController.registerAccount);

@@ -39,22 +39,15 @@ const userController = {
                 bcrypt.compare(password, result.password, function(err, equal){
                     if(equal){
                         req.session.username = result.username;
-                        res.redirect('/success');
+                        res.redirect('/home');
                     }
 
                     else{
-                        var details = {
-                            flag: false,
-                            error: 'Username or Password is incorrect'
-                        };
                         res.render('login',{error: "Username or password is incorrect"});
                     }
                 })
             }
             else{
-                var details = {
-                    flag: false,
-                };
                 res.render('login', {error: "Username not found"});
             }
         })
