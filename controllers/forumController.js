@@ -35,8 +35,6 @@ const forumController = {
             
             if (flag)
                 res.redirect('/subf/' + name); // Redirect to newly created subforum
-            else
-            console.log(flag);
         });
 
         
