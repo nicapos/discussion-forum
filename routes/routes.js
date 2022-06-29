@@ -18,15 +18,18 @@ app.get('/logout', userController.logoutAccount);
 app.get('/checkUsername', userController.checkUsername);
 
 app.get('/user/:username', function (req, res) {
-    res.render('profile');
-    console.log(req.params.username);
+    var user = req.session.username; 
+    res.render('profile', {user: user});
+    // To access username in URL: req.params.username
 });
 app.get('/user/:username/edit', function (req, res) {
-    res.render('editProfile');
-    console.log(req.params.username);
+    var user = req.session.username;
+    res.render('editProfile', {user: user});
+    // To access username in URL: req.params.username
 });
 app.get('/settings', function (req, res) {
-    res.render('editAccount');
+    var user = req.session.username;
+    res.render('editAccount', {user: user});
 });
 app.get('/delete', function (req, res) {
     res.render('deleteAccount');
@@ -44,7 +47,8 @@ app.get('/subf/:subfName/:threadId', forumController.getThread);
 
 app.get('/home', homeController.getHome);
 app.get('/search', function (req, res) {
-    res.render('search');
+    var user = req.session.username;
+    res.render('search', {user: user});
 });
 
 module.exports = app;

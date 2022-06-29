@@ -5,9 +5,10 @@ const Thread = require('../models/ThreadModel.js');
 
 const homeController = {
     getHome: function(req, res){
+        var user = req.session.username;
         db.findMany(Thread, {username: req.session.username}, {threadID: 0, likes: 0}, function(result){
             console.log(result);
-            res.render('home',{recents: result});
+            res.render('home',{recents: result, user: user});
         })
 
         //TODO render joined subforums
