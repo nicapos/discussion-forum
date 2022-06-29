@@ -4,43 +4,64 @@
     <title>Change Account Details</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/nav.css">
-	<link rel="stylesheet" href="/css/editprofile-styles.css">
+	<link rel="stylesheet" href="/css/profilepage-styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="/js/nav.js"></script>
+	<script src="/js/editAccount.js"></script>
+	<script src="/js/nav.js"></script>
     <style>
         body {
-            background-color: #342E36;
+            background-color: #F4F4F4;
         }
+		.col:nth-child(2) {
+			padding: 30px 50px 30px 30px;
+		}
     </style>
 </head>
 
 <body>
     {{> navbar user=user}}
 
-	<div class="profile-frame">
-		<div class="wrapper">
-			<img id="profile-picture" src="/resources/profile1.png" />
-			<h2> Ines Sarkisyan </h2>
-			<h3> inesyarn@gmail.com </h3>
-			<button onclick="location.href = 'user/charlie123.html';" type="submit" id="reg-button">VIEW PROFILE</button>
-			<button onclick="location.href = 'deleteaccount.html';" type="submit" id="reg-button">DELETE ACCOUNT</button>
+	<div id="display-body">
+	<div class="profile-box center">
+		<div class="col">
+			<img id="profile-picture" src="/resources/profile2.png" />
+			<h1>Berny Fonseca</h1>
+			<h2>alpha123</h2>
+
+			<br /><br />
+
+			<button id="view-profile" class="green">View Profile</button>
+			<button id="delete-account" class="light">Delete Account</button>
+		</div>
+		<div class="col">
+			<h3>Email Address</h3>
+			<p id="email">inesyarn@gmail.com <i>(permanent)</i></p>
+
+			<h3>Change Username</h3>
+
+			<label for="new_username">New Username</label>
+			<input type="text" id="new_username" name="new_username" />
+
+			<p id="msg1"></p>
+
+			<div class="btn-container">
+				<button id="change_username" class="disabled">Save</button>
+			</div>
+
+			<h3>Change Password</h3>
+			<label for="new_password">New Password</label>
+			<input type="password" id="new_password" name="new_password"/>
+			<label for="confirm_password">Confirm Password</label>
+			<input type="password" id="confirm_password" name="confirm_password"/>
+
+			<p id="msg2"></p>
+
+			<div class="btn-container">
+				<button id="change_password" class="disabled">Save</button>
+			</div>
 		</div>
 	</div>
-	
-	<div class="edit-container">
-		<form name="Edit Profile">
-			<h1> CHANGE ACCOUNT DETAILS </h1>
-			<label for="username"><h2>USERNAME</h2></label>
-			<input type="text" placeholder=" Username" name="username" id="username" required>
-			<label for="password"><h2>PASSWORD</h2></label>
-			<input type="password" placeholder=" Password" name="password" id="password" required>
-			<label for="confirmpw"><h2>CONFIRM PASSWORD</h2></label>
-			<input type="password" placeholder=" Confirm Password" name="confirmpw" id="confirmpw" required>
-			<label for="email"><h2>CONFIRM EMAIL ADDRESS</h2></label>
-			<input type="text" placeholder=" Confirm Email Address" name="email" id="email" required>
-			<button type="submit" id="reg-button">CONFIRM EDIT</button>
-		</form>
 	</div>
 
 	<!-- Set active item on navbar -->

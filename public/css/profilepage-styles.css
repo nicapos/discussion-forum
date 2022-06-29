@@ -64,6 +64,23 @@
 	margin-bottom: 30px;
 }
 
+input {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid silver;
+	border-radius: 5px;
+	margin-bottom: 10px;
+}
+
+#email {
+	margin-top: 0;
+	margin-bottom: 20px;
+}
+
+i {
+	color: grey;
+}
+
 #edit-btn {
 	position: absolute;
 	right: 25px;
@@ -71,4 +88,29 @@
 	background: #A2D729;
 	border-radius: 5px;	
 	opacity: 0.9;
+}
+
+#view-profile, #delete-account {
+	display: block;
+	width: 60%;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+.btn-container {
+	position: relative;
+	width: 100%;
+	height: 40px;
+}
+
+button[id^=change] {
+	display: block;
+	float: right;
+}
+
+p[id^=msg] {
+	min-height: 20px;
+	margin: 0;
+	margin-top: -10px;
+	color: red;
 }
