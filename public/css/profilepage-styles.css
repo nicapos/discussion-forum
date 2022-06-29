@@ -5,20 +5,26 @@
     margin: 0 auto;
 }
 .text-frame {
-	position: fixed;
-	width: 1120px;
+	width: 80%;
 	height: 330px;
-	left: 25%;
-	top: 33%;
-
+	margin: auto;
+	padding-bottom: 20px;
 	background: #FFFFFF;
 	border-radius: 5px;
 }
 
+.center {
+	margin: 0;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
 .text-frame #profile-picture {
 	position: absolute;
-	width: 295px;
-	height: 295px;
+	width: 280px;
+	height: 280px;
 	left: 40px;
 	top: -140px;
 	border: 8px solid #FFFFFF;
