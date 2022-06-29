@@ -33,18 +33,14 @@ app.get('/delete', function (req, res) {
 });
 
 
-app.get('/subf/new', function (req, res) {
-    res.render('createSubforum');
-});
-app.get('/subf/:subfName', function (req, res) {
-    res.render('subforumView');
-    console.log(req.params.subfName);
-});
-app.get('/subf/:subfName/new', function (req, res) {
-    res.render('createThread');
-    console.log(req.params.subfName);
-});
-app.get('/subf/:subfId/:threadId', forumController.getThread);
+app.get('/subf/new', forumController.getAddSubforum);
+app.post('/new/subf', forumController.postAddSubforum);
+
+app.get('/subf/:subfName', forumController.getSubforum);
+app.get('/subf/:subfName/new', forumController.getCreateThread);
+app.post('/new/thread', ); // TODO: Create new thread
+
+app.get('/subf/:subfName/:threadId', forumController.getThread);
 
 app.get('/home', homeController.getHome);
 app.get('/search', function (req, res) {

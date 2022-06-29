@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/js/nav.js"></script>
+    <script src="/js/createSubf.js"></script>
     <style>
         body {
             background-color: #F4F4F4;
@@ -25,6 +26,7 @@
         #text-editor label, #text-editor input, #text-editor textarea {
             display: block;
             width: 100%;
+            resize: none;
         }
 
         #text-editor > h3 {
@@ -38,6 +40,11 @@
             background-color: #FFFFFF;
             padding: 10px 15px;
         }
+
+        #error {
+            margin-top: -10px;
+            color: red;
+        }
     </style>
 </head>
 
@@ -47,14 +54,18 @@
     <div id="text-editor" class="box-container">
         <h3>Create Subforum</h3>
 
-        <label for="subforum-name">Name</label>
-        <input type="text" name="subforum-name" />
+        <form id="createSubf" action="/new/subf" method="post">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" />
 
-        <label for="subforum-desc">Short Description</label>
-        <textarea name="subforum-desc" maxlength="100"></textarea>
+            <label for="description">Short Description</label>
+            <textarea name="description" id="description" maxlength="100"></textarea>
+        </form>
+
+        <p id="error"></p>
 
         <div id="actions">
-            <button class="light" onclick="history.back()">Cancel</button>&nbsp;
+            <button class="light">Cancel</button>&nbsp;
             <button class="green">Post</button>
         </div>
     </div>
