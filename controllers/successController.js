@@ -49,8 +49,6 @@ const successController = {
                 to hide the profile and logout tabs in the nav bar
             */
             details.flag = false;
-
-        // render `../views/success.hbs`
     }
 
 }
