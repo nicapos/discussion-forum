@@ -5,6 +5,12 @@ const Subforum = require('../models/SubforumModel.js');
 const User = require('../models/UserModel.js');
 
 const forumController = {
+    
+    checkSubforum: function(req, res){
+        db.findOne(Subforum, req.query, "", function(result){
+            res.send(result);
+        })
+    },
 
     checkSubforum: function(req, res){
         db.findOne(Subforum, req.query, "", function(result){
@@ -75,6 +81,10 @@ const forumController = {
         res.render('createThread', {user: user});
     },
 
+    postCreateThread: function(req, res){
+        console.log(req.href);
+        //res.redirect('/subforum view');
+    },
 
     getThread: function(req, res) {
         /* TODO: Replace sample data below with real ones from db */

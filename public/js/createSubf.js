@@ -18,7 +18,6 @@ $(document).ready(function(){
                 $('#error').text("");
             }
         })
-        // TODO: Check if subf exists na
     });
 
     $('#actions .light').click( function() {
