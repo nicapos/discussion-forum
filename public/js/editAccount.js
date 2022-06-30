@@ -78,12 +78,28 @@ $(document).ready(function(){
     /* Change Password */
     $('#confirm_password').keyup(function () {
         if ( $('#new_password').val() != $('#confirm_password').val() ) {
+            $('#msg2').css('color', 'red');
             $('#msg2').text('The passwords do not match.');
-            $('#change_username').attr("disabled", true);
+            $('#change_password').prop('disabled', true);
+        } else if ( !$('#new_password').val() ) {
+            $('#change_password').prop('disabled', true);
         } else {
             $('#msg2').text('');
-            $('#change_username').attr("disabled", false);
+            $('#change_password').prop('disabled', false);
         }
+    });
+
+    $('#change_password').click(function() {
+        var newPassword = $('#new_password').val();
+
+        $.post(location.href, {newPassword: newPassword}, function(data, status){
+            if (status) {
+                // Saved changes
+                $('#change_password').prop('disabled', true);
+                $('#msg2').css('color', 'grey');
+                $('#msg2').text('Your changes have been saved.');
+            }
+        });
     });
 
 });
