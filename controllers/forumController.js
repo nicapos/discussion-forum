@@ -6,6 +6,12 @@ const User = require('../models/UserModel.js');
 
 const forumController = {
 
+    checkSubforum: function(req, res){
+        db.findOne(Subforum, req.query, "", function(result){
+            res.send(result);
+        })
+    },
+
     getAddSubforum: function (req, res) {
         var user = req.session.username; 
         res.render('createSubforum', {user: user});
@@ -23,8 +29,6 @@ const forumController = {
             threads: [],
             members: []
         };
-
-        // TODO: Add subf creator as member
 
         db.insertOne(Subforum, query, function(flag) {
             db.updateOne(Subforum, {subforumName: name},{$push:{"members": req.session.username}}, function(result){

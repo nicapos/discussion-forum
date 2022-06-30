@@ -36,6 +36,7 @@ app.get('/delete', function (req, res) {
 
 app.get('/subf/new', forumController.getAddSubforum);
 app.post('/new/subf', forumController.postAddSubforum);
+app.get('/checkSubforum', forumController.checkSubforum);
 
 app.get('/subf/:subfName', forumController.getSubforum);
 app.get('/subf/:subfName/join', ); // TODO: Join subforum
