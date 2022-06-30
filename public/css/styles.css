@@ -64,7 +64,7 @@ button.light:hover {
     background-color: #CCC;
 }
 
-button.disabled {
+button:disabled, button:disabled:hover {
     background-color: #E5E5E5;
     border: 2px solid #E5E5E5;
     color: #CCC;

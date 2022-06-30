@@ -17,8 +17,10 @@ const profileController = {
 
     getEditProfile: function(req, res){
         var username = req.session.username;
-        db.findOne(User, {username: username}, {name: 1, email: 1}, function(result){
-            res.render('editProfile', {name: result.name, email: result.email, username: username});
+        var projection = "username name aboutMe myInterests";
+
+        db.findOne(User, {username: username}, projection, function(result){
+            res.render('editProfile', result);
         })
     },
 

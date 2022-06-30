@@ -7,23 +7,31 @@ $(document).ready(function(){
 
     function checkValuesChanged() {
         // Check if profile info has changed
-        if ($('#name').val() == name && $('#edit-about').val() == aboutMe && $('#edit-interests').val() == myInterests) {
-            $('#change_profile').addClass('disabled');
-            $('#change_profile').removeClass('green');
+        if ($('#edit-name').val() == name && $('#edit-about').val() == aboutMe && $('#edit-interests').val() == myInterests) {
+            $('#change_profile').prop("disabled", true);
         } else {
-            $('#change_profile').addClass('green');
-            $('#change_profile').removeClass('disabled');
+            $('#change_profile').prop("disabled", false);
         }
     }
 
-    $('#name').keyup(checkValuesChanged);
+    $('#edit-name').keyup(checkValuesChanged);
     $('#edit-about').keyup(checkValuesChanged);
     $('#edit-interests').keyup(checkValuesChanged);
 
+    /* asynchronously update profile */
     $('#change_profile').click(function() {
-        if (!$('#change_profile').hasClass('disabled')) {
-            // TODO: Save changes
-        }
+        var query = {
+            name: $('#edit-name').val(),
+            bio: $('#edit-about').val(),
+            interests: $('#edit-interests').val()
+        };
+
+        $.post(location.href, query, function(data, status){
+            if (status) {
+                // Saved changes
+                $('#change_profile').prop("disabled", true);
+            }
+        });
     });
 
     /* buttons setup */

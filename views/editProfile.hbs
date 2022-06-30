@@ -20,9 +20,10 @@
 </head>
 
 <body>
-    {{> navbar user=user}}
+    {{> navbar user=username}}
 
 	<div id="display-body">
+	<!--form method="POST"-->
 	<div class="profile-box center">
 		<div class="col">
 			<img id="profile-picture" src="/resources/profile2.png" />
@@ -36,16 +37,17 @@
 		</div>
 		<div class="col">
 			<h3>About Me</h3>
-			<input type="text" id="edit-about" name="aboutMe" value="{{aboutMe}}" />
+			<input type="text" id="edit-about" name="bio" value="{{aboutMe}}" />
 			<h3>My Interests</h3>
-			<input type="text" id="edit-interests" name="myInterests" value="{{myInterests}}" />
+			<input type="text" id="edit-interests" name="interests" value="{{myInterests}}" />
 
 			<div class="btn-container">
-				<button id="change_profile" class="disabled">Save</button>
+				<button id="change_profile" class="green" disabled>Save</button>
 				<button id="cancel" class="light">Cancel</button>
 			</div>
 		</div>
 	</div>
+	<!--/form-->
 	</div>
 
 </body>
