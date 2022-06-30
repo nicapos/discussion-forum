@@ -1,9 +1,8 @@
 $(document).ready(function(){
-    
-    const username = $('nav > #profile-slot > #username').text();
 
     /* Buttons Setup */
     $('#view-profile').click( function() {
+        let username = $('nav > #profile-slot > #username').text();
         location.href = '/user/' + username;
     });
 
@@ -15,51 +14,64 @@ $(document).ready(function(){
 
     /* Fill 'name' with 'username' if 'name' is blank */
     if ( !$('.col > h1').text() ) {
+        let username = $('nav > #profile-slot > #username').text();
         $('.col > h1').text(username);
     }
     
     /* Form Setup */
+    let username = $('nav > #profile-slot > #username').text();
     $('#new_username').attr('placeholder', username);
 
     /* Change Username */
     $('#new_username').keyup(function () {
-        if ( $('#new_username').val() == username ) {
-            $('#msg1').text('New username must not be the same as the current username.');
-            $('#change_username').addClass('disabled');
-            $('#change_username').removeClass('green');
-            $('#change_username').attr ("disabled", true);
-
-        } else if ( !$('#new_username').val() ) {
-            $('#change_username').addClass('disabled');
-            $('#change_username').removeClass('green');
-            $('#change-username').attr ("disabled", true);
-
-        } else {
-            $('#msg1').text('');
-            $('#change_username').removeClass('disabled');
-            $('#change_username').addClass('green');
-            $('#change_username').attr ("disabled", false);
-
-        }
         var newUsername = $('#new_username').val();
         let query = {username: newUsername};
-        $.get('/checkUsername', query, function(result){
-            if(result.username == newUsername)
-            {
-                $('#msg1').text('New username is taken');
-                $('#change_username').addClass('disabled');
-                $('#change_username').removeClass('green');
-                $('#change_username').attr ("disabled", true);
+        const regexp = /^[a-zA-Z0-9_]+$/;
 
+        $('#msg1').css('color', 'red');
+
+        if ( !$('#new_username').val() || $('#new_username').val() == '' )
+            $('#change-username').prop("disabled", true);
+        else
+            $.get('/checkUsername', query, function(result){
+                if (result.username == newUsername) {
+                    $('#msg1').text('New username is taken');
+                    $('#change_username').prop("disabled", true);
+                }
+                else {
+                    let username = $('nav > #profile-slot > #username').text();
+                    if ( $('#new_username').val() == username ) {
+                        $('#msg1').text('New username must not be the same as the current username.');
+                        $('#change_username').prop("disabled", true);
+
+                    } else if ( $('#new_username').val().search(regexp) == -1 ) {
+                        $('#msg1').text('Only alphanumeric characters and underscores (_) are accepted.');
+                        $('#change_username').prop("disabled", true);
+
+                    }
+                    else {  // Passed all checks, is a valid username.
+                        $('#msg1').text('');
+                        $('#change_username').prop("disabled", false);
+                    }
+                }
+            });
+    });
+
+    $('#change_username').click(function() {
+        var newUsername = $('#new_username').val();
+
+        $.post(location.href, {newUsername: newUsername}, function(data, status){
+            if (status) {
+                // Change usernames displayed
+                $('nav > #profile-slot > #username').text(newUsername);
+                $('.profile-box h2').text(newUsername);
+
+                // Saved changes
+                $('#change_username').prop('disabled', true);
+                $('#msg1').text('Your changes have been saved.');
+                $('#msg1').css('color', 'grey');
             }
-            else
-            {
-                $('#msg1').text('');
-                $('#change_username').removeClass('disabled');
-                $('#change_username').addClass('green');
-                $('#change_username').attr ("disabled", false);
-            }
-        })
+        });
     });
 
 
@@ -67,12 +79,10 @@ $(document).ready(function(){
     $('#confirm_password').keyup(function () {
         if ( $('#new_password').val() != $('#confirm_password').val() ) {
             $('#msg2').text('The passwords do not match.');
-            $('#change_password').addClass('disabled');
-            $('#change_password').removeClass('green');
+            $('#change_username').attr("disabled", true);
         } else {
             $('#msg2').text('');
-            $('#change_password').removeClass('disabled');
-            $('#change_password').addClass('green');
+            $('#change_username').attr("disabled", false);
         }
     });
 
