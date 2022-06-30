@@ -22,8 +22,18 @@ $(document).ready(function() {
         bShowSubitems = !bShowSubitems;
         $('#createSubf').css("display", (bShowSubitems ? "block" : "none"));
         $('#searchSubf').css("display", (bShowSubitems ? "block" : "none"));
-    } 
+    }
+
+    function toggleProfile() {
+        if (!bOpenNav)
+            toggleNav();
+        else {
+            var username = $('#profile-slot #username').text();
+            location.href = '/user/' + username;
+        }
+    }
 
     $("nav > button").click(toggleNav);
     $("#nav-grp").click(toggleSubitems);
+    $("nav img").click(toggleProfile);
 })
