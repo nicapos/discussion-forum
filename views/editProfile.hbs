@@ -16,6 +16,11 @@
 		#edit-account { 
 			width: auto; 
 		}
+		#msg {
+			font-style: italic;
+			color: grey;
+			display: inline;
+		}
     </style>
 </head>
 
@@ -37,11 +42,12 @@
 		</div>
 		<div class="col">
 			<h3>About Me</h3>
-			<input type="text" id="edit-about" name="bio" value="{{aboutMe}}" />
+			<div id="edit-about" contenteditable>{{aboutMe}}</div>
 			<h3>My Interests</h3>
-			<input type="text" id="edit-interests" name="interests" value="{{myInterests}}" />
+			<div id="edit-interests" contenteditable>{{myInterests}}</div>
 
 			<div class="btn-container">
+				<p id="msg"></p>
 				<button id="change_profile" class="green" disabled>Save</button>
 				<button id="cancel" class="light">Cancel</button>
 			</div>

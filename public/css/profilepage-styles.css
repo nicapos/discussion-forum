@@ -122,7 +122,17 @@ p[id^=msg] {
 	color: red;
 }
 
-input[id^=edit] {
+div[id^=edit] {
+	width: 100%;
+	padding: 8px;
+	border: 1px solid silver;
+	border-radius: 5px;
+	margin-bottom: 10px;
+	font-size: 15px;
+	line-height: 26px;
+}
+
+input[id^=edit], div[id^=edit] {
 	margin-top: 7px;
 	margin-bottom: 20px;
 }

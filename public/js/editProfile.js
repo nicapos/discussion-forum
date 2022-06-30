@@ -1,17 +1,20 @@
 $(document).ready(function(){ 
 
     /* Get initial values */
+    const username = $('.col h2').text();
     const name = $('#name').val();
     const aboutMe = $('#edit-about').val();
     const myInterests = $('#edit-interests').val();
 
     function checkValuesChanged() {
+        // Remove msg text (if any)
+        $('#msg').text('');
+
         // Check if profile info has changed
-        if ($('#edit-name').val() == name && $('#edit-about').val() == aboutMe && $('#edit-interests').val() == myInterests) {
+        if ($('#edit-name').val() == name && $('#edit-about').val() == aboutMe && $('#edit-interests').val() == myInterests)
             $('#change_profile').prop("disabled", true);
-        } else {
+        else
             $('#change_profile').prop("disabled", false);
-        }
     }
 
     $('#edit-name').keyup(checkValuesChanged);
@@ -22,21 +25,21 @@ $(document).ready(function(){
     $('#change_profile').click(function() {
         var query = {
             name: $('#edit-name').val(),
-            bio: $('#edit-about').val(),
-            interests: $('#edit-interests').val()
+            bio: $('#edit-about').text(),
+            interests: $('#edit-interests').text()
         };
 
         $.post(location.href, query, function(data, status){
             if (status) {
                 // Saved changes
-                $('#change_profile').prop("disabled", true);
+                $('#change_profile').prop('disabled', true);
+                $('#msg').text('Your changes have been saved.');
             }
         });
     });
 
     /* buttons setup */
     $('#view-profile').click(function() {
-        var username = $('.col h2').text();
         location.href = '/user/' + username;
     });
 
@@ -45,7 +48,7 @@ $(document).ready(function(){
     });
 
     $('#cancel').click(function() {
-        history.back() 
+        location.href = '/user/' + username;
     });
 
 });
