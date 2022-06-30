@@ -1,15 +1,16 @@
 $(document).ready(function () {
-
-    //TODO Get subforum name from URL
     $('#postThread').click(function(){
-        console.log(location.href);
-        $.post(location.href, {subforumName: "lol"}, function(data, status){
-            if(status){
-                //Message posted
+        //Gets data from editable content to textarea to send to POST request
+        $("#bodyContent").val($("#content").text());
+        $("#title").val($("#threadTitle").text());
 
-                window.location.href = '/home'; //use subforum view route
-                console.log('redirected');
-            }
-        });
-    })
+
+        if($("#bodyContent").val() && $("#title").val()){
+            $('form').submit();
+        }
+        else{
+            //TODO Error
+            $("#error").text("Please fill-up title and body");
+        }
+    });
 });

@@ -12,12 +12,6 @@ const forumController = {
         })
     },
 
-    checkSubforum: function(req, res){
-        db.findOne(Subforum, req.query, "", function(result){
-            res.send(result);
-        })
-    },
-
     getAddSubforum: function (req, res) {
         var user = req.session.username; 
         res.render('createSubforum', {user: user});
@@ -78,12 +72,23 @@ const forumController = {
         // TODO: Render page to create a new thread
         // To get the subforum name: req.params.subfName
         var user = req.session.username; 
-        res.render('createThread', {user: user});
+        var subfName = req.params.subfName;
+
+        db.findOne(Subforum, {subforumName: subfName}, "subforumName title description", function (result) {
+            let subforum = JSON.parse(JSON.stringify(result));
+
+            if (!subforum)
+                ; // TODO: Send to error 404 page
+            else
+                res.render('createThread', {user: user, subforum: subforum});
+        });
+
     },
 
     postCreateThread: function(req, res){
-        console.log(req.href);
-        //res.redirect('/subforum view');
+        console.log("Thread Title: "+req.body.title);
+        console.log("Body: "+req.body.bodyContent);
+        //TODO Add Created Thread to DB
     },
 
     getThread: function(req, res) {

@@ -31,21 +31,27 @@
     <div id="subforum-heading">
         <div id="subforum-info">
             <a href="index.html">
-                <h2>Copypastas</h2>
+                <h2 id="subforumTitle">{{subforum.title}}</h2>
             </a>
-            <p>Share your favorite copypastas.</p>
+            <p>{{subforum.description}}</p>
         </div>
     </div>
 
     <div id="text-editor" class="box-container">
         <h3>Create Thread</h3>
-
-        <div id="content" class="box-container" contenteditable></div>
-            <textarea id="my-textarea" style="display:none"></textarea>
+        <form name="createThread" method="POST">
+            <label for="threadTitle">Thread Title</label>
+			<div id="threadTitle" class="box-container" contenteditable></div>
+                <textarea name="title" id="title" style="display:none"></textarea>
+            <label for="content">Thread Body</label>
+            <div id="content" class="box-container" contenteditable></div>
+                <textarea name="bodyContent" id="bodyContent" style="display:none"></textarea>
+        </form>
         <div id="actions">
-            <button class="light" onclick="history.back()">Cancel</button>&nbsp;
-            <button id="postThread" class="green">Post</button>
+                <button class="light" onclick="history.back()">Cancel</button>&nbsp;
+                <button id="postThread" class="green">Post</button>
         </div>
+        <p id="error"></p>
     </div>
 
     <!-- Set active item on navbar -->
