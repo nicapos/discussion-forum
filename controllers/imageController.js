@@ -8,9 +8,6 @@ const imageController = {
         // Check if profile img exists for user
         db.findOne(Image, {name: user}, null, function(exists){
             if (exists) {
-                // TODO: Update profile img if it exists na
-
-                /* nagbbug to sakin, to be fixed pa
                 var query = {
                     $set: {
                         "contentType": req.file.mimetype,
@@ -19,12 +16,9 @@ const imageController = {
                     }
                 };
 
-                db.updateOne(Image, query, function(flag) {
+                db.updateOne(Image, {name: user}, query, function(flag) {
                     //res.send(flag);
                 });
-                */
-
-                res.send(false); // temp
             } else {
                 var query = {
                     name: user,
