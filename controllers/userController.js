@@ -40,6 +40,7 @@ const userController = {
                     if(equal){
                         req.session.username = result.username;
                         res.redirect('/home');
+                        req.session.save();
                     }
 
                     else{
