@@ -88,7 +88,30 @@ const forumController = {
     postCreateThread: function(req, res){
         console.log("Thread Title: "+req.body.title);
         console.log("Body: "+req.body.bodyContent);
-        //TODO Add Created Thread to DB
+        console.log("Subforum Name: "+req.params.subfName);
+
+
+        var user = req.session.username; 
+        var subfName = req.params.subfName;
+        var threadTitle = req.body.title.trim().toLowerCase().replace(' ','-');
+        var threadContent = req.body.bodyContent;
+        //TODO generate and assign a threadID        
+        //TODO data pushed in subforum must be the threadID not threadTitle
+        db.updateOne(Subforum, {subforumName: subfName}, {$push:{"threads": threadTitle}}, function(result){
+            let query = {
+                //TODO threadID val
+                subforumName: subfName,
+                threadTitle: threadTitle,
+                username: user,
+                datePosted: new Date(Date.now()).toISOString(),
+                body: threadContent
+            };
+            db.insertOne(Thread, query, function(result){
+                console.log(result);
+            })
+
+            res.redirect('/subf/'+subfName+ '/'+threadTitle); //threadTitle is temporary change to threadID
+        });
     },
 
     getThread: function(req, res) {
@@ -96,18 +119,11 @@ const forumController = {
         var user = req.session.username; 
         var subfName = req.params.subfName;
         var threadId = req.params.threadId;
-
+        var threadTitle = req.params.threadTitle;
+        
         var data = {
             user: user,
-            thread: {
-                threadID: 1,
-                subforumID: "copypastas",
-                threadTitle: "how to use the operator",
-                postedBy: "charlie123",
-                datePosted: "May 17, 2022",
-                body: "I'm not sure why folks say it's simple to op. It's obvious that timing the click to shoot with the op while holding an angle is difficult...",
-                likes: 0
-            }, // temp, replace with null
+            thread: null,
             subforum: null,
             replies: [
                 {
@@ -121,7 +137,12 @@ const forumController = {
 
         db.findOne(Subforum, {subforumName: subfName}, "subforumName title description", function (result) {
             data.subforum = JSON.parse(JSON.stringify(result));
-            res.render('threadView', data);
+            //TODO refer to threadID
+            db.findOne(Thread, {threadTitle: threadTitle}, "threadTitle username datePosted body", function(result){
+                data.thread = JSON.parse(JSON.stringify(result));
+                res.render('threadView', data);
+            })
+
 
             // TODO: Get thread info
 
