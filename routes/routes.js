@@ -38,7 +38,7 @@ app.get('/delete', function (req, res) {
     res.render('deleteAccount');
 });
 
-app.post('/upload_files', upload.single('edit_profile_photo'), imageController.postUpload);
+app.post('/uploadImg', upload.single('edit_profile_photo'), imageController.postUpload);
 app.get('/images/:name', imageController.getImage);
 
 

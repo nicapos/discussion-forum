@@ -5,24 +5,48 @@ $(document).ready(function(){
     const name = $('#name').val();
     const aboutMe = $('#edit-about').val();
     const myInterests = $('#edit-interests').val();
+    const profileImg = $('#profile-picture').attr('src');
 
     function checkValuesChanged() {
         // Remove msg text (if any)
         $('#msg').text('');
 
         // Check if profile info has changed
-        if ($('#edit-name').val() == name && $('#edit-about').val() == aboutMe && $('#edit-interests').val() == myInterests)
+        if (
+            $('#edit-name').val() == name && 
+            $('#edit-about').val() == aboutMe && 
+            $('#edit-interests').val() == myInterests && 
+            $('#profile-picture').attr('src') == profileImg
+        )
             $('#change_profile').prop("disabled", true);
         else
             $('#change_profile').prop("disabled", false);
     }
 
+    /* Show preview of new profile image */
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var fr = new FileReader();
+    
+            fr.onload = function (e) {
+                $('#profile-picture').attr('src', e.target.result);
+            }
+    
+            fr.readAsDataURL(input.files[0]);
+        }
+    }
+
     $('#edit-name').keyup(checkValuesChanged);
     $('#edit-about').keyup(checkValuesChanged);
     $('#edit-interests').keyup(checkValuesChanged);
+    $("#edit-profile-photo").change(function(){
+        checkValuesChanged();
+        readURL(this);
+    });
 
     /* asynchronously update profile */
     $('#change_profile').click(function() {
+        // #1: Update changes to name, bio, and interests
         var query = {
             name: $('#edit-name').val(),
             bio: $('#edit-about').text(),
@@ -31,7 +55,21 @@ $(document).ready(function(){
 
         $.post(location.href, query, function(data, status){
             if (status) {
+                // #2: Update changes to profile picture
+                var imgData = new FormData($('#img_form')[0]);
+        
+                $.ajax( {
+                    url: '/uploadImg',
+                    type: 'POST',
+                    data: imgData,
+                    processData: false,
+                    contentType: false
+                } );
+
                 // Saved changes
+                let newProfileImg = $('#profile-picture').attr('src');
+                $('nav #profile-img').attr('src', newProfileImg);
+                
                 $('#change_profile').prop('disabled', true);
                 $('#msg').text('Your changes have been saved.');
             }

@@ -3,21 +3,41 @@ const Image = require('../models/ImageModel.js');
 
 const imageController = {
     postUpload: function (req, res) {
-        // req.file is the name of your file in the form above, here 'edit_profile_photo'
-        // req.body will hold the text fields, if there were any 
-        // console.log(req.file, req.body);
-    
-        var query = {
-            name: req.file.originalname,
-            contentType: req.file.mimetype,
-            size: req.file.size,
-            data: req.file.buffer
-        };
-    
-        db.insertOne(Image, query, function(flag) {
-            console.log('Flag: '+flag);
-            res.send(flag);
-        });
+        var user = req.session.username;
+
+        // Check if profile img exists for user
+        db.findOne(Image, {name: user}, null, function(exists){
+            if (exists) {
+                // TODO: Update profile img if it exists na
+
+                /* nagbbug to sakin, to be fixed pa
+                var query = {
+                    $set: {
+                        "contentType": req.file.mimetype,
+                        "size": req.file.size,
+                        "data": req.file.buffer
+                    }
+                };
+
+                db.updateOne(Image, query, function(flag) {
+                    //res.send(flag);
+                });
+                */
+
+                res.send(false); // temp
+            } else {
+                var query = {
+                    name: user,
+                    contentType: req.file.mimetype,
+                    size: req.file.size,
+                    data: req.file.buffer
+                };
+
+                db.insertOne(Image, query, function(flag) {
+                    res.send(flag);
+                });
+            }
+        })
     },
 
     getImage: function (req, res) {
@@ -25,21 +45,18 @@ const imageController = {
         var projection = "name contentType size data";
 
         db.findOne(Image, query, projection, function(result) {
-            var imgData = JSON.parse(JSON.stringify(result));
-            var buf = Buffer.from(imgData.data.data);
-
-            /*var img = {
-                name: imgData.name,
-                contentType: imgData.contentType,
-                data: buf.toString('base64')
-            };
-            res.render('image', img);*/
- 
-            res.writeHead(200, {
-                'Content-Type': imgData.contentType,
-                'Content-Length': imgData.size
-            });
-            res.end(buf);
+            if (result) {
+                var imgData = JSON.parse(JSON.stringify(result));
+                var buf = Buffer.from(imgData.data.data);
+    
+                res.writeHead(200, {
+                    'Content-Type': imgData.contentType,
+                    'Content-Length': imgData.size
+                });
+                res.end(buf);
+            } else {
+                res.redirect('/resources/unknown.jpeg')
+            }
         });
     }
 }
