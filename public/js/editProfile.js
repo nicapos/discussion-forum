@@ -7,6 +7,12 @@ $(document).ready(function(){
     const myInterests = $('#edit-interests').text();
     const profileImg = $('#profile-picture').attr('src');
 
+    function activateSubmit(bool) {
+        $('#change_profile').prop("disabled", !bool);
+        $('#reset').css('display', bool ? 'block' : 'none');
+        $('#cancel').css('display', bool ? 'none' : 'block');
+    }
+
     function checkValuesChanged() {
         // Remove msg text (if any)
         $('#msg').text('');
@@ -17,15 +23,10 @@ $(document).ready(function(){
             $('#edit-about').text() == aboutMe && 
             $('#edit-interests').text() == myInterests && 
             $('#profile-picture').attr('src') == profileImg
-        ) {
-            $('#change_profile').prop("disabled", true);
-            $('#reset').css('display', 'none');
-            $('#cancel').css('display', 'block');
-        } else {
-            $('#change_profile').prop("disabled", false);
-            $('#reset').css('display', 'block');
-            $('#cancel').css('display', 'none');
-        }
+        )
+            activateSubmit(false);
+        else
+            activateSubmit(true);
     }
 
     /* Show preview of new profile image */
@@ -44,9 +45,20 @@ $(document).ready(function(){
     $('#edit-name').keyup(checkValuesChanged);
     $('#edit-about').keyup(checkValuesChanged);
     $('#edit-interests').keyup(checkValuesChanged);
-    $("#edit-profile-photo").change(function(){
-        checkValuesChanged();
-        readURL(this);
+    $("#edit-profile-photo").change(function() {
+        // Validate uploaded file
+        if ( $("#edit-profile-photo")[0].size >= 16777216 ) {
+            $('#msg').css('color', 'red');
+            $('#msg').text('File exceeds 16 MB.');
+            activateSubmit(false);
+        } else {
+            $('#msg').css('color', 'grey');
+            $('#msg').text('');
+            activateSubmit(true);
+
+            checkValuesChanged();
+            readURL(this);  // Show preview of profile
+        }
     });
 
     /* asynchronously update profile */
@@ -100,9 +112,7 @@ $(document).ready(function(){
         $('#edit-interests').text(myInterests);
         $('#profile-picture').attr('src', profileImg);
 
-        $('#change_profile').prop("disabled", true);
-        $('#reset').css('display', 'none');
-        $('#cancel').css('display', 'block');
+        activateSubmit(false);
     });
 
 });
