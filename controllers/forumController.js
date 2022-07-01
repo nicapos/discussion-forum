@@ -52,12 +52,14 @@ const forumController = {
             let subforum = JSON.parse(JSON.stringify(result));
 
             // TODO: Get threads info
+            db.findMany(Thread, {subforumName: subfName}, "threadTitle username datePosted body", function(result){
+                let threads = JSON.parse(JSON.stringify(result));
+                res.render('subforumView', {user: user, subforum: subforum, threads: threads});
+            })
 
             if (!subforum)
                 ; // TODO: Send to error 404 page
-            else
-                res.render('subforumView', {user: user, subforum: subforum});
-        });
+            });
     },
 
     postUpdateSubforum: function(req, res) {

@@ -37,41 +37,9 @@
 
         <b>Recent Threads</b>
 
-        <div class="box-container">
-            <a href="03.html"><h3>how to use the operator</h3></a>
-            <div id="author-info">
-                <img src="/resources/profile1.png" />
-                <span>
-                    <a href="../../user/charlie123.html">charlie123</a>
-                    <p>Last updated May 17, 2022</p>
-                </span>
-            </div>
-            <p class="content-preview">I'm not sure why folks say it's simple to op. It's obvious that timing the click to shoot with the op while holding an angle is difficult. There's a good probability you'll miss it. It takes a lot of</p>
-        </div>
-
-        <div class="box-container">
-            <a href="02.html"><h3>Instalocking in Valorant</h3></a>
-            <div id="author-info">
-                <img src="/resources/profile2.png" />
-                <span>
-                    <a href="../../user/alpha123.html">alpha123</a>
-                    <p>Last updated May 11, 2022</p>
-                </span>
-            </div>
-            <p class="content-preview">As an instalock player, I acknowledge the fact my teammates have to pick around my instalock, therefore, I vow to my teammates that I will not 1. Compain about team comp 2. Complain about bottom</p>
-        </div>
-
-        <div class="box-container">
-            <a href="01.html"><h3>im not like the other girls</h3></a>
-            <div id="author-info">
-                <img src="/resources/profile3.png" />
-                <span>
-                    <a href="../../user/beta123.html">beta123</a>
-                    <p>Last updated May 10, 2022</p>
-                </span>
-            </div>
-            <p class="content-preview">idk if i'm the only girl na hindi pa nakinig sa red taylor's version? like ang jeje kasi guys, tsaka i'm not that kind of girl eh. gusto ko kasi yung music taste ko ako lang nakakaalam. i wanna keep</p>
-        </div>
+        {{#each threads}}
+            {{> thread}}
+        {{/each}}
 
     </div>
 
