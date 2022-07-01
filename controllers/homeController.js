@@ -6,9 +6,16 @@ const Thread = require('../models/ThreadModel.js');
 const homeController = {
     getHome: function(req, res){
         var user = req.session.username;
-        db.findMany(Thread, {username: req.session.username}, {threadID: 0, likes: 0}, function(result){
-            console.log(result);
-            res.render('home',{recents: result, username: user});
+
+        var data = {
+            user: user, 
+            recents: null
+        };
+
+        db.findMany(Thread, {username: req.session.username}, "_id username threadTitle subforumName datePosted body", function(result){
+            parsedResult = JSON.parse(JSON.stringify(result));
+            data.recents = parsedResult;
+            res.render('home',data);
         })
 
         //TODO render joined subforums

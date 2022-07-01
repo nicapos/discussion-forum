@@ -89,11 +89,6 @@ const forumController = {
     },
 
     postCreateThread: function(req, res){
-        console.log("Thread Title: "+req.body.title);
-        console.log("Body: "+req.body.bodyContent);
-        console.log("Subforum Name: "+req.params.subfName);
-
-
         var user = req.session.username; 
         var subfName = req.params.subfName;
         var threadTitle = req.body.title;
