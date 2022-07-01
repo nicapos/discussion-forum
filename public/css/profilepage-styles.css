@@ -147,10 +147,36 @@ input[id^=edit], div[id^=edit] {
 	border-bottom: 1px solid silver;
 	padding: 0 8px;
 }
+
 #editUsername, #editPassword{
 	width: 100%;
 	padding: 8px;
 	border: 1px solid silver;
 	border-radius: 5px;
 	margin-bottom: 10px;
+}
+
+#container {
+	margin-top: -10px;
+	margin-bottom: 20px;
+	align-items: center;
+}
+
+input[type=file], input[type=file]::-webkit-file-upload-button {
+	/*display: none;*/
+}
+
+#btn-change-photo {
+	margin: auto;
+	width: 200px;
+	padding: 4px 16px;
+	border: 1px solid #808080;
+	color: #808080;
+	font-weight: 300;
+	border-radius: 5px;
+}
+
+#btn-change-photo:hover {
+	border: 2px solid #f2f2f2;
+	background-color: #f2f2f2;
 }

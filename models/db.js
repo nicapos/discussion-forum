@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const ThreadModel = require('./ThreadModel.js');
 const UserModel = require('./UserModel.js');
 const SubfromModel = require('./SubforumModel.js');
+const ImageModel = require('./ImageModel.js');
 
 dotenv.config();
 const url = process.env.DB_URL;

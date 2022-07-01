@@ -1,4 +1,8 @@
 const express = require('express');
+const multer = require("multer");
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
+
 
 const controller = require(`../controllers/controller.js`);
 const userController = require(`../controllers/userController.js`);
@@ -6,6 +10,7 @@ const forumController = require(`../controllers/forumController.js`);
 const homeController = require('../controllers/homeController.js');
 const profileController = require('../controllers/profileController.js');
 const settingsController = require('../controllers/settingsController.js');
+const imageController = require('../controllers/imageController.js');
 
 const app = express();
 
@@ -32,6 +37,9 @@ app.post('/changePassword', settingsController.postChangePassword);
 app.get('/delete', function (req, res) {
     res.render('deleteAccount');
 });
+
+app.post('/upload_files', upload.single('edit_profile_photo'), imageController.postUpload);
+app.get('/images/:name', imageController.getImage);
 
 
 app.get('/subf/new', forumController.getAddSubforum);
