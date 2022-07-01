@@ -104,14 +104,12 @@ i {
 	height: 40px;
 }
 
-button[id^=change] {
+.btn-container button {
 	display: block;
 	float: right;
 }
 
-#cancel {
-	display: block;
-	float: right;
+.btn-container .light {
 	margin-right: 10px;
 }
 
@@ -163,7 +161,7 @@ input[id^=edit], div[id^=edit] {
 }
 
 input[type=file], input[type=file]::-webkit-file-upload-button {
-	/*display: none;*/
+	display: none;
 }
 
 #btn-change-photo {

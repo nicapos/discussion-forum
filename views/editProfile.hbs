@@ -21,6 +21,9 @@
 			color: grey;
 			display: inline;
 		}
+		#reset {
+			display: none;
+		}
     </style>
 </head>
 
@@ -35,7 +38,7 @@
 			<div id="container">
 				<center>
 				<form id="img_form" enctype="multipart/form-data" method="post">
-					<label id="btn-change-photo" for="edit_profile_photo">Change Photo</label><br />
+					<label id="btn-change-photo" for="edit-profile-photo">Change Photo</label><br />
 					<input type="file" name="edit_profile_photo" id="edit-profile-photo" />
 				</form>
 				</center>
@@ -59,6 +62,7 @@
 				<p id="msg"></p>
 				<button id="change_profile" class="green" disabled>Save</button>
 				<button id="cancel" class="light">Cancel</button>
+				<button id="reset" class="light">Reset</button>
 			</div>
 		</div>
 	</div>

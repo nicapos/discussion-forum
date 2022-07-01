@@ -3,8 +3,8 @@ $(document).ready(function(){
     /* Get initial values */
     const username = $('.col h2').text();
     const name = $('#name').val();
-    const aboutMe = $('#edit-about').val();
-    const myInterests = $('#edit-interests').val();
+    const aboutMe = $('#edit-about').text();
+    const myInterests = $('#edit-interests').text();
     const profileImg = $('#profile-picture').attr('src');
 
     function checkValuesChanged() {
@@ -14,13 +14,18 @@ $(document).ready(function(){
         // Check if profile info has changed
         if (
             $('#edit-name').val() == name && 
-            $('#edit-about').val() == aboutMe && 
-            $('#edit-interests').val() == myInterests && 
+            $('#edit-about').text() == aboutMe && 
+            $('#edit-interests').text() == myInterests && 
             $('#profile-picture').attr('src') == profileImg
-        )
+        ) {
             $('#change_profile').prop("disabled", true);
-        else
+            $('#reset').css('display', 'none');
+            $('#cancel').css('display', 'block');
+        } else {
             $('#change_profile').prop("disabled", false);
+            $('#reset').css('display', 'block');
+            $('#cancel').css('display', 'none');
+        }
     }
 
     /* Show preview of new profile image */
@@ -69,7 +74,7 @@ $(document).ready(function(){
                 // Saved changes
                 let newProfileImg = $('#profile-picture').attr('src');
                 $('nav #profile-img').attr('src', newProfileImg);
-                
+
                 $('#change_profile').prop('disabled', true);
                 $('#msg').text('Your changes have been saved.');
             }
@@ -87,6 +92,17 @@ $(document).ready(function(){
 
     $('#cancel').click(function() {
         location.href = '/user/' + username;
+    });
+
+    $('#reset').click(function() {
+        $('#name').val(name);
+        $('#edit-about').text(aboutMe);
+        $('#edit-interests').text(myInterests);
+        $('#profile-picture').attr('src', profileImg);
+
+        $('#change_profile').prop("disabled", true);
+        $('#reset').css('display', 'none');
+        $('#cancel').css('display', 'block');
     });
 
 });
