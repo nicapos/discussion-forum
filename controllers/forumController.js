@@ -3,6 +3,7 @@ const Thread = require('../models/ThreadModel.js');
 const Reply = require('../models/ReplyModel.js');
 const Subforum = require('../models/SubforumModel.js');
 const User = require('../models/UserModel.js');
+const mongoose = require('mongoose');
 
 const forumController = {
     
@@ -95,25 +96,26 @@ const forumController = {
 
         var user = req.session.username; 
         var subfName = req.params.subfName;
-        var threadTitle = req.body.title.trim().toLowerCase().replace(' ','-');
+        var threadTitle = req.body.title;
         var threadContent = req.body.bodyContent;
-        //TODO generate and assign a threadID        
-        //TODO data pushed in subforum must be the threadID not threadTitle
-        db.updateOne(Subforum, {subforumName: subfName}, {$push:{"threads": threadTitle}}, function(result){
-            let query = {
-                //TODO threadID val
-                subforumName: subfName,
-                threadTitle: threadTitle,
-                username: user,
-                datePosted: new Date(Date.now()).toISOString(),
-                body: threadContent
-            };
-            db.insertOne(Thread, query, function(result){
-                console.log(result);
-            })
+       
+        let query = {
+            subforumName: subfName,
+            threadTitle: threadTitle,
+            username: user,
+            datePosted: new Date(Date.now()).toISOString(),
+            body: threadContent
+        };
 
-            res.redirect('/subf/'+subfName+ '/'+threadTitle); //threadTitle is temporary change to threadID
-        });
+        db.insertOne(Thread, query, function(result){
+            let parsedResult = JSON.parse(JSON.stringify(result)); 
+            var threadId = parsedResult._id
+            console.log(threadId);
+            db.updateOne(Subforum, {subforumName: subfName}, {$push:{"threads": threadId}}, function(result){
+                res.redirect('/subf/'+subfName+ '/'+threadId); //threadTitle is temporary change to threadID
+            });
+        })
+        
     },
 
     getThread: function(req, res) {
@@ -121,7 +123,6 @@ const forumController = {
         var user = req.session.username; 
         var subfName = req.params.subfName;
         var threadId = req.params.threadId;
-        var threadTitle = req.params.threadTitle;
         
         var data = {
             user: user,
@@ -139,14 +140,10 @@ const forumController = {
 
         db.findOne(Subforum, {subforumName: subfName}, "subforumName title description", function (result) {
             data.subforum = JSON.parse(JSON.stringify(result));
-            //TODO refer to threadID
-            db.findOne(Thread, {threadTitle: threadTitle}, "threadTitle username datePosted body", function(result){
+            db.findOne(Thread, {_id: mongoose.Types.ObjectId(threadId)}, "threadTitle username datePosted body", function(result){
                 data.thread = JSON.parse(JSON.stringify(result));
                 res.render('threadView', data);
             })
-
-
-            // TODO: Get thread info
 
             if (!data.thread || !data.subforum)
                 ; // TODO: Send to error 404 page

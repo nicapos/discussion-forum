@@ -51,7 +51,7 @@ app.get('/subf/:subfName/join', ); // TODO: Join subforum
 app.get('/subf/:subfName/new/thread', forumController.getCreateThread);
 app.post('/subf/:subfName/new/thread', forumController.postCreateThread); // TODO: Create new thread
 
-app.get('/subf/:subfName/:threadTitle', forumController.getThread);
+app.get('/subf/:subfName/:threadId', forumController.getThread);
 
 app.get('/home', homeController.getHome);
 app.get('/search', function (req, res) {
