@@ -47,7 +47,7 @@ app.post('/new/subf', forumController.postAddSubforum);
 app.get('/checkSubforum', forumController.checkSubforum);
 
 app.get('/subf/:subfName', forumController.getSubforum);
-app.get('/subf/:subfName/join', ); // TODO: Join subforum
+app.get('/subf/:subfName/join', forumController.joinSubforum); // TODO: Join subforum
 app.get('/subf/:subfName/new/thread', forumController.getCreateThread);
 app.post('/subf/:subfName/new/thread', forumController.postCreateThread); // TODO: Create new thread
 

@@ -27,8 +27,8 @@
             <p>{{ subforum.description }}</p>
         </div>
         <div id="action-buttons">
-            <button class="green">Join</button>
-            <button class="light">Create Thread</button>
+            <button id="join-btn" class="green">Join</button>
+            <button id="createThread-btn" class="light">Create Thread</button>
         </div>
     </div>
 
@@ -52,6 +52,22 @@
             location.href = location.href + '/new/thread';
         });
         $('nav > #subforums').addClass('active');
+
+        var username = $('nav > #profile-slot > #username').text();
+        var subf = $('#subforum-info h2').text().trim().toLowerCase().replace(' ','-');
+        console.log(subf);
+        let query = {
+            members: username,
+            subforumName: subf
+        }
+        $.get('/checkSubforum', query, function(result){
+            if(result){
+                $("#join-btn").hide();
+            }
+            else{
+                $("#createThread-btn").hide();
+            }
+        })
     </script>	
 </body>
 

@@ -6,7 +6,7 @@ const User = require('../models/UserModel.js');
 const mongoose = require('mongoose');
 
 const forumController = {
-    
+
     checkSubforum: function(req, res){
         db.findOne(Subforum, req.query, "", function(result){
             res.send(result);
@@ -40,9 +40,7 @@ const forumController = {
             
             if (flag)
                 res.redirect('/subf/' + name); // Redirect to newly created subforum
-        });
-
-        
+        });        
     },
 
     getSubforum: function(req, res) {
@@ -53,14 +51,28 @@ const forumController = {
             let subforum = JSON.parse(JSON.stringify(result));
 
             // TODO: Get threads info
-            db.findMany(Thread, {subforumName: subfName}, "_id subforumName threadTitle username datePosted body", function(result){
-                let threads = JSON.parse(JSON.stringify(result));
-                res.render('subforumView', {user: user, subforum: subforum, threads: threads});
-            })
+
 
             if (!subforum)
-                ; // TODO: Send to error 404 page
-            });
+                res.render('error'); // TODO: Send to error 404 page
+            else{
+                db.findMany(Thread, {subforumName: subfName}, "_id subforumName threadTitle username datePosted body", function(result){
+                    let threads = JSON.parse(JSON.stringify(result));
+                    res.render('subforumView', {user: user, subforum: subforum, threads: threads});
+                })
+            }
+        });
+    },
+
+    joinSubforum: function(req, res){
+        var user = req.session.username;
+        var subf = req.params.subfName;
+
+        db.updateOne(Subforum, {subforumName: subf}, {$push:{"members":user}}, function(result){
+            db.updateOne(User, {username: user}, {$push:{"subforums":subf}}, function(result){
+                res.redirect('/subf/'+subf);
+            })
+        })
     },
 
     postUpdateSubforum: function(req, res) {
