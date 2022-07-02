@@ -9,19 +9,21 @@ const homeController = {
 
         var data = {
             user: user, 
-            recents: null
+            recents: null,
+            subforums: [] //TODO push subforum Title
         };
 
         var threads = [];
 
-        db.findMany(Subforum, {members: user}, "threads", function(result){
-
+        db.findMany(Subforum, {members: user}, "subforumName threads", function(result){
             //push each threadId to threads
             result.forEach(function(subfThreads){
+                    data.subforums.push(subfThreads.subforumName);
                 subfThreads.threads.forEach(function(threadId){
                     threads.push(threadId);
                 })
             });
+            console.log(data.subforums);
             
             db.findMany(Thread, {_id: {$in: threads}}, "_id username threadTitle subforumName datePosted body", function(result){
                 parsedResult = JSON.parse(JSON.stringify(result));

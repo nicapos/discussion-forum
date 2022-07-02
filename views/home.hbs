@@ -41,8 +41,9 @@
         <div id="right-col">
             <div id="joined-subforums" class="box-container">
                 <b>Joined Subforums</b>
-                <a href="subf/copypastas">Copypastas</a>
-                <a href="subf/freedomWall/">Freedom Wall</a>
+                {{#each subforums}}
+                    <a href="subf/{{this}}">{{this}}</a> <!-- TODO subforum TItle must be rendered not subforumName-->
+                {{/each}}
             </div>
         </div>
 
