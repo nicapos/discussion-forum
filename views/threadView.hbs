@@ -48,10 +48,14 @@
         <h3>Reply to Thread</h3>
 
         <div id="content" class="box-container" contenteditable></div>
+        
+        <form name="replyForm" method="POST">
+            <textarea name="reply" id="reply" style="display:none"></textarea>
+        </form>
 
         <div id="actions">
             <button class="light">Cancel</button>&nbsp;
-            <button class="green">Post</button>
+            <button id="postReply" class="green" disabled>Post</button>
         </div>
     </div>
     

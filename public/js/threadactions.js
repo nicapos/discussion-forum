@@ -81,4 +81,20 @@ $(document).ready(function() {
     $("#mail-share").click(function() {
         fbForm.submit()
     });
+
+    $('#postReply').click(function(){
+        $('#reply').val($('#content').text());
+
+        if($('#reply').val() != ""){
+            $('form').submit();
+        }
+    })
+
+    $('#content').keyup(function(){
+        if($('#content').text() == "")
+            $('#postReply').prop("disabled", true);
+        else
+            $('#postReply').prop("disabled", false);
+        console.log($('#content').text());
+    })
 })

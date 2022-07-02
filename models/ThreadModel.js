@@ -7,8 +7,8 @@ var ThreadSchema = new mongoose.Schema({
     username: String,
     datePosted: Date,
     body: String,
-     likes: Number
-    //comments
+    likes: Number,
+    replies: [mongoose.Types.ObjectId]
 });
 
 module.exports = mongoose.model('Thread', ThreadSchema);

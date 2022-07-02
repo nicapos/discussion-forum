@@ -53,6 +53,7 @@ app.get('/subf/:subfName/new/thread', threadController.getCreateThread);
 app.post('/subf/:subfName/new/thread', threadController.postCreateThread); // TODO: Create new thread
 
 app.get('/subf/:subfName/:threadId', threadController.getThread);
+app.post('/subf/:subfName/:threadId', threadController.postThreadReply);
 
 app.get('/home', homeController.getHome);
 app.get('/search', function (req, res) {

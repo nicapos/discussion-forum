@@ -57,14 +57,7 @@ const threadController = {
             user: user,
             thread: null,
             subforum: null,
-            replies: [
-                {
-                    threadID: 1,
-                    postedBy: "alpha123",
-                    datePosted: "May 17, 2022",
-                    body: "Wow. This is very informative. Thank you."
-                } // temp, replace with null
-            ]
+            replies: null
         };
 
         db.findOne(Subforum, {subforumName: subfName}, "subforumName title description", function (result) {
@@ -74,16 +67,52 @@ const threadController = {
                 res.render('error');
 
             else{
-                db.findOne(Thread, {_id: mongoose.Types.ObjectId(threadId)}, "threadTitle username datePosted body", function(result){
+                db.findOne(Thread, {_id: mongoose.Types.ObjectId(threadId)}, "threadTitle username datePosted body replies", function(result){
                     data.thread = JSON.parse(JSON.stringify(result));
+                    console.log(result.replies);
                     if(!data.thread)
                         res.render('error');
 
-                    res.render('threadView', data);
+                    else{
+                        db.findMany(Reply, {_id: result.replies}, "", function(result){
+                            data.replies = JSON.parse(JSON.stringify(result));
+                            if(!data.replies)
+                                res.render('error');
+                            else
+                                res.render('threadView', data);
+                        })
+                    }
                 })
             }
         });
-        console.log(data);
+    },
+
+    postThreadReply: function(req, res){
+        var user = req.session.username;
+        var threadId = req.params.threadId;
+        var body = req.body.reply;
+        var subfName = req.params.subfName;
+
+        let query = {
+            threadId: threadId,
+            username: user,
+            datePosted: new Date(Date.now()).toISOString(),
+            body: body
+        };
+
+        db.insertOne(Reply, query, function(result){
+            if(!result){
+                res.render('error');
+            }
+            else{
+                db.updateOne(Thread, {_id: threadId}, {$push:{"replies":result._id}},function(result){
+                    if(!result)
+                        res.render('error');
+                    else
+                        res.redirect('/subf/'+subfName+'/'+threadId);
+                })
+            }
+        })
     },
 
     postDeleteThread: function(req, res) {

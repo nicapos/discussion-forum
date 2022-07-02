@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');
 
 var ReplySchema = new mongoose.Schema({
-    threadID: Number,
-    postedBy: String,
+    threadId: mongoose.Types.ObjectId,
+    username: String,
     datePosted: Date,
     body: String,
 });
