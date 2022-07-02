@@ -3,32 +3,48 @@ const Thread = require('../models/ThreadModel.js');
 const Reply = require('../models/ReplyModel.js');
 const Subforum = require('../models/SubforumModel.js');
 const User = require('../models/UserModel.js');
+const mongoose = require('mongoose');
 
 const threadController = {
 
     getCreateThread: function (req, res) {
         var user = req.session.username; 
-        res.render('createThread', {user: user});
+        var subfName = req.params.subfName;
+
+        db.findOne(Subforum, {subforumName: subfName}, "subforumName title description", function (result) {
+            let subforum = JSON.parse(JSON.stringify(result));
+
+            if (!subforum)
+                res.render('error'); // TODO: Send to error 404 page
+            else
+                res.render('createThread', {user: user, subforum: subforum});
+        });
+
     },
 
-    postCreateThread: function(req,res) {
-        var user = req.session.username;
-        var title = req.body.title;
-        var post = req.body.threadpost;
-        var date = req.body.date;
-
-        var query = {
-            threadID: threadID,
-            subforumID: subforumID,
-            title: title,
-            user: user,
-            post: post,
-            replies: []
+    postCreateThread: function(req, res){
+        var user = req.session.username; 
+        var subfName = req.params.subfName;
+        var threadTitle = req.body.title;
+        var threadContent = req.body.bodyContent;
+       
+        let query = {
+            subforumName: subfName,
+            threadTitle: threadTitle,
+            username: user,
+            datePosted: new Date(Date.now()).toISOString(),
+            body: threadContent
         };
 
-        db.insertOne(Thread, query, function(flag) {
-            // TODO: post
-        });
+        db.insertOne(Thread, query, function(result){
+            let parsedResult = JSON.parse(JSON.stringify(result)); 
+            var threadId = parsedResult._id
+            console.log(threadId);
+            db.updateOne(Subforum, {subforumName: subfName}, {$push:{"threads": result}}, function(result){
+                res.redirect('/subf/'+subfName+ '/'+threadId); //threadTitle is temporary change to threadID
+            });
+        })
+        
     },
 
     getThread: function(req, res) {
@@ -36,18 +52,10 @@ const threadController = {
         var user = req.session.username; 
         var subfName = req.params.subfName;
         var threadId = req.params.threadId;
-
+        
         var data = {
             user: user,
-            thread: {
-                threadID: 1,
-                subforumID: "copypastas",
-                threadTitle: "how to use the operator",
-                postedBy: "charlie123",
-                datePosted: "May 17, 2022",
-                body: "I'm not sure why folks say it's simple to op. It's obvious that timing the click to shoot with the op while holding an angle is difficult...",
-                likes: 0
-            }, // temp, replace with null
+            thread: null,
             subforum: null,
             replies: [
                 {
@@ -61,14 +69,19 @@ const threadController = {
 
         db.findOne(Subforum, {subforumName: subfName}, "subforumName title description", function (result) {
             data.subforum = JSON.parse(JSON.stringify(result));
-            res.render('threadView', data);
+            
+            if(!data.subforum)
+                res.render('error');
 
-            // TODO: Get thread info
+            else{
+                db.findOne(Thread, {_id: mongoose.Types.ObjectId(threadId)}, "threadTitle username datePosted body", function(result){
+                    data.thread = JSON.parse(JSON.stringify(result));
+                    if(!data.thread)
+                        res.render('error');
 
-            if (!data.thread || !data.subforum)
-                ; // TODO: Send to error 404 page
-            else   
-                res.render();
+                    res.render('threadView', data);
+                })
+            }
         });
         console.log(data);
     },

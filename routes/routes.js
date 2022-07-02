@@ -11,6 +11,7 @@ const homeController = require('../controllers/homeController.js');
 const profileController = require('../controllers/profileController.js');
 const settingsController = require('../controllers/settingsController.js');
 const imageController = require('../controllers/imageController.js');
+const threadController = require('../controllers/threadController.js');
 
 const app = express();
 
@@ -48,10 +49,10 @@ app.get('/checkSubforum', forumController.checkSubforum);
 
 app.get('/subf/:subfName', forumController.getSubforum);
 app.get('/subf/:subfName/join', forumController.joinSubforum); // TODO: Join subforum
-app.get('/subf/:subfName/new/thread', forumController.getCreateThread);
-app.post('/subf/:subfName/new/thread', forumController.postCreateThread); // TODO: Create new thread
+app.get('/subf/:subfName/new/thread', threadController.getCreateThread);
+app.post('/subf/:subfName/new/thread', threadController.postCreateThread); // TODO: Create new thread
 
-app.get('/subf/:subfName/:threadId', forumController.getThread);
+app.get('/subf/:subfName/:threadId', threadController.getThread);
 
 app.get('/home', homeController.getHome);
 app.get('/search', function (req, res) {
