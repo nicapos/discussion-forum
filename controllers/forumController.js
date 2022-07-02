@@ -106,7 +106,7 @@ const forumController = {
             let parsedResult = JSON.parse(JSON.stringify(result)); 
             var threadId = parsedResult._id
             console.log(threadId);
-            db.updateOne(Subforum, {subforumName: subfName}, {$push:{"threads": threadId}}, function(result){
+            db.updateOne(Subforum, {subforumName: subfName}, {$push:{"threads": result}}, function(result){
                 res.redirect('/subf/'+subfName+ '/'+threadId); //threadTitle is temporary change to threadID
             });
         })

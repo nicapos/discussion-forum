@@ -12,12 +12,25 @@ const homeController = {
             recents: null
         };
 
-        db.findMany(Thread, {username: req.session.username}, "_id username threadTitle subforumName datePosted body", function(result){
-            parsedResult = JSON.parse(JSON.stringify(result));
-            data.recents = parsedResult;
-            res.render('home',data);
-        })
+        var threads = [];
 
+        db.findMany(Subforum, {members: user}, "threads", function(result){
+
+            //push each threadId to threads
+            result.forEach(function(subfThreads){
+                subfThreads.threads.forEach(function(threadId){
+                    threads.push(threadId);
+                })
+            });
+            
+            db.findMany(Thread, {_id: {$in: threads}}, "_id username threadTitle subforumName datePosted body", function(result){
+                parsedResult = JSON.parse(JSON.stringify(result));
+                data.recents = parsedResult;
+                res.render('home',data);
+            });
+    
+        })
+        
         //TODO render joined subforums
     }
 }
