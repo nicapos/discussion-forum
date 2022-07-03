@@ -57,9 +57,9 @@ const threadController = {
             user: user,
             thread: null,
             subforum: null,
-            replies: null
+            replies: null,
+            isOwnThread: null
         };
-
         db.findOne(Subforum, {subforumName: subfName}, "subforumName title description", function (result) {
             data.subforum = JSON.parse(JSON.stringify(result));
             
@@ -67,9 +67,18 @@ const threadController = {
                 res.render('error');
 
             else{
-                db.findOne(Thread, {_id: mongoose.Types.ObjectId(threadId)}, "threadTitle username datePosted body replies", function(result){
-                    data.thread = JSON.parse(JSON.stringify(result));
-                    console.log(result.replies);
+                db.findOne(Thread, {_id: mongoose.Types.ObjectId(threadId)}, "_id subforumName threadTitle username datePosted body replies", function(result){
+                    result = JSON.parse(JSON.stringify(result));
+                    data.thread = {
+                        _id: result._id,
+                        subforumName: result.subforumName,
+                        threadTitle: result.threadTitle,
+                        username: result.username,
+                        datePosted: result.datePosted,
+                        body: result.body,
+                        replies: result.replies,
+                        isOwnThread: user == result.username
+                    };
                     if(!data.thread)
                         res.render('error');
 
@@ -115,8 +124,19 @@ const threadController = {
         })
     },
 
-    postDeleteThread: function(req, res) {
-        // TODO: Delete Subforum
+    getDeleteThread: function(req, res) {
+        var threadId = req.params.threadId;
+        var subfName = req.params.subfName;
+        db.deleteOne(Thread, {_id: threadId}, function(result){
+            if(result){
+                db.deleteMany(Reply, {threadId: threadId}, function(result){
+                    if(result)
+                        res.redirect("/subf/"+subfName);
+                    else
+                        res.render('error');
+                })
+            }
+        })
     }
 
 };

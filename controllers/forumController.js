@@ -50,15 +50,15 @@ const forumController = {
         db.findOne(Subforum, {subforumName: subfName}, "subforumName title description", function (result) {
             let subforum = JSON.parse(JSON.stringify(result));
 
+            // TODO: Get threads info
+            db.findMany(Thread, {subforumName: subfName}, "_id threadTitle subforumName username datePosted body", function(result){
+                let threads = JSON.parse(JSON.stringify(result));
+                res.render('subforumView', {user: user, subforum: subforum, threads: threads});
+            })
+
             if (!subforum)
-                res.render('error'); // TODO: Send to error 404 page
-            else{
-                db.findMany(Thread, {subforumName: subfName}, "_id subforumName threadTitle username datePosted body", function(result){
-                    let threads = JSON.parse(JSON.stringify(result));
-                    res.render('subforumView', {user: user, subforum: subforum, threads: threads});
-                })
-            }
-        });
+                res.render('error');
+            });
     },
 
     joinSubforum: function(req, res){

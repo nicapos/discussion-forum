@@ -1,18 +1,21 @@
 <div class="thread box-container">
-    <a href="/subf/{{subforumName}}/{{_id}}"><h2>{{ threadTitle }}</h2></a>
+    <a href="/subf/{{subforumName}}/{{ _id}}"><h2>{{  threadTitle }}</h2></a>
     <div id="author-info">
-        <img src="/images/{{username}}" /><!-- TODO: Add URL to profile pic -->
+        <img src="/images/{{ username}}" /><!-- TODO: Add URL to profile pic -->
         <span>
-            <a href="/user/{{ username }}">{{ username }}</a>
-            <p>{{ datePosted }}</p>
+            <a href="/user/{{  username }}">{{  username }}</a>
+            <p>{{  datePosted }}</p>
         </span>
     </div>
 
-    <p class="content">{{ body }}</p>
+    <p class="content">{{  body }}</p>
     <div class="thread-actions box-container">
         <a><i class="material-icons">thumb_up</i>Like</a>
         <a><i class="material-icons">thumb_down</i>Dislike</a>
         <a id="reply-btn"><i class="material-icons">reply</i>Reply</a>
         <a id="share-btn"><i class="material-icons">share</i>Share</a>
+        {{#if isOwnThread}}
+            <a href="/subf/{{subforumName}}/{{ _id}}/delete" id="del-btn>"><i class="material-icons">delete</i>Delete</a>
+        {{/if}}
     </div>
 </div>
