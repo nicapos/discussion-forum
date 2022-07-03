@@ -3,6 +3,8 @@ const User = require('../models/UserModel.js');
 const Thread = require('../models/ThreadModel.js');
 const Reply = require('../models/ReplyModel.js');
 const Subforum = require('../models/SubforumModel.js');
+const Image = require('../models/ImageModel.js');
+
 const bcrypt = require('bcrypt');
 
 const settingsController = {
@@ -38,6 +40,10 @@ const settingsController = {
         })
 
         db.updateMany(Reply, {username: username}, {$set:{"username":newUsername}}, function(result){
+        })
+
+        db.updateMany(Image, {name: username}, {$set:{"name": newUsername}}, function(result){
+            
         })
 
         db.updateOne(User, {username: username}, {$set:{"username": newUsername}}, function(result){
