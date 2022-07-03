@@ -3,9 +3,12 @@
     <div id="author-info">
         <img src="/images/{{username}}" /><!-- TODO: Add URL to profile pic -->
         <span>
-            <a href="/user/{{ username }}">{{ username }}</a>
+            <a id="userReplied" href="/user/{{ username }}">{{ username }}</a>
             <p>{{ datePosted }}</p>
         </span>
     </div>
     <p class="content">{{ body }}</p>
+    <div class="thread-actions box-container">
+        <a href="/reply/{{threadId}}/{{_id}}/delete" id="rep-del-btn>" hidden><i class="material-icons">delete</i>Delete</a>
+    </div>
 </div>

@@ -137,8 +137,23 @@ const threadController = {
                 })
             }
         })
-    }
+    },
 
+    getDeleteReply: function(req, res){
+        var threadId = req.params.threadId;
+        var replyId = req.params.replyId;
+
+        db.deleteOne(Reply,{_id: replyId},function(result){
+            if(result){
+                db.updateOne(Thread, {_id: threadId}, {$pull:{"replies":replyId}}, function(result){
+                    if(result)
+                        res.redirect('back');
+                })
+            }
+            else
+                res.render('error');
+        })
+    }
 };
 
 module.exports = threadController;

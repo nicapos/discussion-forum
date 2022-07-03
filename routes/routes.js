@@ -54,6 +54,7 @@ app.post('/subf/:subfName/new/thread', threadController.postCreateThread); // TO
 
 app.get('/subf/:subfName/:threadId', threadController.getThread);
 app.get('/subf/:subfName/:threadId/delete', threadController.getDeleteThread);
+app.get('/reply/:threadId/:replyId/delete', threadController.getDeleteReply);
 app.post('/subf/:subfName/:threadId', threadController.postThreadReply);
 
 
