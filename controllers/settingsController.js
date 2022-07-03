@@ -1,18 +1,18 @@
 const db = require('../models/db.js');
 const User = require('../models/UserModel.js');
+const Thread = require('../models/ThreadModel.js');
+const Reply = require('../models/ReplyModel.js');
+const Subforum = require('../models/SubforumModel.js');
 const bcrypt = require('bcrypt');
 
 const settingsController = {
     getSettings: function(req, res){
         var username = req.session.username;
 
-        db.findOne(User, {username: username}, {name: 1, username: 1, email: 1}, function(result){
-            let query = {
-                name: result.name,
-                username: username,
-                email: result.email
-            }
-            res.render('editAccount', query);
+        db.findOne(User, {username: username}, "name username email", function(result){
+            result = JSON.parse(JSON.stringify(result));
+            
+            res.render('editAccount', result);
         })
     },
     getChangeUsername: function(req, res){
@@ -30,12 +30,21 @@ const settingsController = {
     postChangeUsername: function(req, res){
         var username = req.session.username;
         var newUsername = req.body.newUsername;
+        
+        db.updateMany(Thread, {username: username}, {$set:{"username":newUsername}}, function(result){
+        })
+
+        db.updateMany(Subforum, {members: username}, {$set:{"members.$":newUsername}}, function(result){
+        })
+
+        db.updateMany(Reply, {username: username}, {$set:{"username":newUsername}}, function(result){
+        })
 
         db.updateOne(User, {username: username}, {$set:{"username": newUsername}}, function(result){
             req.session.username = newUsername;
             res.redirect('/settings');
         })
-
+            
     },
 
     getChangePassword: function(req, res){

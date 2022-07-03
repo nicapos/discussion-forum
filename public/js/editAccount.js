@@ -64,6 +64,8 @@ $(document).ready(function(){
             if (status) {
                 // Change usernames displayed
                 $('nav > #profile-slot > #username').text(newUsername);
+                $('nav > #profile-slot > #username').attr("href", '/user/' + newUsername);
+
                 $('.profile-box h2').text(newUsername);
 
                 // Saved changes
