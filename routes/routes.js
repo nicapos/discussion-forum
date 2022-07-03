@@ -12,6 +12,7 @@ const profileController = require('../controllers/profileController.js');
 const settingsController = require('../controllers/settingsController.js');
 const imageController = require('../controllers/imageController.js');
 const threadController = require('../controllers/threadController.js');
+const searchController = require('../controllers/searchController.js');
 
 const app = express();
 
@@ -59,9 +60,6 @@ app.post('/subf/:subfName/:threadId', threadController.postThreadReply);
 
 
 app.get('/home', homeController.getHome);
-app.get('/search', function (req, res) {
-    var user = req.session.username;
-    res.render('search', {user: user});
-});
+app.get('/search', searchController.getSearch);
 
 module.exports = app;

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="/js/nav.js"></script>
+    <script src="/js/search.js"></script>
     <style>
         body {
             background-color: #F4F4F4;
@@ -26,35 +27,17 @@
     <div id="subforum-search" class="box-container">
         <h1>Find Subforum</h1>
         <div>
-            <input type="text" name="subforum" placeholder="Keywords" />
-            <button class="green">Search</button>
+            <input id="keywords" type="text" name="keywords" placeholder="Keywords" />
+            <button id="search-btn" class="green">Search</button>
         </div>
     </div>
 
     <div id="subforums">
         <b>Recently Active</b>
 
-        <div id="subforum-heading">
-            <div id="subforum-info">
-                <h3>Copypastas</h3>
-                <p>Share your favorite copypastas here.</p>
-            </div>
-            <div id="action-buttons">
-                <button class="green">Join</button>
-                <button class="light" onclick="location.href='subf/copypastas';">View</button>
-            </div>
-        </div>
-
-        <div id="subforum-heading">
-            <div id="subforum-info">
-                <h3>Freedom Wall</h3>
-                <p>What's on your mind?</p>
-            </div>
-            <div id="action-buttons">
-                <button class="green">Join</button>
-                <button class="light" onclick="location.href='subf/freedomWall';">View</button>
-            </div>
-        </div>
+        {{#each subforums}}
+            {{> subforumHeading}}
+        {{/each}}
 
     </div>
 
