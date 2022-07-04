@@ -1,20 +1,25 @@
 <nav>
         <button class="material-icons">menu</button>
-
+        {{#if user}}
         <a id="home" href="/home"><span class="material-icons">home</span>
             Dashboard
         </a>
+        {{/if}}
         <div id="nav-grp">
             <a id="subforums"><span class="material-icons">question_answer</span>
                 Subforums
             </a>
+            {{#if user}}
             <a id="createSubf" href="/subf/new"><span class="material-icons">add</span>
                 Create subforum
             </a>
+            {{/if}}
+            
             <a id="searchSubf" href="/search"><span class="material-icons">search</span>
                 Search subforum
             </a>
         </div>
+        {{#if user}}
         <a id="settings" href="/settings"><span class="material-icons">settings</span>
             Settings
         </a>
@@ -26,4 +31,5 @@
             <img id="profile-img" src="/images/{{user}}" />
             <a id="username" href="/user/{{user}}">{{user}}</a>
         </div>
+        {{/if}}
     </nav>
