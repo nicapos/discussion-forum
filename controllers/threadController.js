@@ -42,14 +42,13 @@ const threadController = {
             var threadId = parsedResult._id
             console.log(threadId);
             db.updateOne(Subforum, {subforumName: subfName}, {$push:{"threads": result}}, function(result){
-                res.redirect('/subf/'+subfName+ '/'+threadId); //threadTitle is temporary change to threadID
+                res.redirect('/subf/'+subfName+ '/'+threadId);
             });
         })
         
     },
 
     getThread: function(req, res) {
-        /* TODO: Replace sample data below with real ones from db */
         var user = req.session.username; 
         var subfName = req.params.subfName;
         var threadId = req.params.threadId;
@@ -69,13 +68,15 @@ const threadController = {
                 res.render('error');
 
             else{
-                db.findOne(Thread, {_id: mongoose.Types.ObjectId(threadId)}, "_id subforumName threadTitle username datePosted body replies", function(result){
+                db.findOne(Thread, {_id: mongoose.Types.ObjectId(threadId)}, "_id subforumName threadTitle username datePosted body replies likes likedBy dislikedBy", function(result){
                     var parsedThread = JSON.parse(JSON.stringify(result));
                     
                     parsedThread.isOwnThread = user == parsedThread.username;
                     parsedThread.isUserMember = isUserMember;
+                    parsedThread.isOwnThread = user == parsedThread.username;
+                    parsedThread.isLiked = parsedThread.likedBy.includes(user);
+                    parsedThread.isDisliked = parsedThread.dislikedBy.includes(user);
 
-                    console.log(parsedThread);
                     data.thread = parsedThread;
 
                     if(!data.thread)

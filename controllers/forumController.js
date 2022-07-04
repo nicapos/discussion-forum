@@ -50,8 +50,7 @@ const forumController = {
         db.findOne(Subforum, {subforumName: subfName}, "subforumName title description", function (result) {
             let subforum = JSON.parse(JSON.stringify(result));
 
-            // TODO: Get threads info
-            db.findMany(Thread, {subforumName: subfName}, "_id threadTitle subforumName username datePosted body", function(result){
+            db.findMany(Thread, {subforumName: subfName}, "_id threadTitle subforumName username datePosted body likes", function(result){
                 let threads = JSON.parse(JSON.stringify(result));
                 res.render('subforumView', {user: user, subforum: subforum, threads: threads});
             })
