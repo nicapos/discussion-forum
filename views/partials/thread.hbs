@@ -14,6 +14,7 @@
     </div>
 
     <p class="content">{{  body }}</p>
+    {{#if isUserMember}}
     <div class="thread-actions box-container">
         <a id="like-btn"><i id="like-icon" class="material-icons">thumb_up</i>Like</a>
         <a id="dislike-btn"><i id="dislike-icon" class="material-icons">thumb_down</i>Dislike</a>
@@ -23,4 +24,5 @@
             <a href="/subf/{{subforumName}}/{{ _id}}/delete" id="del-btn>"><i class="material-icons">delete</i>Delete</a>
         {{/if}}
     </div>
+    {{/if}}
 </div>

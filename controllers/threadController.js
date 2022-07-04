@@ -53,7 +53,8 @@ const threadController = {
         var user = req.session.username; 
         var subfName = req.params.subfName;
         var threadId = req.params.threadId;
-        
+        var isUserMember = false;
+
         var data = {
             user: user,
             thread: null,
@@ -61,25 +62,22 @@ const threadController = {
             replies: null,
             isOwnThread: null
         };
-        db.findOne(Subforum, {subforumName: subfName}, "subforumName title description", function (result) {
+        db.findOne(Subforum, {subforumName: subfName}, "subforumName title description members", function (result) {
             data.subforum = JSON.parse(JSON.stringify(result));
-            
+            isUserMember = data.subforum.members.includes(user);
             if(!data.subforum)
                 res.render('error');
 
             else{
                 db.findOne(Thread, {_id: mongoose.Types.ObjectId(threadId)}, "_id subforumName threadTitle username datePosted body replies", function(result){
-                    result = JSON.parse(JSON.stringify(result));
-                    data.thread = {
-                        _id: result._id,
-                        subforumName: result.subforumName,
-                        threadTitle: result.threadTitle,
-                        username: result.username,
-                        datePosted: result.datePosted,
-                        body: result.body,
-                        replies: result.replies,
-                        isOwnThread: user == result.username
-                    };
+                    var parsedThread = JSON.parse(JSON.stringify(result));
+                    
+                    parsedThread.isOwnThread = user == parsedThread.username;
+                    parsedThread.isUserMember = isUserMember;
+
+                    console.log(parsedThread);
+                    data.thread = parsedThread;
+
                     if(!data.thread)
                         res.render('error');
 
