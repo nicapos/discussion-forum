@@ -63,6 +63,7 @@ app.post('/action/removeDislike', threadController.postRemoveDislike);
 
 
 app.get('/home', homeController.getHome);
-app.get('/search', searchController.getSearch);
+app.get('/search', searchController.getSearchPage);
+app.post('/search', searchController.postSearchPage);
 
 module.exports = app;

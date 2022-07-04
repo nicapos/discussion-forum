@@ -5,14 +5,40 @@ const Subforum = require('../models/SubforumModel.js');
 const User = require('../models/UserModel.js');
 
 const searchController = {
-    getSearch: function(req, res){
+
+    getSearchPage: function(req, res){
         var user = req.session.username;
-        db.findMany(Subforum, {}, "title description subforumName", function(result){
-            let subforums = JSON.parse(JSON.stringify(result));
-            console.log(subforums);
-            res.render('search', {user: user, subforums: subforums});
+        res.render('search', {user: user});
+
+    },
+
+    postSearchPage: function(req, res){
+        var user = req.session.username;
+        var searchWord = req.body.keyword;
+        console.log(searchWord);
+        var data = {
+            user: user,
+            subforums: null,
+            threads: null
+        };
+
+        db.findMany(Subforum, {subforumName: {$regex: searchWord}}, "title description subforumName", function(result){
+            data.subforums = JSON.parse(JSON.stringify(result));
+            console.log(result)
+            db.findMany(Thread, {threadTitle: {$regex: searchWord}}, "subforumName threadTitle username datePosted body", function(result){
+                data.threads = JSON.parse(JSON.stringify(result));
+                res.render('search', data);
+
+            })
+
         })
+        
+
     }
+
+    
+
+    
 }
 
 module.exports = searchController;

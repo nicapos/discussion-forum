@@ -27,16 +27,24 @@
     <div id="subforum-search" class="box-container">
         <h1>Find Subforum</h1>
         <div>
-            <input id="keywords" type="text" name="keywords" placeholder="Keywords" />
-            <button id="search-btn" class="green">Search</button>
+            <form name="searchForm" method="POST">
+                <input id="keyword" type="text" name="keyword" placeholder="Keywords" />
+                <button type="submit" id="search-btn" class="green">Search</button>
+            </form>
         </div>
     </div>
 
     <div id="subforums">
-        <b>Recently Active</b>
+        <b>Subforums Found</b>
 
         {{#each subforums}}
             {{> subforumHeading}}
+        {{/each}}
+
+        <b>Threads Found</b>
+
+        {{#each threads}}
+            {{> threadHeading}}
         {{/each}}
 
     </div>
