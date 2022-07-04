@@ -33,7 +33,7 @@ $(document).ready(function() {
         $("<input>").attr({
             "type": "hidden",
             "name": "text",
-            "value": "Check out this thread from discussiq!"
+            "value": "Check out this thread from disqussip!"
         })
     );
 
