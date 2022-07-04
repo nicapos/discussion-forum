@@ -31,20 +31,44 @@ $(document).ready(function() {
         }
     }
 
-    $('#like-btn').click(function() {
-        // 1. Update UI
-       toggleVoteBtns( $('#like-btn').hasClass('active') ? 0 : 1 );
+    var threadURL = $('.thread > a').attr('href');
+    var threadId = threadURL.split("/")[3];
 
-        // 2. Update model
-        // TODO
+    $('#like-btn').click(function() {
+
+        if ( $('#like-btn').hasClass('active') ) {
+            // Remove like vote
+            $.post('/action/removeLike', {threadId: threadId}, function (data, status) {
+                if (status)
+                    toggleVoteBtns(0);
+            });
+        }
+        else {
+            // Add like vote
+            $.post('/action/like', {threadId: threadId}, function (data, status) {
+                if (status)
+                    toggleVoteBtns(1);
+            });
+        }
+        
     });
 
     $('#dislike-btn').click(function() {
-        // 1. Update UI
-       toggleVoteBtns( $('#dislike-btn').hasClass('active') ? 0 : -1 );
-
-        // 2. Update model
-        // TODO
+        if ( $('#dislike-btn').hasClass('active') ) {
+            // Remove dislike vote
+            $.post('/action/removeDislike', {threadId: threadId}, function (data, status) {
+                if (status)
+                    toggleVoteBtns(0);
+            });
+        }
+        else {
+            // Add dislike vote
+            $.post('/action/dislike', {threadId: threadId}, function (data, status) {
+                if (status)
+                    toggleVoteBtns(-1);
+            });
+        }
+    
     });
 
 });

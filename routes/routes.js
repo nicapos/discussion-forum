@@ -56,6 +56,11 @@ app.get('/subf/:subfName/:threadId/delete', threadController.getDeleteThread);
 app.get('/reply/:threadId/:replyId/delete', threadController.getDeleteReply);
 app.post('/subf/:subfName/:threadId', threadController.postThreadReply);
 
+app.post('/action/like', threadController.postLike);
+app.post('/action/dislike', threadController.postDislike);
+app.post('/action/removeLike', threadController.postRemoveLike);
+app.post('/action/removeDislike', threadController.postRemoveDislike);
+
 
 app.get('/home', homeController.getHome);
 app.get('/search', searchController.getSearch);

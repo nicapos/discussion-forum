@@ -33,6 +33,7 @@ const threadController = {
             threadTitle: threadTitle,
             username: user,
             datePosted: new Date(Date.now()).toISOString(),
+            likes: 0,
             body: threadContent
         };
 
@@ -158,6 +159,96 @@ const threadController = {
             else
                 res.render('error');
         })
+    },
+
+    postLike: function(req, res) {
+        var threadId = req.body.threadId;
+        var username = req.session.username;
+
+        db.findOne(Thread, {_id: threadId}, "likes", function (result) {
+            var data = JSON.parse(JSON.stringify(result)); 
+            if (result) {
+                let likes = data.likes + 1;
+                db.updateOne(Thread, {_id: threadId}, {$set:{"likes": likes}, $push:{"likedBy":username}}, function(result2) {
+                    if (result2)
+                        console.log(username+" liked thread (id: "+threadId+")");
+                });
+
+            }
+        });
+
+        /*
+            redirect to error page when trying to load page `/action/like`
+            postLike should be done asynchronously
+        */
+        res.redirect('error');
+    },
+
+    postDislike: function(req, res) {
+        var threadId = req.body.threadId;
+        var username = req.session.username;
+
+        db.findOne(Thread, {_id: threadId}, "likes", function (result) {
+            var data = JSON.parse(JSON.stringify(result)); 
+            if (result) {
+                let likes = data.likes - 1;
+                db.updateOne(Thread, {_id: threadId}, {$set:{"likes": likes}, $push:{"dislikedBy":username}}, function(result2) {
+                    if (result2)
+                        console.log(username+" disliked thread (id: "+threadId+")");
+                });
+            }
+        });
+
+        /*
+            redirect to error page when trying to load page `/action/dislike`
+            postLike should be done asynchronously
+        */
+        res.redirect('error');
+    },
+
+    postRemoveLike: function(req, res) {
+        var threadId = req.body.threadId;
+        var username = req.session.username;
+
+        db.findOne(Thread, {_id: threadId}, "likes", function (result) {
+            var data = JSON.parse(JSON.stringify(result)); 
+            if (result) {
+                let likes = data.likes - 1;
+                db.updateOne(Thread, {_id: threadId}, {$set:{"likes": likes}, $pull:{"likedBy":username}}, function(result2) {
+                    if (result2)
+                        console.log(username+" removed like from thread (id: "+threadId+")");
+                });
+
+            }
+        });
+
+        /*
+            redirect to error page when trying to load page `/action/removeLike`
+            postLike should be done asynchronously
+        */
+        res.redirect('error');
+    },
+
+    postRemoveDislike: function(req, res) {
+        var threadId = req.body.threadId;
+        var username = req.session.username;
+
+        db.findOne(Thread, {_id: threadId}, "likes", function (result) {
+            var data = JSON.parse(JSON.stringify(result)); 
+            if (result) {
+                let likes = data.likes + 1;
+                db.updateOne(Thread, {_id: threadId}, {$set:{"likes": likes}, $pull:{"dislikedBy":username}}, function(result2) {
+                    if (result2)
+                        console.log(username+" removed dislike from thread (id: "+threadId+")");
+                });
+            }
+        });
+
+        /*
+            redirect to error page when trying to load page `/action/removeDislike`
+            postLike should be done asynchronously
+        */
+        res.redirect('error');
     }
 };
 
