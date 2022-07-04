@@ -1,6 +1,9 @@
 const db = require('../models/db.js');
 
 const controller = {
+    getFavicon: function (req, res) {
+        res.status(204);
+    },
     getIndex: function (req, res) {
         res.render('index');
     },

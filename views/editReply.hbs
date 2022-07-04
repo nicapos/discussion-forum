@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Edit Reply | disqussip</title>
+    <title>Edit Reply</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/threads.css">
     <link rel="stylesheet" href="/css/nav.css">
@@ -38,14 +38,9 @@
     </div>
 
     <div id="text-editor" class="box-container">
-        <h3>Edit Thread Title</h3>
+        <h3>Edit Reply</h3>
         <form method="POST">
-            <div id="content" class="box-container" contenteditable>{{thread.title}}</div>
-            <input name="bodyContent" id="bodyContent" type="hidden" value="" />
-        </form>
-        <h3>Edit Thread Content</h3>
-        <form method="POST">
-            <div id="content" class="box-container" contenteditable>{{thread.content}}</div>
+            <div id="content" class="box-container" contenteditable>{{reply.body}}</div>
             <input name="bodyContent" id="bodyContent" type="hidden" value="" />
         </form>
         <div id="actions">
