@@ -39,15 +39,25 @@ $(document).ready(function() {
         if ( $('#like-btn').hasClass('active') ) {
             // Remove like vote
             $.post('/action/removeLike', {threadId: threadId}, function (data, status) {
-                if (status)
+                if (status) {
                     toggleVoteBtns(0);
+
+                    // update vote count
+                    let voteCount = parseInt( $('#votes').text() );
+                    $('#votes').text(voteCount - 1);
+                }
             });
         }
         else {
             // Add like vote
             $.post('/action/like', {threadId: threadId}, function (data, status) {
-                if (status)
+                if (status) {
                     toggleVoteBtns(1);
+
+                    // update vote count
+                    let voteCount = parseInt( $('#votes').text() );
+                    $('#votes').text(voteCount + 1);
+                }
             });
         }
         
@@ -57,15 +67,25 @@ $(document).ready(function() {
         if ( $('#dislike-btn').hasClass('active') ) {
             // Remove dislike vote
             $.post('/action/removeDislike', {threadId: threadId}, function (data, status) {
-                if (status)
+                if (status) {
                     toggleVoteBtns(0);
+
+                    // update vote count
+                    let voteCount = parseInt( $('#votes').text() );
+                    $('#votes').text(voteCount + 1);
+                }
             });
         }
         else {
             // Add dislike vote
             $.post('/action/dislike', {threadId: threadId}, function (data, status) {
-                if (status)
+                if (status) {
                     toggleVoteBtns(-1);
+
+                    // update vote count
+                    let voteCount = parseInt( $('#votes').text() );
+                    $('#votes').text(voteCount - 1);
+                }
             });
         }
     

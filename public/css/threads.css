@@ -100,6 +100,7 @@
 }
 
 .thread {
+    position: relative;
     margin-top: 25px;
     margin-bottom: 60px;
 }
@@ -166,6 +167,30 @@
 .thread-actions .active > * {
     color: #004AE8 !important;
 }
+
+#vote-container {
+    display: flex;
+    flex-direction: column-reverse;
+    position: absolute;
+    text-align: center;
+    top: 15px;
+    right: 15px;
+}
+
+#votes {
+    display: inline;
+    vertical-align: middle;
+    font-size: 20px;
+    color: grey;
+}
+
+#vote-container > i {
+    display: inline;
+    vertical-align: middle;
+    font-size: 18px;
+    color: grey;
+}
+
 
 /* share actions */
 #share-actions {
