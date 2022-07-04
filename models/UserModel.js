@@ -9,7 +9,8 @@ var UserSchema = new mongoose.Schema({
     aboutMe: String,
     myInterests: String,
     subforums: [String],
-    threads: [Number]
+    threads: [Number],
+    ownedSubforum: [String]
 });
 
 module.exports = mongoose.model('User', UserSchema);

@@ -23,7 +23,7 @@ const forumController = {
         var title = req.body.title;
         var desc = req.body.description;
         var name = title.trim().toLowerCase().replace(' ','-');
-
+        var user = req.session.username;
         var query = {
             subforumName: name,
             title: title,
@@ -33,10 +33,10 @@ const forumController = {
         };
 
         db.insertOne(Subforum, query, function(flag) {
-            db.updateOne(Subforum, {subforumName: name},{$push:{"members": req.session.username}}, function(result){
+            db.updateOne(Subforum, {subforumName: name},{$push:{"members": user}, $set:{"owner": user}}, function(result){
             });
     
-            db.updateOne(User, {username: req.session.username},{$push:{"subforums": name}}, function(result){
+            db.updateOne(User, {username: req.session.username},{$push:{"subforums": name}, $push:{"ownedSubforums": name}}, function(result){
             });
             
             if (flag)
@@ -47,11 +47,13 @@ const forumController = {
     getSubforum: function(req, res) {
         var user = req.session.username; 
         var subfName = req.params.subfName;
-
-        db.findOne(Subforum, {subforumName: subfName}, "subforumName title description members", function (result) {
+        var owner = "";
+        db.findOne(Subforum, {subforumName: subfName}, "subforumName title description members owner", function (result) {
             let subforum = JSON.parse(JSON.stringify(result));
+            owner = subforum.owner;
 
             subforum.isUserMember = subforum.members.includes(user);
+            subforum.isUserOwner = user == owner;
 
             db.findMany(Thread, {subforumName: subfName}, "_id threadTitle subforumName username datePosted body likes", function(result){
                 var threads = JSON.parse(JSON.stringify(result));
@@ -89,13 +91,49 @@ const forumController = {
 
     },
 
+    deleteSubforum: function(req, res){
+        var user = req.session.username;
+        var subfName = req.params.subfName;
+
+        db.deleteOne(Subforum, {subforumName: subfName}, function(flag) {
+            if(flag){
+                db.updateMany(User, {subforums: subfName},{$pull:{"subforums": subfName}}, function(result){
+                    console.log(result);
+                });
+
+                db.findMany(Thread, {subforumName: subfName}, "_id replies username", function(result){
+                    var parsed = JSON.parse(JSON.stringify(result));
+                    console.log(parsed.replies);
+                    result.forEach(function(element){
+                        db.deleteMany(Reply, {threadId: element._id}, function(result){
+                            console.log(result);
+                        })
+                    })
+                    db.updateMany(User, {username: result.username}, {$pull:{threads: result._id}}, function(result){
+                        console.log(result);
+                    });
+                });
+                db.deleteMany(Thread, {subforumName: subfName}, function(result){
+                    console.log(result);
+                });
+                db.updateOne(User, {username: user}, {$pull:{"subforums": subfName}, $pull:{"ownedSubforum": subfName}}, function(result){
+                    console.log(result);
+                })
+                res.redirect('/home');
+            }
+             // Redirect to newly created subforum
+        });
+
+            
+
+            
+
+    },
+
     postUpdateSubforum: function(req, res) {
         // TODO: Update Subforum details
     },
 
-    postDeleteSubforum: function(req, res) {
-        // TODO: Delete Subforum
-    },
 
 };
 

@@ -29,7 +29,11 @@
         <div id="action-buttons">
             {{#if subforum.isUserMember}}
                 <button id="createThread-btn" class="light">Create Thread</button>
-                <button id="leave-btn" class="light">Leave Subforum</button>
+                {{#if subforum.isUserOwner}}
+                    <button id="delete-btn" class="light">Delete Subforum</button>
+                {{else}}
+                    <button id="leave-btn" class="light">Leave Subforum</button>
+                {{/if}}    
             {{else}}
                 <button id="join-btn" class="green">Join</button>
             {{/if}}
@@ -60,6 +64,11 @@
          $('#leave-btn').click( function() { // onclick "Create Thread"
             location.href = location.href + '/leave';
         });
+        
+        $('#delete-btn').click( function() { // onclick "Create Thread"
+            location.href = location.href + '/delete';
+        });
+
         $('nav > #subforums').addClass('active');
 
         var username = $('nav > #profile-slot > #username').text();
