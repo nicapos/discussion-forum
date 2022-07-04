@@ -120,13 +120,11 @@ const threadController = {
 
         db.findOne(Subforum, {subforumName: subfName}, "title description", function (result) {
             data.subforum = JSON.parse(JSON.stringify(result));
-            console.log('ss' + data.subforum);
             if (!data.subforum)
                 res.render('error');
             else {
                 db.findOne(Thread, {_id: threadId}, "title body", function (result) {
                     data.thread = JSON.parse(JSON.stringify(result));
-                    console.log(data.thread)
                     if (!data.thread)
                         res.render('error');
                     else
@@ -139,11 +137,12 @@ const threadController = {
     postEditThread: function(req,res) {
         var subfName = req.params.subfName;
         var threadId = req.params.threadId;
+        var title = req.body.threadtitle;
         var content = req.body.bodyContent;
 
         let currentDate = new Date(Date.now()).toISOString();
 
-        db.updateOne(Thread, {_id: threadId}, {$set:{"body": content, "datePosted": currentDate}}, function(result) {
+        db.updateOne(Thread, {_id: threadId}, {$set:{"threadTitle": title, "body": content, "datePosted": currentDate}}, function(result) {
             if (result)
                 res.redirect('/subf/'+subfName+'/'+threadId);
         });

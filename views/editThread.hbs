@@ -40,11 +40,9 @@
     <div id="text-editor" class="box-container">
         <h3>Edit Thread Title</h3>
         <form method="POST">
-            <div id="content" class="box-container" contenteditable>{{thread.title}}</div>
-            <input name="bodyContent" id="bodyContent" type="hidden" value="" />
-        </form>
+            <div id="title" class="box-container" contenteditable>{{thread.title}}</div>
+            <input name="threadtitle" id="title" type="hidden" value="" />
         <h3>Edit Thread Content</h3>
-        <form method="POST">
             <div id="content" class="box-container" contenteditable>{{thread.content}}</div>
             <input name="bodyContent" id="bodyContent" type="hidden" value="" />
         </form>
@@ -64,25 +62,19 @@
             $('#saveEdit').click(function(){
                 // Gets data from editable content to textarea to send to POST request
                 var title = $('#title').html();
-                $('#title').val(title);
-                console.log('#title: '+ $('#title').val());
-
-                if ( title )
-                    $('form').submit();
-                else
-                    $("#error").text("Do not leave the title box blank.");
-            });
-            
-            $('#saveEdit').click(function(){
-                // Gets data from editable content to textarea to send to POST request
+                console.log('s');
                 var body = $('#content').html();
+                console.log('e');
+
+                $('#threadtitle').val(title);
+                console.log('#threadtitle: '+ $('#threadtitle').val());
                 $('#bodyContent').val(body);
                 console.log('#bodyContent: '+ $('#bodyContent').val());
-
-                if ( body )
+                
+                if ( title && body ) 
                     $('form').submit();
                 else
-                    $("#error").text("Do not leave the thread content box blank.");
+                    $("#error").text("Do not leave any field blank.");
             });
         });
     </script>
