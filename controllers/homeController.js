@@ -19,11 +19,10 @@ const homeController = {
         db.findMany(Subforum, {members: user}, "title subforumName threads", function(result){
             
             if(result){
-                result.forEach(function(subfThreads){
+                result.forEach(function(gotSubforum){
                     //push subforumName to data.subforums[]
-                    data.subforums.push(subfThreads.subforumName);
-                    data.subforumTitle.push(subfThreads.title);
-                    subfThreads.threads.forEach(function(threadId){
+                    data.subforums.push([gotSubforum.subforumName, gotSubforum.title]);
+                    gotSubforum.threads.forEach(function(threadId){
                         threads.push(threadId);
                     })
                 });                

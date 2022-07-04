@@ -42,7 +42,7 @@
             <div id="joined-subforums" class="box-container">
                 <b>Joined Subforums</b>
                 {{#each subforums}}
-                    <a href="subf/{{this}}">{{this}}</a> <!-- TODO subforum TItle must be rendered not subforumName-->
+                    <a href="subf/{{this.[0]}}">{{this.[1]}}</a> <!-- TODO subforum TItle must be rendered not subforumName-->
                 {{/each}}
             </div>
         </div>
