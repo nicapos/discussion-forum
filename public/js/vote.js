@@ -61,10 +61,9 @@ $(document).ready(function() {
 
         if ( $('#like-btn').hasClass('active') )
             removeLike();
-        else if ( $('#dislike-btn').hasClass('active') ) {
+        else if ( $('#dislike-btn').hasClass('active') )
             removeDislike();
-            addLike();
-        } else
+        else
             addLike();
 
     });
@@ -73,10 +72,9 @@ $(document).ready(function() {
 
         if ( $('#dislike-btn').hasClass('active') )
             removeDislike();
-        else if ( $('#like-btn').hasClass('active') ) {
+        else if ( $('#like-btn').hasClass('active') )
             removeLike();
-            addDislike();
-        } else
+        else
             addDislike();
             
     });
