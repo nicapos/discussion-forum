@@ -12,7 +12,6 @@ const homeController = {
             user: user, 
             recents: null,
             subforums: [], //TODO push subforum Title
-            subforumTitle: []
         };
 
         var threads = [];
@@ -26,12 +25,18 @@ const homeController = {
                     gotSubforum.threads.forEach(function(threadId){
                         threads.push(threadId);
                     })
-                });                
+                });        
+               
                 db.findMany(Thread, {_id: {$in: threads}}, "_id username threadTitle subforumName datePosted body", function(result){
                     if(result){
                         var parsedResult = JSON.parse(JSON.stringify(result));
                         parsedResult.forEach(element => {
                             element.datePosted = moment(element.datePosted).calendar();  
+                            for(var i = 0; i < data.subforums.length; i++){
+                                var currSubf = data.subforums[i][0];
+                                if(currSubf == element.subforumName)
+                                    element.subforumTitle = data.subforums[i][1];
+                            }
                         });
                         data.recents = parsedResult;
                         res.render('home',data);
