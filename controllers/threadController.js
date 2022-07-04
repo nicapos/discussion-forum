@@ -64,11 +64,11 @@ const threadController = {
         };
         db.findOne(Subforum, {subforumName: subfName}, "subforumName title description members", function (result) {
             data.subforum = JSON.parse(JSON.stringify(result));
-            isUserMember = data.subforum.members.includes(user);
             if(!data.subforum)
                 res.render('error');
 
             else{
+                isUserMember = data.subforum.members.includes(user);
                 db.findOne(Thread, {_id: mongoose.Types.ObjectId(threadId)}, "_id subforumName threadTitle username datePosted body replies likes likedBy dislikedBy", function(result){
                     var parsedThread = JSON.parse(JSON.stringify(result));
                     
