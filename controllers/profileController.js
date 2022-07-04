@@ -20,6 +20,8 @@ const profileController = {
         var projection = "username name aboutMe myInterests";
 
         db.findOne(User, {username: username}, projection, function(result){
+            if(!result)
+                res.render('error');
             res.render('editProfile', result);
         })
     },
