@@ -103,12 +103,13 @@ const forumController = {
 
                 db.findMany(Thread, {subforumName: subfName}, "_id replies username", function(result){
                     var parsed = JSON.parse(JSON.stringify(result));
-                    console.log(parsed.replies);
-                    result.forEach(function(element){
+                    parsed.forEach(function(element){
                         db.deleteMany(Reply, {threadId: element._id}, function(result){
-                            console.log(result);
-                        })
-                    })
+                            console.log(element._id);
+                            if(result)
+                                console.log('DELETED');
+                        });
+                    });
                     db.updateMany(User, {username: result.username}, {$pull:{threads: result._id}}, function(result){
                         console.log(result);
                     });
@@ -122,11 +123,7 @@ const forumController = {
                 res.redirect('/home');
             }
              // Redirect to newly created subforum
-        });
-
-            
-
-            
+        });      
 
     },
 
