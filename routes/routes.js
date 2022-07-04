@@ -17,7 +17,6 @@ const searchController = require('../controllers/searchController.js');
 const app = express();
 
 app.get('/', controller.getIndex);
-app.get('/favicon.ico', controller.getFavicon);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.loginAccount);
 
