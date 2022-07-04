@@ -31,5 +31,12 @@
             <img id="profile-img" src="/images/{{user}}" />
             <a id="username" href="/user/{{user}}">{{user}}</a>
         </div>
+        {{else}}
+        <a id="login" href="/register"><span class="material-icons">person_add_alt_1</span>
+            Register
+        </a>
+        <a id="login" href="/login"><span class="material-icons">login</span>
+            Log in
+        </a>
         {{/if}}
     </nav>
