@@ -41,7 +41,7 @@
         <h3>Edit Thread Title</h3>
         <form method="POST">
             <div id="title" class="box-container" contenteditable>{{thread.title}}</div>
-            <input name="threadtitle" id="title" type="hidden" value="" />
+            <input name="threadtitle" id="threadtitle" type="hidden" value="" />
         <h3>Edit Thread Content</h3>
             <div id="content" class="box-container" contenteditable>{{thread.content}}</div>
             <input name="bodyContent" id="bodyContent" type="hidden" value="" />
@@ -62,9 +62,7 @@
             $('#saveEdit').click(function(){
                 // Gets data from editable content to textarea to send to POST request
                 var title = $('#title').html();
-                console.log('s');
                 var body = $('#content').html();
-                console.log('e');
 
                 $('#threadtitle').val(title);
                 console.log('#threadtitle: '+ $('#threadtitle').val());
