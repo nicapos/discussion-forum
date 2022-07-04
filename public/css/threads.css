@@ -156,6 +156,17 @@
     right: 20px;
 }
 
+/* like / dislike */
+
+.thread-actions .active {
+    font-weight: 500;
+    color: #004AE8 !important;
+}
+
+.thread-actions .active > * {
+    color: #004AE8 !important;
+}
+
 /* share actions */
 #share-actions {
     display: none; /* hide on launch */

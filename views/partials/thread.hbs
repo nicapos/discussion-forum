@@ -10,8 +10,8 @@
 
     <p class="content">{{  body }}</p>
     <div class="thread-actions box-container">
-        <a><i class="material-icons">thumb_up</i>Like</a>
-        <a><i class="material-icons">thumb_down</i>Dislike</a>
+        <a id="like-btn"><i id="like-icon" class="material-icons">thumb_up</i>Like</a>
+        <a id="dislike-btn"><i id="dislike-icon" class="material-icons">thumb_down</i>Dislike</a>
         <a id="reply-btn"><i class="material-icons">reply</i>Reply</a>
         <a id="share-btn"><i class="material-icons">share</i>Share</a>
         {{#if isOwnThread}}
