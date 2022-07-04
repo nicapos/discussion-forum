@@ -58,6 +58,8 @@ app.get('/subf/:subfName/:threadId', threadController.getThread);
 app.get('/subf/:subfName/:threadId/delete', threadController.getDeleteThread);
 app.get('/reply/:threadId/:replyId/delete', threadController.getDeleteReply);
 app.post('/subf/:subfName/:threadId', threadController.postThreadReply);
+app.get('/subf/:subfName/:threadId/edit', threadController.getEditThread);
+app.post('/subf/:subfName/:threadId/edit', threadController.postEditThread);
 app.get('/subf/:subfName/:threadId/:replyId/edit', threadController.getEditReply);
 app.post('/subf/:subfName/:threadId/:replyId/edit', threadController.postEditReply);
 

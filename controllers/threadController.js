@@ -107,6 +107,48 @@ const threadController = {
         });
     },
 
+    getEditThread: function(req, res) {
+        var user = req.session.username;
+        var subfName = req.params.subfName;
+        var threadId = req.params.threadId;
+
+        var data = {
+            user: user,
+            subforum: null,
+            thread: null
+        }
+
+        db.findOne(Subforum, {subforumName: subfName}, "title description", function (result) {
+            data.subforum = JSON.parse(JSON.stringify(result));
+            console.log('ss' + data.subforum);
+            if (!data.subforum)
+                res.render('error');
+            else {
+                db.findOne(Thread, {_id: threadId}, "title body", function (result) {
+                    data.thread = JSON.parse(JSON.stringify(result));
+                    console.log(data.thread)
+                    if (!data.thread)
+                        res.render('error');
+                    else
+                        res.render('editThread', data);
+                });
+            }
+        });
+    },
+
+    postEditThread: function(req,res) {
+        var subfName = req.params.subfName;
+        var threadId = req.params.threadId;
+        var content = req.body.bodyContent;
+
+        let currentDate = new Date(Date.now()).toISOString();
+
+        db.updateOne(Thread, {_id: threadId}, {$set:{"body": content, "datePosted": currentDate}}, function(result) {
+            if (result)
+                res.redirect('/subf/'+subfName+'/'+threadId);
+        });
+    },
+
     getEditReply: function(req, res) {
         var user = req.session.username;
         var subfName = req.params.subfName;

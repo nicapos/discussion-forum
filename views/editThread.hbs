@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title>Edit Reply | disqussip</title>
+    <title>Edit Thread | disqussip</title>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/threads.css">
     <link rel="stylesheet" href="/css/nav.css">
@@ -63,6 +63,18 @@
 
             $('#saveEdit').click(function(){
                 // Gets data from editable content to textarea to send to POST request
+                var title = $('#title').html();
+                $('#title').val(title);
+                console.log('#title: '+ $('#title').val());
+
+                if ( title )
+                    $('form').submit();
+                else
+                    $("#error").text("Do not leave the title box blank.");
+            });
+            
+            $('#saveEdit').click(function(){
+                // Gets data from editable content to textarea to send to POST request
                 var body = $('#content').html();
                 $('#bodyContent').val(body);
                 console.log('#bodyContent: '+ $('#bodyContent').val());
@@ -70,7 +82,7 @@
                 if ( body )
                     $('form').submit();
                 else
-                    $("#error").text("Do not leave the reply box blank.");
+                    $("#error").text("Do not leave the thread content box blank.");
             });
         });
     </script>
