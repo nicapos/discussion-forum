@@ -84,12 +84,17 @@ const threadController = {
 
                     else{
                         db.findMany(Reply, {_id: result.replies}, "", function(result){
-                            data.replies = JSON.parse(JSON.stringify(result));
+                            var toParse = JSON.parse(JSON.stringify(result));
+                            toParse.forEach(function(currObj, index){
+                                currObj.ownReply = user == currObj.username;
+                            })
+                            data.replies = toParse;
+
                             if(!data.replies)
                                 res.render('error');
                             else
                                 res.render('threadView', data);
-                        })
+                        });
                     }
                 })
             }
