@@ -47,9 +47,12 @@ const forumController = {
         var user = req.session.username; 
         var subfName = req.params.subfName;
 
-        db.findOne(Subforum, {subforumName: subfName}, "subforumName title description", function (result) {
+        db.findOne(Subforum, {subforumName: subfName}, "subforumName title description members", function (result) {
             let subforum = JSON.parse(JSON.stringify(result));
 
+            subforum.isUserMember = subforum.members.includes(user);
+
+            // TODO: Get threads info
             db.findMany(Thread, {subforumName: subfName}, "_id threadTitle subforumName username datePosted body likes", function(result){
                 let threads = JSON.parse(JSON.stringify(result));
                 res.render('subforumView', {user: user, subforum: subforum, threads: threads});
@@ -69,6 +72,18 @@ const forumController = {
                 res.redirect('/subf/'+subf);
             })
         })
+    },
+
+    leaveSubforum: function(req, res){
+        var user = req.session.username;
+        var subfName = req.params.subfName;
+
+        db.updateOne(Subforum, {subforumName: subfName},{$pull: {"members": user}}, function(result){
+            console.log(result);
+        });
+
+        res.redirect('/subf/'+subfName)
+
     },
 
     postUpdateSubforum: function(req, res) {

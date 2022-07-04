@@ -48,6 +48,8 @@ app.get('/checkSubforum', forumController.checkSubforum);
 
 app.get('/subf/:subfName', forumController.getSubforum);
 app.get('/subf/:subfName/join', forumController.joinSubforum); // TODO: Join subforum
+app.get('/subf/:subfName/leave', forumController.leaveSubforum);
+
 app.get('/subf/:subfName/new/thread', threadController.getCreateThread);
 app.post('/subf/:subfName/new/thread', threadController.postCreateThread); // TODO: Create new thread
 

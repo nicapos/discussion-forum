@@ -27,8 +27,12 @@
             <p>{{ subforum.description }}</p>
         </div>
         <div id="action-buttons">
-            <button id="join-btn" class="green">Join</button>
-            <button id="createThread-btn" class="light">Create Thread</button>
+            {{#if subforum.isUserMember}}
+                <button id="createThread-btn" class="light">Create Thread</button>
+                <button id="leave-btn" class="light">Leave Subforum</button>
+            {{else}}
+                <button id="join-btn" class="green">Join</button>
+            {{/if}}
         </div>
     </div>
 
@@ -45,11 +49,16 @@
 
     <!-- Set active item on navbar -->
     <script>
-        $('#action-buttons .green').click( function() { // onclick "Join"
+        $('#join-btn').click( function() { // onclick "Join"
             location.href = location.href + '/join';
         });
-        $('#action-buttons .light').click( function() { // onclick "Create Thread"
+        
+        $('#createThread-btn').click( function() { // onclick "Create Thread"
             location.href = location.href + '/new/thread';
+        });
+
+         $('#leave-btn').click( function() { // onclick "Create Thread"
+            location.href = location.href + '/leave';
         });
         $('nav > #subforums').addClass('active');
 
@@ -60,14 +69,7 @@
             members: username,
             subforumName: subf
         }
-        $.get('/checkSubforum', query, function(result){
-            if(result){
-                $("#join-btn").hide();
-            }
-            else{
-                $("#createThread-btn").hide();
-            }
-        })
+        
     </script>	
 </body>
 
