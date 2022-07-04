@@ -47,17 +47,19 @@ app.post('/new/subf', forumController.postAddSubforum);
 app.get('/checkSubforum', forumController.checkSubforum);
 
 app.get('/subf/:subfName', forumController.getSubforum);
-app.get('/subf/:subfName/join', forumController.joinSubforum); // TODO: Join subforum
+app.get('/subf/:subfName/join', forumController.joinSubforum);
 app.get('/subf/:subfName/leave', forumController.leaveSubforum);
 app.get('/subf/:subfName/delete', forumController.deleteSubforum);
 
 app.get('/subf/:subfName/new/thread', threadController.getCreateThread);
-app.post('/subf/:subfName/new/thread', threadController.postCreateThread); // TODO: Create new thread
+app.post('/subf/:subfName/new/thread', threadController.postCreateThread);
 
 app.get('/subf/:subfName/:threadId', threadController.getThread);
 app.get('/subf/:subfName/:threadId/delete', threadController.getDeleteThread);
 app.get('/reply/:threadId/:replyId/delete', threadController.getDeleteReply);
 app.post('/subf/:subfName/:threadId', threadController.postThreadReply);
+app.get('/subf/:subfName/:threadId/:replyId/edit', threadController.getEditReply);
+app.post('/subf/:subfName/:threadId/:replyId/edit', threadController.postEditReply);
 
 app.post('/action/like', threadController.postLike);
 app.post('/action/dislike', threadController.postDislike);

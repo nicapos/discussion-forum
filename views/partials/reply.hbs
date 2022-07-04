@@ -1,7 +1,7 @@
 <div class="box-container">
     <span class="material-icons reply-mark">subdirectory_arrow_right</span>
     <div id="author-info">
-        <img src="/images/{{username}}" /><!-- TODO: Add URL to profile pic -->
+        <img src="/images/{{username}}" />
         <span>
             <a id="userReplied" href="/user/{{ username }}">{{ username }}</a>
             <p>{{ datePosted }}</p>
@@ -10,7 +10,8 @@
     <p class="content">{{ body }}</p>
     {{#if ownReply}}
     <div class="thread-actions box-container">
-            <a href="/reply/{{threadId}}/{{_id}}/delete" id="rep-del-btn>" ><i class="material-icons">delete</i>Delete</a>
+        <a href="{{threadId}}/{{_id}}/edit"><i class="material-icons">mode_edit</i>Edit</a>
+        <a href="/reply/{{threadId}}/{{_id}}/delete" id="rep-del-btn>" ><i class="material-icons">delete</i>Delete</a>
     </div>
     {{/if}}
 </div>

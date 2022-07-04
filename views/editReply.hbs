@@ -1,0 +1,74 @@
+<html>
+
+<head>
+    <title>Copypastas</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/threads.css">
+    <link rel="stylesheet" href="/css/nav.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/js/nav.js"></script>
+    <script src="/js/createThread.js"></script>
+    <style>
+        body {
+            background-color: #F4F4F4;
+        }
+
+        #text-editor {
+            display: block;
+            margin-top: 20px;
+        }
+
+        content {
+            height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    {{> navbar user=user}}
+
+    <div id="subforum-heading">
+        <div id="subforum-info">
+            <a href="index.html">
+                <h2 id="subforumTitle">{{subforum.title}}</h2>
+            </a>
+            <p>{{subforum.description}}</p>
+        </div>
+    </div>
+
+    <div id="text-editor" class="box-container">
+        <h3>Edit Reply</h3>
+        <form method="POST">
+            <div id="content" class="box-container" contenteditable>{{reply.body}}</div>
+            <input name="bodyContent" id="bodyContent" type="hidden" value="" />
+        </form>
+        <div id="actions">
+                <button class="light" onclick="history.back()">Cancel</button>&nbsp;
+                <button id="saveEdit" class="green">Post</button>
+        </div>
+        <p id="error"></p>
+    </div>
+
+    <!-- Set active item on navbar -->
+    <script>
+        $('nav > #subforums').addClass('active');
+
+        $(document).ready(function () {
+
+            $('#saveEdit').click(function(){
+                // Gets data from editable content to textarea to send to POST request
+                var body = $('#content').html();
+                $('#bodyContent').val(body);
+                console.log('#bodyContent: '+ $('#bodyContent').val());
+
+                if ( body )
+                    $('form').submit();
+                else
+                    $("#error").text("Do not leave the reply box blank.");
+            });
+        });
+    </script>
+</body>
+
+</html>

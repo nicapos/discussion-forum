@@ -87,6 +87,7 @@ const threadController = {
                     else{
                         db.findMany(Reply, {_id: result.replies}, "", function(result){
                             var toParse = JSON.parse(JSON.stringify(result));
+                            console.log(toParse);
                             toParse.forEach(function(currObj, index){
                                 currObj.ownReply = user == currObj.username;
                             })
@@ -103,6 +104,49 @@ const threadController = {
                     }
                 })
             }
+        });
+    },
+
+    getEditReply: function(req, res) {
+        var user = req.session.username;
+        var subfName = req.params.subfName;
+        var replyId = req.params.replyId;
+
+        var data = {
+            user: user,
+            subforum: null,
+            reply: null
+        }
+
+        db.findOne(Subforum, {subforumName: subfName}, "title description", function (result) {
+            data.subforum = JSON.parse(JSON.stringify(result));
+
+            if (!data.subforum)
+                res.render('error');
+            else {
+                db.findOne(Reply, {_id: replyId}, "body", function (result) {
+                    data.reply = JSON.parse(JSON.stringify(result));
+        
+                    if (!data.reply)
+                        res.render('error');
+                    else
+                        res.render('editReply', data);
+                });
+            }
+        });
+    },
+
+    postEditReply: function(req, res) {
+        var subfName = req.params.subfName;
+        var threadId = req.params.threadId;
+        var replyId = req.params.replyId;
+        var content = req.body.bodyContent;
+
+        let currentDate = new Date(Date.now()).toISOString();
+
+        db.updateOne(Reply, {_id: replyId}, {$set:{"body": content, "datePosted": currentDate}}, function(result) {
+            if (result)
+                res.redirect('/subf/'+subfName+'/'+threadId);
         });
     },
 
