@@ -9,8 +9,7 @@
     </div>
 
     <p class="content">{{  body }}</p>
-
-    <div id="actions" class="thread-actions box-container">
+    <div class="thread-actions box-container">
         <a id="like-btn"><i id="like-icon" class="material-icons">thumb_up</i>Like</a>
         <a id="dislike-btn"><i id="dislike-icon" class="material-icons">thumb_down</i>Dislike</a>
         <a id="reply-btn"><i class="material-icons">reply</i>Reply</a>
@@ -19,9 +18,4 @@
             <a href="/subf/{{subforumName}}/{{ _id}}/delete" id="del-btn>"><i class="material-icons">delete</i>Delete</a>
         {{/if}}
     </div>
-    <script>
-        let user = $('nav > #profile-slot > #username').text();
-        if(user != $('#author-info a').text())
-            $('#actions').hide();
-    </script>
 </div>
