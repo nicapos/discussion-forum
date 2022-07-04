@@ -4,6 +4,7 @@ const Reply = require('../models/ReplyModel.js');
 const Subforum = require('../models/SubforumModel.js');
 const User = require('../models/UserModel.js');
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 const forumController = {
 
@@ -52,9 +53,11 @@ const forumController = {
 
             subforum.isUserMember = subforum.members.includes(user);
 
-            // TODO: Get threads info
             db.findMany(Thread, {subforumName: subfName}, "_id threadTitle subforumName username datePosted body likes", function(result){
-                let threads = JSON.parse(JSON.stringify(result));
+                var threads = JSON.parse(JSON.stringify(result));
+                threads.forEach(element => {
+                    element.datePosted = moment(element.datePosted).calendar();  
+                });
                 res.render('subforumView', {user: user, subforum: subforum, threads: threads});
             })
 

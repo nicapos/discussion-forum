@@ -2,6 +2,7 @@ const db = require('../models/db.js');
 const User = require('../models/UserModel.js');
 const Subforum = require('../models/SubforumModel.js');
 const Thread = require('../models/ThreadModel.js');
+const moment = require('moment');
 
 const homeController = {
     getHome: function(req, res){
@@ -28,7 +29,10 @@ const homeController = {
                 });                
                 db.findMany(Thread, {_id: {$in: threads}}, "_id username threadTitle subforumName datePosted body", function(result){
                     if(result){
-                        parsedResult = JSON.parse(JSON.stringify(result));
+                        var parsedResult = JSON.parse(JSON.stringify(result));
+                        parsedResult.forEach(element => {
+                            element.datePosted = moment(element.datePosted).calendar();  
+                        });
                         data.recents = parsedResult;
                         res.render('home',data);
                     }

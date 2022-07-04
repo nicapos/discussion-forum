@@ -4,6 +4,7 @@ const Reply = require('../models/ReplyModel.js');
 const Subforum = require('../models/SubforumModel.js');
 const User = require('../models/UserModel.js');
 const mongoose = require('mongoose');
+const moment = require('moment');
 
 const threadController = {
 
@@ -71,6 +72,7 @@ const threadController = {
                 db.findOne(Thread, {_id: mongoose.Types.ObjectId(threadId)}, "_id subforumName threadTitle username datePosted body replies likes likedBy dislikedBy", function(result){
                     var parsedThread = JSON.parse(JSON.stringify(result));
                     
+                    parsedThread.datePosted = moment(parsedThread.datePosted).calendar();   
                     parsedThread.isOwnThread = user == parsedThread.username;
                     parsedThread.isUserMember = isUserMember;
                     parsedThread.isOwnThread = user == parsedThread.username;
@@ -88,6 +90,9 @@ const threadController = {
                             toParse.forEach(function(currObj, index){
                                 currObj.ownReply = user == currObj.username;
                             })
+                            toParse.forEach(element => {
+                                element.datePosted = moment(element.datePosted).calendar();  
+                            });
                             data.replies = toParse;
 
                             if(!data.replies)
