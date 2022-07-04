@@ -49,23 +49,25 @@ const forumController = {
         var subfName = req.params.subfName;
         var owner = "";
         db.findOne(Subforum, {subforumName: subfName}, "subforumName title description members owner", function (result) {
-            let subforum = JSON.parse(JSON.stringify(result));
-            owner = subforum.owner;
-
-            subforum.isUserMember = subforum.members.includes(user);
-            subforum.isUserOwner = user == owner;
-
-            db.findMany(Thread, {subforumName: subfName}, "_id threadTitle subforumName username datePosted body likes", function(result){
-                var threads = JSON.parse(JSON.stringify(result));
-                threads.forEach(element => {
-                    element.datePosted = moment(element.datePosted).calendar();  
-                });
-                res.render('subforumView', {user: user, subforum: subforum, threads: threads});
-            })
-
-            if (!subforum)
+            if (!result)
                 res.render('error');
-            });
+            else{
+                let subforum = JSON.parse(JSON.stringify(result));
+                owner = subforum.owner;
+    
+                subforum.isUserMember = subforum.members.includes(user);
+                subforum.isUserOwner = user == owner;
+    
+                db.findMany(Thread, {subforumName: subfName}, "_id threadTitle subforumName username datePosted body likes", function(result){
+                    var threads = JSON.parse(JSON.stringify(result));
+                    threads.forEach(element => {
+                        element.datePosted = moment(element.datePosted).calendar();  
+                    });
+                    res.render('subforumView', {user: user, subforum: subforum, threads: threads});
+                })
+            }
+              
+        });
     },
 
     joinSubforum: function(req, res){
