@@ -3,6 +3,7 @@ const Thread = require('../models/ThreadModel.js');
 const Reply = require('../models/ReplyModel.js');
 const Subforum = require('../models/SubforumModel.js');
 const User = require('../models/UserModel.js');
+const moment = require('moment');
 
 const searchController = {
 
@@ -27,6 +28,9 @@ const searchController = {
             console.log(result)
             db.findMany(Thread, {threadTitle: {$regex: searchWord}}, "subforumName threadTitle username datePosted body", function(result){
                 data.threads = JSON.parse(JSON.stringify(result));
+                data.threads.forEach(element => {
+                    element.datePosted = moment(element.datePosted).calendar();  
+                });
                 res.render('search', data);
 
             })
