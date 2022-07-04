@@ -8,6 +8,7 @@ const Image = require('../models/ImageModel.js');
 const bcrypt = require('bcrypt');
 
 const settingsController = {
+    
     getSettings: function(req, res){
         var username = req.session.username;
 
@@ -17,6 +18,7 @@ const settingsController = {
             res.render('editAccount', result);
         })
     },
+    
     getChangeUsername: function(req, res){
         var username = req.session.username;
 
@@ -29,6 +31,7 @@ const settingsController = {
             res.render('changeUsername', query);
         }) 
     },
+    
     postChangeUsername: function(req, res){
         var username = req.session.username;
         var newUsername = req.body.newUsername;
@@ -75,8 +78,24 @@ const settingsController = {
                 res.redirect('/settings');
             })
         })
-    }
+    },
 
+    deleteAccount: function(req, res){
+        var username = req.session.username;
+        
+        db.deleteMany(Thread, {username: username}, function(result){
+        })
+        db.deleteMany(Subforum, {members: username}, function(result){
+        })
+        db.deleteMany(Reply, {username: username}, function(result){
+        })
+        db.deleteMany(Image, {name: username}, function(result){  
+        })
+        db.deleteOne(User, {username: username}, function(result){
+            console.log(result);
+            res.redirect('/logout');
+        })
+    }
 
 }
 

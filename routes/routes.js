@@ -36,9 +36,7 @@ app.get('/changeUsername', settingsController.getChangeUsername);
 app.post('/changeUsername', settingsController.postChangeUsername);
 app.get('/changePassword', settingsController.getChangePassword);
 app.post('/changePassword', settingsController.postChangePassword);
-app.get('/delete', function (req, res) {
-    res.render('deleteAccount');
-});
+app.get('/delete', settingsController.deleteAccount);
 
 app.post('/uploadImg', upload.single('edit_profile_photo'), imageController.postUpload);
 app.get('/images/:name', imageController.getImage);
