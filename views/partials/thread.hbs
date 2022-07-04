@@ -14,15 +14,16 @@
     </div>
 
     <p class="content">{{  body }}</p>
-    {{#if isUserMember}}
     <div class="thread-actions box-container">
+        {{#if isUserMember}}
         <a id="like-btn"{{#if isLiked}} class="active"{{/if}}><i id="like-icon" class="material-icons">thumb_up</i>Like</a>
         <a id="dislike-btn"{{#if isDisliked}} class="active"{{/if}}><i id="dislike-icon" class="material-icons">thumb_down</i>Dislike</a>
         <a id="reply-btn"><i class="material-icons">reply</i>Reply</a>
         <a id="share-btn"><i class="material-icons">share</i>Share</a>
+        {{/if}}
+
         {{#if isOwnThread}}
             <a href="/subf/{{subforumName}}/{{ _id}}/delete" id="del-btn>"><i class="material-icons">delete</i>Delete</a>
         {{/if}}
     </div>
-    {{/if}}
 </div>
