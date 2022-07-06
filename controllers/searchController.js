@@ -15,18 +15,20 @@ const searchController = {
 
     postSearchPage: function(req, res){
         var user = req.session.username;
-        var searchWord = req.body.keyword;
-        console.log(searchWord);
+        var subforumsSearchWord = req.body.keyword.trim().toLowerCase().replaceAll(' ','-');
+        var threadsSearchWord = req.body.keyword;
+
+        console.log({$regex: threadsSearchWord});
         var data = {
             user: user,
             subforums: null,
             threads: null
         };
 
-        db.findMany(Subforum, {subforumName: {$regex: searchWord}}, "title description subforumName", function(result){
+        db.findMany(Subforum, {subforumName: {$regex: subforumsSearchWord}}, "title description subforumName", function(result){
             data.subforums = JSON.parse(JSON.stringify(result));
             console.log(result)
-            db.findMany(Thread, {threadTitle: {$regex: searchWord}}, "subforumName threadTitle username datePosted body", function(result){
+            db.findMany(Thread, {threadTitle: {$regex: threadsSearchWord}}, "subforumName threadTitle username datePosted body", function(result){
                 data.threads = JSON.parse(JSON.stringify(result));
                 data.threads.forEach(element => {
                     element.datePosted = moment(element.datePosted).calendar();  

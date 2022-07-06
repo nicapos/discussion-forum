@@ -22,7 +22,7 @@ const forumController = {
     postAddSubforum: function(req, res) {
         var title = req.body.title;
         var desc = req.body.description;
-        var name = title.trim().toLowerCase().replace(' ','-');
+        var name = title.trim().toLowerCase().replaceAll(' ','-');
         var user = req.session.username;
         var query = {
             subforumName: name,

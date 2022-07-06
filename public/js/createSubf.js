@@ -2,7 +2,7 @@ $(document).ready(function(){
 
     $('#title').keyup(function () {
         var title = $('#title').val();
-        var subforumName = title.trim().toLowerCase().replace(' ','-');
+        var subforumName = title.trim().toLowerCase().replaceAll(' ','-');
 
         let query = {
             subforumName: subforumName
