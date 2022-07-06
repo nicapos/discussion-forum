@@ -106,6 +106,7 @@ const forumController = {
                 db.findMany(Thread, {subforumName: subfName}, "_id replies username", function(result){
                     var parsed = JSON.parse(JSON.stringify(result));
                     parsed.forEach(function(element){
+                        console.log(element._id)
                         db.deleteMany(Reply, {threadId: element._id}, function(result){
                             console.log(element._id);
                             if(result)
