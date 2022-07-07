@@ -85,7 +85,7 @@ const settingsController = {
         
         db.deleteMany(Thread, {username: username}, function(result){
         })
-        db.deleteMany(Subforum, {members: username}, function(result){
+        db.updateMany(Subforum, {members: username}, {$pull:{"members":username}},function(result){
         })
         db.deleteMany(Reply, {username: username}, function(result){
         })
