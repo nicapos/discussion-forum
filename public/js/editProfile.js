@@ -72,20 +72,22 @@ $(document).ready(function(){
 
         $.post(location.href, query, function(data, status){
             if (status) {
-                // #2: Update changes to profile picture
-                var imgData = new FormData($('#img_form')[0]);
-        
-                $.ajax( {
-                    url: '/uploadImg',
-                    type: 'POST',
-                    data: imgData,
-                    processData: false,
-                    contentType: false
-                } );
+                // #2: Update changes to profile picture, if any
+                if ($('#profile-picture').attr('src') != profileImg) {
+                    var imgData = new FormData($('#img_form')[0]);
+            
+                    $.ajax( {
+                        url: '/uploadImg',
+                        type: 'POST',
+                        data: imgData,
+                        processData: false,
+                        contentType: false
+                    } );
 
-                // Saved changes
-                let newProfileImg = $('#profile-picture').attr('src');
-                $('nav #profile-img').attr('src', newProfileImg);
+                    // Saved changes
+                    let newProfileImg = $('#profile-picture').attr('src');
+                    $('nav #profile-img').attr('src', newProfileImg);
+                }
 
                 $('#change_profile').prop('disabled', true);
                 $('#msg').text('Your changes have been saved.');
