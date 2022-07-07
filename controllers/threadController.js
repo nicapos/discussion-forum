@@ -123,8 +123,8 @@ const threadController = {
             if (!data.subforum)
                 res.render('error');
             else {
-                db.findOne(Thread, {_id: threadId}, "title body", function (result) {
-                    data.thread = JSON.parse(JSON.stringify(result));
+                db.findOne(Thread, {_id: threadId}, "threadTitle body", function (result2) {
+                    data.thread = JSON.parse(JSON.stringify(result2));
                     if (!data.thread)
                         res.render('error');
                     else

@@ -40,10 +40,10 @@
     <div id="text-editor" class="box-container">
         <h3>Edit Thread Title</h3>
         <form method="POST">
-            <div id="title" class="box-container" contenteditable>{{thread.title}}</div>
+            <div id="title" class="box-container" contenteditable>{{thread.threadTitle}}</div>
             <input name="threadtitle" id="threadtitle" type="hidden" value="" />
         <h3>Edit Thread Content</h3>
-            <div id="content" class="box-container" contenteditable>{{thread.content}}</div>
+            <div id="content" class="box-container" contenteditable>{{thread.body}}</div>
             <input name="bodyContent" id="bodyContent" type="hidden" value="" />
         </form>
         <div id="actions">
