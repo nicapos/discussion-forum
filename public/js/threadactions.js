@@ -77,9 +77,9 @@ $(document).ready(function() {
         })
     );
 
-    fbForm.insertBefore("#mail-share");
+    mailForm.insertBefore("#mail-share");
     $("#mail-share").click(function() {
-        fbForm.submit()
+        mailForm.submit()
     });
 
     $('#postReply').click(function(){
