@@ -11,7 +11,7 @@ const controller = {
         res.render('signup');
     },
     getLogout: function (req, res) {
-        res.render('logout');
+        res.render('jjj');
     }
 };
 
